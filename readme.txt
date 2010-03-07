@@ -3,7 +3,7 @@ Contributors: LukaszWiecek
 Tags: social, widget, blip, buzz, twitter, flaker, śledzik, sledzik, nasza-klasa, nasza klasa, nk, rss, newsletter, delicious, picasa, flickr, youtube, vimeo, soup, wykop, goldenline, lastfm, kciuk, digg, myspace
 Requires at least: 2.5
 Tested up to: 2.9.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 
 Wtyczka przykleja do lewej krawędzi ekranu boks zawierający linki do profili w portalach społecznościowych.
 

@@ -3,7 +3,7 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: Wtyczka przykleja do lewej krawędzi ekranu boks zawierający linki do profili w portalach społecznościowych.
-Version: 1.0.0
+Version: 1.0.1
 Author: Łukasz Więcek
 Author URI: http://xn--wicek-k0a.pl/
 */
@@ -385,6 +385,7 @@ function SocialSliderUstawienia()
 			<div class="pro">
 				<p><ol>
 					<li><?php echo $lang[29][$la]; ?></li>
+					<li><?php echo $lang[35][$la]; ?></li>
 					<li><?php echo $lang[30][$la]; ?></li>
 					<li><?php echo $lang[31][$la]; ?></li>
 					<li><?php echo $lang[32][$la]; ?></li>
@@ -411,10 +412,10 @@ function SocialSlider()
 		{
 		?>
 		<script type="text/javascript">
-			jQuery(document).ready(function () {var hideDelay=0;var hideDelayTimer=null;jQuery("#socialslider").hover(function(){if(hideDelayTimer)clearTimeout(hideDelayTimer);jQuery("#socialslider").animate({left:"0"},"medium");},function(){if(hideDelayTimer)clearTimeout(hideDelayTimer);hideDelayTimer=setTimeout(function(){hideDelayTimer=null;jQuery("#socialslider").animate({left:"-<?php echo $socialslider_widget_width+100; ?>"},"medium");},hideDelay);});});
+			jQuery(document).ready(function () {var hideDelay=0;var hideDelayTimer=null;jQuery("#socialslider").hover(function(){if(hideDelayTimer)clearTimeout(hideDelayTimer);jQuery("#socialslider").animate({left:"0"},"medium");},function(){if(hideDelayTimer)clearTimeout(hideDelayTimer);hideDelayTimer=setTimeout(function(){hideDelayTimer=null;jQuery("#socialslider").animate({left:"-<?php echo $socialslider_widget_width+101; ?>"},"medium");},hideDelay);});});
 		</script>
 
-		<div id="socialslider" style="top: <?php echo $socialslider_top; ?>px; width: <?php echo $socialslider_widget_width+100; ?>px; left: -<?php echo $socialslider_widget_width+100; ?>px;">
+		<div id="socialslider" style="top: <?php echo $socialslider_top; ?>px; width: <?php echo $socialslider_widget_width+100; ?>px; left: -<?php echo $socialslider_widget_width+101; ?>px;">
 			<div id="socialslider-contener" class="socialslider-contener">
 				<div id="socialslider-linki" class="socialslider-grupa">
 					<ul>
@@ -453,7 +454,7 @@ function SocialSlider()
 		{
 		?>
 		<script type="text/javascript">
-			jQuery(document).ready(function () {var hideDelay=0;var hideDelayTimer=null;jQuery("#socialslider").hover(function(){if(hideDelayTimer)clearTimeout(hideDelayTimer);jQuery("#socialslider").animate({left:"0"},"medium");},function(){if(hideDelayTimer)clearTimeout(hideDelayTimer);hideDelayTimer=setTimeout(function(){hideDelayTimer=null;jQuery("#socialslider").animate({left:"-85"},"medium");},hideDelay);});});
+			jQuery(document).ready(function () {var hideDelay=0;var hideDelayTimer=null;jQuery("#socialslider").hover(function(){if(hideDelayTimer)clearTimeout(hideDelayTimer);jQuery("#socialslider").animate({left:"0"},"medium");},function(){if(hideDelayTimer)clearTimeout(hideDelayTimer);hideDelayTimer=setTimeout(function(){hideDelayTimer=null;jQuery("#socialslider").animate({left:"-86"},"medium");},hideDelay);});});
 		</script>
 
 		<div id="socialslider" style="top: <?php echo $socialslider_top; ?>px;">
@@ -492,7 +493,7 @@ function SocialSlider()
 		{
 		?>
 		<script type="text/javascript">
-			jQuery(document).ready(function () {var hideDelay=0;var hideDelayTimer=null;jQuery("#socialslider").hover(function(){if(hideDelayTimer)clearTimeout(hideDelayTimer);jQuery("#socialslider").animate({left:"0"},"medium");},function(){if(hideDelayTimer)clearTimeout(hideDelayTimer);hideDelayTimer=setTimeout(function(){hideDelayTimer=null;jQuery("#socialslider").animate({left:"-85"},"medium");},hideDelay);});});
+			jQuery(document).ready(function () {var hideDelay=0;var hideDelayTimer=null;jQuery("#socialslider").hover(function(){if(hideDelayTimer)clearTimeout(hideDelayTimer);jQuery("#socialslider").animate({left:"0"},"medium");},function(){if(hideDelayTimer)clearTimeout(hideDelayTimer);hideDelayTimer=setTimeout(function(){hideDelayTimer=null;jQuery("#socialslider").animate({left:"-86"},"medium");},hideDelay);});});
 		</script>
 
 		<div id="socialslider" style="top: <?php echo $socialslider_top; ?>px;">

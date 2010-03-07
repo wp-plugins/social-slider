@@ -102,7 +102,7 @@ $lang[26] = array(
 	"en_US"	=> "");
 
 $lang[27] = array(
-	"pl_PL"	=> "Za licencję <strong>Social Slider Pro</strong> możesz też zapłacić przez <a href=\"http://paypal.pl/\">PayPal</a> korzystając ze znajdującego się poniżej przycisku <i>\"Kup Teraz\"</i>:",
+	"pl_PL"	=> "Za licencję <strong>Social Slider Pro</strong> możesz też zapłacić przez <a href=\"http://paypal.pl/\" title=\"PayPal\">PayPal</a> korzystając ze znajdującego się poniżej przycisku <i>\"Kup Teraz\"</i>:",
 	"en_US"	=> "");
 
 $lang[28] = array(
@@ -110,7 +110,7 @@ $lang[28] = array(
 	"en_US"	=> "");
 
 $lang[29] = array(
-	"pl_PL"	=> "Kod źródłowy wtyczki, niezależnie od posiadanej wersji, należy do <a href=\"http://xn--wicek-k0a.pl/\">Łukasza Więcka</a>.",
+	"pl_PL"	=> "Kod źródłowy wtyczki, niezależnie od posiadanej wersji, należy do <a href=\"http://xn--wicek-k0a.pl/\" title=\"IT z ogonkiem\">Łukasza Więcka</a>.",
 	"en_US"	=> "");
 
 $lang[30] = array(
@@ -131,6 +131,10 @@ $lang[33] = array(
 
 $lang[34] = array(
 	"pl_PL"	=> "Adres bloga",
+	"en_US"	=> "");
+
+$lang[35] = array(
+	"pl_PL"	=> "Angielską wersję językową wtyczki <strong>Social Slider</strong> oraz <strong>Social Slider Pro</strong> przygotował <a href=\"http://tomasz.topa.pl\" title=\"Tomasz Topa\">Tomasz Topa</a>.",
 	"en_US"	=> "");
 
 ?>
