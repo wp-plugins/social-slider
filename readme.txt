@@ -3,28 +3,28 @@ Contributors: LukaszWiecek
 Tags: social, widget, blip, buzz, twitter, flaker, śledzik, sledzik, nasza-klasa, nasza klasa, nk, rss, newsletter, delicious, picasa, flickr, youtube, vimeo, soup, wykop, goldenline, lastfm, kciuk, digg, myspace
 Requires at least: 2.5
 Tested up to: 2.9.2
-Stable tag: 1.0.1
+Stable tag: 2.0.0
 
-Wtyczka przykleja do lewej krawędzi ekranu boks zawierający linki do profili w portalach społecznościowych.
+This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
 
 == Description ==
 
-Wtyczka przykleja do lewej krawędzi ekranu boks zawierający linki do profili w portalach społecznościowych.
+This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
 
 == Installation ==
 
-Po zainstalowaniu wtyczki należy uzupełnić adresy swoich profili w portalach społecznościowych. Ikony portali, do których nie zostanie podany adres profilu, nie będą wyświetlane.
+After you activate the plugin, go to the configuration page and enter the URLs of your profiles on social networking sites. If you don't use a particular site, leave the field blank - the icon will not be displayed.
 
 == Screenshots ==
 
-1. Zwinięty
-2. Rozwinięty z widgetem
-3. Rozwinięty bez widgetu
-4. Tryb kompaktowy
-5. Strona ustawień
+1. Folded
+2. Expanded with the widget
+3. Expanded without the widget
+4. Compact mode
+5. Configuration page
 
 == Other Notes == 
 
-**Licencja:**
+**License**
 
-Zabrania się jakichkolwiek ingerencji w kodzie wtyczki, oraz usuwania informacji o jej autorze, bez uzyskania jego wczesniejszej zgody.
+Any interference or modification of the Social Slider's / Social Slider Pro's source code, without the author's written consent, is strictly forbidden.
