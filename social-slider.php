@@ -3,7 +3,7 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 2.1.1
+Version: 2.1.2
 Author: Łukasz Więcek
 Author URI: http://xn--wicek-k0a.pl/
 */
@@ -42,7 +42,7 @@ function SocialSliderUstawienia()
 		$is = 1;
 
 		$wpdb->query("INSERT INTO  `".$socialtabela."` (`id`,`lp`,`ikona`,`nazwa`,`adres`) VALUES
-			(NULL,		'".$is++."',			'rss',				'Kanał RSS',''),
+			(NULL,		'".$is++."',			'rss',				'RSS',''),
 			(NULL,		'".$is++."',			'newsletter',		'Newsletter',''),
 			(NULL,		'".$is++."',			'sledzik',			'Śledzik',''),
 			(NULL,		'".$is++."',			'blip',				'Blip',''),
@@ -106,11 +106,26 @@ function SocialSliderUstawienia()
 		
 		delete_option('socialslider_delicious');
 		}
+	
+	// Uaktualnienia w tabeli
+		
+		// Zmiana nazwy kanału RSS
+		if($wpdb->get_row("SELECT nazwa FROM `".$socialtabela."` WHERE nazwa = 'Kanał RSS'"))
+			{
+			$wpdb->query("UPDATE `".$socialtabela."` SET `nazwa` = 'RSS' WHERE `nazwa` = 'Kanał RSS'");
+			}
 
+		// Dodanie serwisu LinkedIn
+		if(!$wpdb->get_row("SELECT nazwa FROM `".$socialtabela."` WHERE ikona = 'linkedin'"))
+			{
+			$wpdb->query("INSERT INTO  `".$socialtabela."` (`id`,`lp`,`ikona`,`nazwa`,`adres`) VALUES (NULL, '26', 'linkedin', 'LinkedIn','');");
+			}
+
+	
 	include("language.php");
 
 	if(WPLANG=="pl_PL")	{$la = "pl_PL";}
-	else					{$la = "en_US";}
+	else				{$la = "en_US";}
 
 	if($_POST['SocialSliderZapisz'])
 		{
