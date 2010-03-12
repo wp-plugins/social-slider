@@ -164,4 +164,18 @@ $lang[45] = array(
 $lang[46] = array(
 	"pl_PL"	=> "Klucz",
 	"en_US"	=> "License key");
+
+$lang[47] = array(
+	"pl_PL"	=> "Dodaj nowy serwis",
+	"en_US"	=> "");
+
+$lang[48] = array(
+	"pl_PL"	=> "Wprowadź nazwę nowego serwisu",
+	"en_US"	=> "");
+
+$lang[49] = array(
+	"pl_PL"	=> "",
+	"en_US"	=> "");
+
+
 ?>
