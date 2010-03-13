@@ -3,7 +3,7 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 2.1.2
+Version: 2.1.3
 Author: Łukasz Więcek
 Author URI: http://xn--wicek-k0a.pl/
 */
@@ -121,6 +121,7 @@ function SocialSliderUstawienia()
 			$wpdb->query("INSERT INTO  `".$socialtabela."` (`id`,`lp`,`ikona`,`nazwa`,`adres`) VALUES (NULL, '26', 'linkedin', 'LinkedIn','');");
 			}
 
+	// END
 	
 	include("language.php");
 
@@ -627,6 +628,11 @@ function SocialSlider()
 							{
 							foreach ($serwisy as $serwis) {echo "<li><a href='".$serwis->adres."' title='".$serwis->nazwa."'>".$serwis->nazwa."</a></li>";}
 							}
+						
+						if($socialslider_tryb!="minimalny" && (date("Y-m-d")>base64_decode($socialslider_licencja) || $socialslider_link=="tak"))
+							{
+							echo "<li id='socialslider-autor'><a href='http://xn--wicek-k0a.pl/projekty/social-slider' title='Social Slider'>Social Slider</a></li>";
+							}
 						?>
 					</ul>
 				</div>
@@ -641,7 +647,10 @@ function SocialSlider()
 				if($socialslider_tryb=="minimalny")
 					{
 					foreach ($serwisy as $serwis) {echo "<li><a href='".$serwis->adres."' title='".$serwis->nazwa."'><img src='".$socialslider_baza."/wp-content/plugins/social-slider/images/".$serwis->ikona."-20.png' alt='".$serwis->nazwa."' /></a></li>";}
-					echo "<li id='socialslider-autor'><a href='http://xn--wicek-k0a.pl/projekty/social-slider' title='Social Slider'>Slider</a></li>";
+					if(date("Y-m-d")>base64_decode($socialslider_licencja) || $socialslider_link=="tak")
+						{
+						echo "<li id='socialslider-autor'><a href='http://xn--wicek-k0a.pl/projekty/social-slider' title='Social Slider'>Slider</a></li>";
+						}
 					}
 				else
 					{
@@ -651,25 +660,6 @@ function SocialSlider()
 				</ul>
 			</div>
 		</div>
-		<?php
-		if(date("Y-m-d")>base64_decode($socialslider_licencja) || $socialslider_link=="tak")
-			{
-			switch($socialslider_tryb)
-				{
-				case "pelny":
-					echo "<div id='socialslider-autor'><a href='http://xn--wicek-k0a.pl/projekty/social-slider' title='Social Slider'>Social Slider</a> autorstwa <a href='http://xn--wicek-k0a.pl' title='Łuaksz Więcek'>Łukasza Więcka</a></div>";
-					break;
-
-				case "uproszczony":
-					echo "<div id='socialslider-autor'><a href='http://xn--wicek-k0a.pl/projekty/social-slider' title='Social Slider'>Social Slider</a></div>";
-					break;
-
-				case "kompaktowy":
-					echo "<div id='socialslider-autor'><a href='http://xn--wicek-k0a.pl/projekty/social-slider' title='Social Slider'>Social Slider</a></div>";
-					break;
-				}
-			}
-		?>
 	</div>
 		
 	<?php

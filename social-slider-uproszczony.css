@@ -97,18 +97,10 @@
 	text-decoration: none;
 	}
 
-#socialslider-autor
-	{
-	width: 85px;
-	padding: 5px 0;
-	text-align: center;
-	}
-
 #socialslider-autor a
 	{
 	font-family: Segoe UI, Tahoma;
 	font-size: 10px;
 	text-decoration: none;
-	color: #21759B;
+	color: #2275AD;
 	}
-

@@ -105,9 +105,9 @@
 
 #socialslider-autor
 	{
-	width: 85px;
-	padding: 5px 0;
-	text-align: center;
+	height: 10px;
+	padding-top: 2px !important;
+	padding-bottom: 2px !important;
 	}
 
 #socialslider-autor a
@@ -117,4 +117,3 @@
 	text-decoration: none;
 	color: #21759B;
 	}
-
