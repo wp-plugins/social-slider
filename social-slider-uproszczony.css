@@ -3,7 +3,6 @@
 	background-color: #fff;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
-	border-right: 1px solid #ccc;
 	display: block;
 	padding: 0;
 	position: fixed;
@@ -34,30 +33,18 @@
 
 #socialslider-ikony
 	{
-	background: url('images/handle.png') no-repeat right top;
 	position: absolute;
 	top: -1px;
 	width: 32px;
 	z-index: 110;
 	}
 
-* html #socialslider-ikony
-	{
-	background: url('images/handle.gif') no-repeat right top;
-	}
-
 #socialslider-ikony ul
 	{
-	background: url('images/handle.png') no-repeat right bottom;
 	left: 0;
 	position: relative;
 	bottom: -10px;
 	width: 32px;
-	}
-
-* html #socialslider-ikony ul
-	{
-	background: url('images/handle.gif') no-repeat right bottom;
 	}
 
 #socialslider-ikony ul li

@@ -14,16 +14,16 @@ $lang[3] = array(
 	"en_US"	=> "Full");
 
 $lang[4] = array(
-	"pl_PL"	=> "Uproszczony (bez widgetu)",
-	"en_US"	=> "Simple (without the widget)");
+	"pl_PL"	=> "Uproszczony",
+	"en_US"	=> "Simple");
 
 $lang[5] = array(
-	"pl_PL"	=> "Kompaktowy (bez widgetu i dużych ikon serwisów)",
-	"en_US"	=> "Compact (without the widget and large icons)");
+	"pl_PL"	=> "Kompaktowy",
+	"en_US"	=> "Compact");
 
 $lang[6] = array(
-	"pl_PL"	=> "Minimalny (nierozwijany)",
-	"en_US"	=> "Minimal (not expandable)");
+	"pl_PL"	=> "Minimalny",
+	"en_US"	=> "Minimal");
 
 $lang[8] = array(
 	"pl_PL"	=> "Wysokość umiejscowienia Social Slider",
@@ -50,8 +50,8 @@ $lang[13] = array(
 	"en_US"	=> "default");
 
 $lang[14] = array(
-	"pl_PL"	=> "Szerokość widgetu",
-	"en_US"	=> "Widget's width");
+	"pl_PL"	=> "Szerokość widgetu (dotyczy tylko trybu pełnego)",
+	"en_US"	=> "Widget's width in full mode");
 
 $lang[15] = array(
 	"pl_PL"	=> "opcja dostępna w <a href=\"#pro\">wersji Pro</a>",
@@ -165,17 +165,48 @@ $lang[46] = array(
 	"pl_PL"	=> "Klucz",
 	"en_US"	=> "License key");
 
-$lang[47] = array(
-	"pl_PL"	=> "Dodaj nowy serwis",
-	"en_US"	=> "");
-
-$lang[48] = array(
-	"pl_PL"	=> "Wprowadź nazwę nowego serwisu",
-	"en_US"	=> "");
-
 $lang[49] = array(
-	"pl_PL"	=> "",
-	"en_US"	=> "");
+	"pl_PL"	=> "Inspiracją do stworzenia tej wtyczki był slider umieszczony na blogach należących do sieci <a href=\"http://blomedia.pl/\" title=\"Konfederacja blogów Blomedia\">Blomedia</a>.",
+	"en_US"	=> "Social Slider was inspired by the widget found on blogs from <a href=\"http://blomedia.pl/\" title=\"Konfederacja blogów Blomedia\">Blomedia</a> network.");
 
+$lang[50] = array(
+	"pl_PL"	=> "Miejsce umieszczenia Social Slidera",
+	"en_US"	=> "Placement of Social Slider");
+
+$lang[51] = array(
+	"pl_PL"	=> "Przy lewej krawędzi okna przeglądarki",
+	"en_US"	=> "Left side of the screen");
+
+$lang[52] = array(
+	"pl_PL"	=> "Przy prawej krawędzi okna przeglądarki",
+	"en_US"	=> "Right side of the screen");
+
+$lang[53] = array(
+	"pl_PL"	=> "Szybkość rozwijania Social Slidera (nie dotyczy trybu minimalnego)",
+	"en_US"	=> "How fast should the Social Slider expand");
+
+$lang[54] = array(
+	"pl_PL"	=> "Wolno",
+	"en_US"	=> "Slowly");
+
+$lang[55] = array(
+	"pl_PL"	=> "Umiarkowanie",
+	"en_US"	=> "Normal");
+
+$lang[56] = array(
+	"pl_PL"	=> "Szybko",
+	"en_US"	=> "Fast");
+
+$lang[57] = array(
+	"pl_PL"	=> " (bez widgetu)",
+	"en_US"	=> " (without the widget)");
+
+$lang[58] = array(
+	"pl_PL"	=> " (bez widgetu i dużych ikon serwisów)",
+	"en_US"	=> " (without the widget and large icons)");
+
+$lang[59] = array(
+	"pl_PL"	=> " (nierozwijany)",
+	"en_US"	=> " (not expandable)");
 
 ?>

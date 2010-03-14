@@ -3,7 +3,7 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 2.1.3
+Version: 2.2.0
 Author: Łukasz Więcek
 Author URI: http://xn--wicek-k0a.pl/
 */
@@ -163,6 +163,30 @@ function SocialSliderUstawienia()
 			else										{add_option('socialslider_widget_width', '200', ' ', 'yes');}
 			}
 		
+		// Miejsce
+		if(!empty($_POST['socialslider_miejsce']))
+			{
+			if(get_option('socialslider_miejsce'))		{update_option('socialslider_miejsce', $_POST['socialslider_miejsce']);}
+			else										{add_option('socialslider_miejsce', $_POST['socialslider_miejsce'], ' ', 'yes');}
+			}
+		else
+			{
+			if(get_option('socialslider_miejsce'))		{update_option('socialslider_miejsce', 'lewa');}
+			else										{add_option('socialslider_miejsce', 'lewa', ' ', 'yes');}
+			}
+			
+		// Szybkosc
+		if(!empty($_POST['socialslider_szybkosc']))
+			{
+			if(get_option('socialslider_szybkosc'))		{update_option('socialslider_szybkosc', $_POST['socialslider_szybkosc']);}
+			else										{add_option('socialslider_szybkosc', $_POST['socialslider_szybkosc'], ' ', 'yes');}
+			}
+		else
+			{
+			if(get_option('socialslider_szybkosc'))		{update_option('socialslider_szybkosc', 'normal');}
+			else										{add_option('socialslider_szybkosc', 'normal', ' ', 'yes');}
+			}
+		
 		// Link
 		if(!empty($_POST['socialslider_link']))
 			{
@@ -231,6 +255,7 @@ function SocialSliderUstawienia()
 			input, textarea, select
 				{
 				color: #555;
+				font-size: 11px;
 				}
 
 			ul.serwisy
@@ -277,6 +302,9 @@ function SocialSliderUstawienia()
 			div.opcja
 				{
 				margin: 0 0 40px 20px;
+				padding-left: 15px;
+				border-top: 1px solid #ddd;
+				border-left: 1px solid #ddd;
 				}
 
 			p.radio
@@ -301,25 +329,46 @@ function SocialSliderUstawienia()
 				list-style-type: circle;
 				margin: 0 0 40px 20px;
 				}
+			
+			div.tryby
+				{
+				float: left;
+				margin-left: 10px;
+				text-align: center;
+				}
+			
+			div.tryby img
+				{
+				border: 1px solid #ddd;
+				width: 235px;
+				height: 250px;
+				}
 		
 		</style>
 
 		<?php
 		if(date("Y-m-d")<=base64_decode($socialslider_licencja))	{$socialslider_name = "Social Slider Pro";	$socialslider_sort = "lp";}
-		else													{$socialslider_name = "Social Slider";		$socialslider_sort = "id";}
+		else														{$socialslider_name = "Social Slider";		$socialslider_sort = "id";}
 		?>
 
 		<div id="socialslider">
 			<h2><?php echo $lang[1][$la]; ?> <?php echo $socialslider_name; ?></h2>
 
 			<form action="options-general.php?page=social-slider/social-slider.php" method="post" id="social-slider-config"> 
-
+					
 				<div class="opcja">
 					<p><?php echo $lang[2][$la]; ?>:</p>
-					<p class="radio"><input type="radio" name="socialslider_tryb" value="pelny"<?php if(get_option('socialslider_tryb')=="pelny" OR !get_option('socialslider_tryb')) echo " checked"; ?> /> <?php echo $lang[3][$la]; ?></p>
-					<p class="radio"><input type="radio" name="socialslider_tryb" value="uproszczony"<?php if(get_option('socialslider_tryb')=="uproszczony") echo " checked"; ?> /> <?php echo $lang[4][$la]; ?></p>
-					<p class="radio"><input type="radio" name="socialslider_tryb" value="kompaktowy"<?php if(get_option('socialslider_tryb')=="kompaktowy") echo " checked"; ?> /> <?php echo $lang[5][$la]; ?></p>
-					<p class="radio"><input type="radio" name="socialslider_tryb" value="minimalny"<?php if(get_option('socialslider_tryb')=="minimalny") echo " checked"; ?> /> <?php echo $lang[6][$la]; ?></p>
+					<p class="radio" id="ss_pelny"><input type="radio" name="socialslider_tryb" id="socialslider_tryb_pelny" value="pelny"<?php if(get_option('socialslider_tryb')=="pelny" OR !get_option('socialslider_tryb')) echo " checked"; ?> /> <label for="socialslider_tryb_pelny"><?php echo $lang[3][$la]; ?></label></p>
+					<p class="radio"><input type="radio" name="socialslider_tryb" id="socialslider_tryb_uproszczony" value="uproszczony"<?php if(get_option('socialslider_tryb')=="uproszczony") echo " checked"; ?> /> <label for="socialslider_tryb_uproszczony"><?php echo $lang[4][$la].$lang[57][$la]; ?></label></p>
+					<p class="radio"><input type="radio" name="socialslider_tryb" id="socialslider_tryb_kompaktowy" value="kompaktowy"<?php if(get_option('socialslider_tryb')=="kompaktowy") echo " checked"; ?> /> <label for="socialslider_tryb_kompaktowy"><?php echo $lang[5][$la].$lang[58][$la]; ?></label></p>
+					<p class="radio"><input type="radio" name="socialslider_tryb" id="socialslider_tryb_minimalny" value="minimalny"<?php if(get_option('socialslider_tryb')=="minimalny") echo " checked"; ?> /> <label for="socialslider_tryb_minimalny"><?php echo $lang[6][$la].$lang[59][$la]; ?></label></p>
+				
+					<div class="tryby" style="margin-left: 20px;"><label for="socialslider_tryb_pelny"><img src="/wp-content/plugins/social-slider/images/socialslider-pelny-250.jpg" alt="<?php echo $lang[3][$la]; ?>" /><br /><?php echo $lang[3][$la]; ?></label></div>
+					<div class="tryby"><label for="socialslider_tryb_uproszczony"><img src="/wp-content/plugins/social-slider/images/socialslider-uproszczony-250.jpg" alt="<?php echo $lang[4][$la].$lang[57][$la]; ?>" /><br /><?php echo $lang[4][$la]; ?></label></div>
+					<div class="tryby"><label for="socialslider_tryb_kompaktowy"><img src="/wp-content/plugins/social-slider/images/socialslider-kompaktowy-250.jpg" alt="<?php echo $lang[5][$la].$lang[58][$la]; ?>" /><br /><?php echo $lang[5][$la]; ?></label></div>
+					<div class="tryby"><label for="socialslider_tryb_minimalny"><img src="/wp-content/plugins/social-slider/images/socialslider-minimalny-250.jpg" alt="<?php echo $lang[6][$la].$lang[59][$la]; ?>" /><br /><?php echo $lang[6][$la]; ?></label></div>
+					
+					<br style='clear: both;' />
 				</div>
 
 				<div class="opcja">
@@ -328,14 +377,27 @@ function SocialSliderUstawienia()
 				</div>
 
 				<div class="opcja">
-					<p><?php echo $lang[14][$la]; if(date("Y-m-d")>base64_decode($socialslider_licencja)) {echo " (".$lang[15][$la].")";}?>:</p>
-					<p class="radio"><input type="text" class="text" style="width: 40px;" value="<?php if(get_option('socialslider_widget_width')) {echo get_option('socialslider_widget_width');} else {echo "200";} ?>" name="socialslider_widget_width" id="socialslider_widget_width" <?php if(date("Y-m-d")>base64_decode($socialslider_licencja)) {echo "readonly";} ?>/>px (<?php echo $lang[13][$la]; ?>: 200px)</p>
+					<p><?php echo $lang[14][$la]; ?>:</p>
+					<p class="radio"><input type="text" class="text" style="width: 40px;" value="<?php if(get_option('socialslider_widget_width')) {echo get_option('socialslider_widget_width');} else {echo "200";} ?>" name="socialslider_widget_width" id="socialslider_widget_width" <?php if(date("Y-m-d")>base64_decode($socialslider_licencja)) {echo "readonly";} ?>/>px <?php if(date("Y-m-d")>base64_decode($socialslider_licencja)) {echo " (".$lang[15][$la].")";} else {echo " (".$lang[13][$la].": 200px)";} ?></p>
+				</div>
+				
+				<div class="opcja">
+					<p><?php echo $lang[50][$la]; ?>:</p>
+					<p class="radio"><input type="radio" name="socialslider_miejsce" id="socialslider_miejsce_lewa" value="lewa"<?php if(get_option('socialslider_miejsce')=="lewa" OR !get_option('socialslider_miejsce')) echo " checked"; ?> /> <label for="socialslider_miejsce_lewa"><?php echo $lang[51][$la]; ?></label></p>
+					<p class="radio"><input type="radio" name="socialslider_miejsce" id="socialslider_miejsce_prawa" value="prawa"<?php if(get_option('socialslider_miejsce')=="prawa") echo " checked"; if(date("Y-m-d")>base64_decode(get_option('socialslider_licencja'))) {echo "disabled";} ?> /> <label for="socialslider_miejsce_prawa"><?php echo $lang[52][$la]; ?></label> <?php if(date("Y-m-d")>base64_decode($socialslider_licencja)) {echo " (".$lang[15][$la].")";}?></p>
+				</div>
+				
+				<div class="opcja">
+					<p><?php echo $lang[53][$la]; ?>:</p>
+					<p class="radio"><input type="radio" name="socialslider_szybkosc" id="socialslider_szybkosc_slow" value="slow"<?php if(get_option('socialslider_szybkosc')=="slow") echo " checked"; ?> /> <label for="socialslider_szybkosc_slow"><?php echo $lang[54][$la]; ?></label></p>
+					<p class="radio"><input type="radio" name="socialslider_szybkosc" id="socialslider_szybkosc_normal" value="normal"<?php if(get_option('socialslider_szybkosc')=="normal" OR !get_option('socialslider_szybkosc')) echo " checked"; ?> /> <label for="socialslider_szybkosc_normal"><?php echo $lang[55][$la]; ?></label></p>
+					<p class="radio"><input type="radio" name="socialslider_szybkosc" id="socialslider_szybkosc_fast" value="fast"<?php if(get_option('socialslider_szybkosc')=="fast") echo " checked"; ?> /> <label for="socialslider_szybkosc_fast"><?php echo $lang[56][$la]; ?></label></p>
 				</div>
 				
 				<div class="opcja">
 					<p><?php echo $lang[36][$la]; ?>:</p>
-					<p class="radio"><input type="radio" class="text" value="tak" name="socialslider_link" id="socialslider_link"<?php if(get_option('socialslider_link')=="tak") echo " checked"; ?> checked /> <?php echo $lang[37][$la]; ?></p>
-					<p class="radio"><input type="radio" class="text" value="nie" name="socialslider_link" id="socialslider_link"<?php if(get_option('socialslider_link')=="nie") echo " checked"; if(date("Y-m-d")>base64_decode(get_option('socialslider_licencja'))) {echo "disabled";} ?>/> <?php echo $lang[38][$la]; ?> <?php if(date("Y-m-d")>base64_decode($socialslider_licencja)) {echo " (".$lang[15][$la].")";}?></p>
+					<p class="radio"><input type="radio" class="text" value="tak" name="socialslider_link" id="socialslider_link_tak"<?php if(get_option('socialslider_link')=="tak") echo " checked"; ?> checked /> <label for="socialslider_link_tak"><?php echo $lang[37][$la]; ?></label></p>
+					<p class="radio"><input type="radio" class="text" value="nie" name="socialslider_link" id="socialslider_link_nie"<?php if(get_option('socialslider_link')=="nie") echo " checked"; if(date("Y-m-d")>base64_decode(get_option('socialslider_licencja'))) {echo "disabled";} ?>/> <label for="socialslider_link_nie"><?php echo $lang[38][$la]; ?></label> <?php if(date("Y-m-d")>base64_decode($socialslider_licencja)) {echo " (".$lang[15][$la].")";}?></p>
 				</div>
 
 				<div class="opcja">
@@ -507,6 +569,7 @@ function SocialSliderUstawienia()
 			<div class="pro">
 				<p><ol>
 					<li><?php echo $lang[29][$la]; ?></li>
+					<li><?php echo $lang[49][$la]; ?></li>
 					<li><?php echo $lang[30][$la]; ?></li>
 					<li><?php echo $lang[31][$la]; ?></li>
 					<li><?php echo $lang[32][$la]; ?></li>
@@ -528,21 +591,37 @@ function SocialSlider()
 	$socialslider_tryb			= get_option('socialslider_tryb');
 	$socialslider_top			= get_option('socialslider_top');
 	$socialslider_widget		= get_option('socialslider_widget');
-	$socialslider_miejsce		= get_option('socialslider_miejsce');
-
-	if(date("Y-m-d")<=base64_decode($socialslider_licencja))	{$socialslider_sort = "lp"; $socialslider_widget_width = get_option('socialslider_widget_width'); $socialslider_link = get_option('socialslider_link');}
-	else														{$socialslider_sort = "id"; $socialslider_widget_width = "200"; $socialslider_link = "tak";}
-
-	if($socialslider_miejsce=="lewa" || $socialslider_miejsce=="")
+	$socialslider_szybkosc		= get_option('socialslider_szybkosc');
+	
+	if(empty($socialslider_szybkosc)) {$socialslider_szybkosc = "normal";}
+	
+	if(date("Y-m-d")<=base64_decode($socialslider_licencja))
 		{
+		$socialslider_sort			= "lp";
+		$socialslider_widget_width	= get_option('socialslider_widget_width');
+		$socialslider_link			= get_option('socialslider_link');
+		$socialslider_miejsce		= get_option('socialslider_miejsce');
+		}
+	else
+		{
+		$socialslider_sort			= "id";
+		$socialslider_widget_width	= "200";
+		$socialslider_link			= "tak";
+		$socialslider_miejsce		= "lewa";
+		}
+
+	if($socialslider_miejsce=="lewa" || empty($socialslider_miejsce))
+		{
+		$socialslider_handle = "handle";
+
 		switch($socialslider_tryb)
 			{
 			case "pelny":
 				$socialslider_width0		= 100+$socialslider_widget_width;
-				$socialslider_width1		= 101+$socialslider_widget_width;
+				$socialslider_width1		= 102+$socialslider_widget_width;
 				$socialslider_width_js		= "left:'-".$socialslider_width1."'";
 				$socialslider_width_0js		= "left:'0'";
-				$socialslider_width_css		= "width: ".$socialslider_width0."px; left: -".$socialslider_width1."px";
+				$socialslider_width_css		= "width: ".$socialslider_width0."px; left: -".$socialslider_width1."px; border-right: 1px solid #ccc;";
 				$socialslider_width_ikony	= "style='right: -32px;'";
 				break;
 			
@@ -569,14 +648,16 @@ function SocialSlider()
 
 	if($socialslider_miejsce=="prawa")
 		{
+		$socialslider_handle = "handle-r";
+		
 		switch($socialslider_tryb)
 			{
 			case "pelny":
-				$socialslider_width0		= 100+$socialslider_widget_width+200;
-				$socialslider_width1		= 101+$socialslider_widget_width+200;
+				$socialslider_width0		= 100+$socialslider_widget_width;
+				$socialslider_width1		= 102+$socialslider_widget_width;
 				$socialslider_width_js		= "right:'-".$socialslider_width1."'";
 				$socialslider_width_0js		= "right:'0'";
-				$socialslider_width_css		= "width: ".$socialslider_width0."px; right: -".$socialslider_width1."px";
+				$socialslider_width_css		= "width: ".$socialslider_width0."px; right: -".$socialslider_width1."px; border-left: 1px solid #ccc;";
 				$socialslider_width_ikony	= "style='right: ".$socialslider_width0."px;'";
 				break;
 			
@@ -607,10 +688,17 @@ function SocialSlider()
 	?>
 	
 	<script type="text/javascript">
-		jQuery(document).ready(function(){jQuery("#socialslider").hover(function(){jQuery("#socialslider").animate({<?php echo $socialslider_width_0js; ?>},"fast");},function(){jQuery("#socialslider").animate({<?php echo $socialslider_width_js; ?>},"fast");});});
+		jQuery(document).ready(function(){jQuery("#socialslider").hover(function(){jQuery("#socialslider").animate({<?php echo $socialslider_width_0js; ?>},"<?php echo $socialslider_szybkosc; ?>");},function(){jQuery("#socialslider").animate({<?php echo $socialslider_width_js; ?>},"<?php echo $socialslider_szybkosc; ?>");});});
 	</script>
 
-	<div id="socialslider" style="top: <?php echo $socialslider_top; ?>px; <?php echo $socialslider_width_css; ?>;">
+	<style type="text/css">
+		#socialslider-ikony				{background: url('/wp-content/plugins/social-slider/images/<?php echo $socialslider_handle; ?>.png') no-repeat right top;}
+		#socialslider-ikony ul			{background: url('/wp-content/plugins/social-slider/images/<?php echo $socialslider_handle; ?>.png') no-repeat right bottom;}
+		* html #socialslider-ikony		{background: url('/wp-content/plugins/social-slider/images/<?php echo $socialslider_handle; ?>.gif') no-repeat right top;}
+		* html #socialslider-ikony ul	{background: url('/wp-content/plugins/social-slider/images/<?php echo $socialslider_handle; ?>.gif') no-repeat right bottom;}
+	</style>
+	
+	<div id="socialslider" style="top: <?php echo $socialslider_top; ?>px; <?php echo $socialslider_width_css; ?>">
 		<div id="socialslider-contener" class="socialslider-contener">
 			
 			<?php
