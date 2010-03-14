@@ -3,7 +3,7 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 2.2.0
+Version: 2.2.1
 Author: Łukasz Więcek
 Author URI: http://xn--wicek-k0a.pl/
 */
@@ -333,14 +333,13 @@ function SocialSliderUstawienia()
 			div.tryby
 				{
 				float: left;
-				margin-left: 10px;
+				margin-left: 15px;
 				text-align: center;
 				}
 			
 			div.tryby img
 				{
 				border: 1px solid #ddd;
-				width: 235px;
 				height: 250px;
 				}
 		
@@ -363,10 +362,10 @@ function SocialSliderUstawienia()
 					<p class="radio"><input type="radio" name="socialslider_tryb" id="socialslider_tryb_kompaktowy" value="kompaktowy"<?php if(get_option('socialslider_tryb')=="kompaktowy") echo " checked"; ?> /> <label for="socialslider_tryb_kompaktowy"><?php echo $lang[5][$la].$lang[58][$la]; ?></label></p>
 					<p class="radio"><input type="radio" name="socialslider_tryb" id="socialslider_tryb_minimalny" value="minimalny"<?php if(get_option('socialslider_tryb')=="minimalny") echo " checked"; ?> /> <label for="socialslider_tryb_minimalny"><?php echo $lang[6][$la].$lang[59][$la]; ?></label></p>
 				
-					<div class="tryby" style="margin-left: 20px;"><label for="socialslider_tryb_pelny"><img src="/wp-content/plugins/social-slider/images/socialslider-pelny-250.jpg" alt="<?php echo $lang[3][$la]; ?>" /><br /><?php echo $lang[3][$la]; ?></label></div>
-					<div class="tryby"><label for="socialslider_tryb_uproszczony"><img src="/wp-content/plugins/social-slider/images/socialslider-uproszczony-250.jpg" alt="<?php echo $lang[4][$la].$lang[57][$la]; ?>" /><br /><?php echo $lang[4][$la]; ?></label></div>
-					<div class="tryby"><label for="socialslider_tryb_kompaktowy"><img src="/wp-content/plugins/social-slider/images/socialslider-kompaktowy-250.jpg" alt="<?php echo $lang[5][$la].$lang[58][$la]; ?>" /><br /><?php echo $lang[5][$la]; ?></label></div>
-					<div class="tryby"><label for="socialslider_tryb_minimalny"><img src="/wp-content/plugins/social-slider/images/socialslider-minimalny-250.jpg" alt="<?php echo $lang[6][$la].$lang[59][$la]; ?>" /><br /><?php echo $lang[6][$la]; ?></label></div>
+					<div class="tryby" style="margin-left: 20px;"><label for="socialslider_tryb_pelny"><img style="width: 235px;" src="/wp-content/plugins/social-slider/images/socialslider-pelny-250.jpg" alt="<?php echo $lang[3][$la]; ?>" /><br /><?php echo $lang[3][$la]; ?></label></div>
+					<div class="tryby"><label for="socialslider_tryb_uproszczony"><img style="width: 120px;" src="/wp-content/plugins/social-slider/images/socialslider-uproszczony-250.jpg" alt="<?php echo $lang[4][$la].$lang[57][$la]; ?>" /><br /><?php echo $lang[4][$la]; ?></label></div>
+					<div class="tryby"><label for="socialslider_tryb_kompaktowy"><img style="width: 120px;" src="/wp-content/plugins/social-slider/images/socialslider-kompaktowy-250.jpg" alt="<?php echo $lang[5][$la].$lang[58][$la]; ?>" /><br /><?php echo $lang[5][$la]; ?></label></div>
+					<div class="tryby"><label for="socialslider_tryb_minimalny"><img style="width: 120px;" src="/wp-content/plugins/social-slider/images/socialslider-minimalny-250.jpg" alt="<?php echo $lang[6][$la].$lang[59][$la]; ?>" /><br /><?php echo $lang[6][$la]; ?></label></div>
 					
 					<br style='clear: both;' />
 				</div>
@@ -628,19 +627,19 @@ function SocialSlider()
 			case "uproszczony":
 				$socialslider_width_js		= "left:'-86'";
 				$socialslider_width_0js		= "left:'0'";
-				$socialslider_width_css		= "width: 85px; left: -86px";
+				$socialslider_width_css		= "width: 85px; left: -86px; border-right: 1px solid #ccc;";
 				$socialslider_width_ikony	= "style='right: -32px;'";
 				break;
 			
 			case "kompaktowy":
 				$socialslider_width_js		= "left:'-86'";
 				$socialslider_width_0js		= "left:'0'";
-				$socialslider_width_css		= "width: 85px; left: -86px";
+				$socialslider_width_css		= "width: 85px; left: -86px; border-right: 1px solid #ccc;";
 				$socialslider_width_ikony	= "style='right: -32px;'";
 				break;
 			
 			case "minimalny":
-				$socialslider_width_css		= "width: 0px; left: -1px";
+				$socialslider_width_css		= "width: 0px; left: -1px; border-right: 1px solid #ccc;";
 				$socialslider_width_ikony	= "style='right: -32px;'";
 				break;
 			}
@@ -664,19 +663,19 @@ function SocialSlider()
 			case "uproszczony":
 				$socialslider_width_js		= "right:'-88'";
 				$socialslider_width_0js		= "right:'0'";
-				$socialslider_width_css		= "width: 85px; right: -88px";
+				$socialslider_width_css		= "width: 85px; right: -88px; border-left: 1px solid #ccc;";
 				$socialslider_width_ikony	= "style='right: 85px;'";
 				break;
 			
 			case "kompaktowy":
 				$socialslider_width_js		= "right:'-88'";
 				$socialslider_width_0js		= "right:'0'";
-				$socialslider_width_css		= "width: 85px; right: -88px";
+				$socialslider_width_css		= "width: 85px; right: -88px; border-left: 1px solid #ccc;";
 				$socialslider_width_ikony	= "style='right: 85px;'";
 				break;
 			
 			case "minimalny":
-				$socialslider_width_css		= "width: 0px; right: -1px";
+				$socialslider_width_css		= "width: 0px; right: -1px; border-left: 1px solid #ccc;";
 				$socialslider_width_ikony	= "style='right: 0;'";
 				break;
 			}
