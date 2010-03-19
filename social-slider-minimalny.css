@@ -1,8 +1,5 @@
 #socialslider
 	{
-	background-color: #fff;
-	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
 	display: block;
 	padding: 0;
 	position: fixed;
@@ -65,5 +62,4 @@
 	font-family: Segoe UI, Tahoma;
 	font-size: 9px;
 	text-decoration: none;
-	color: #2275AD;
 	}

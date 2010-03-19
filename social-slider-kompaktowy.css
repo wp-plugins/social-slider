@@ -1,6 +1,5 @@
 #socialslider
 	{
-	background-color: #fff;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 	display: block;
@@ -80,7 +79,6 @@
 #socialslider-linki a
 	{
 	border: none;
-	color: #666;
 	font-size: 10px;
 	text-decoration: none;
 	}
@@ -102,5 +100,4 @@
 	font-family: Segoe UI, Tahoma;
 	font-size: 10px;
 	text-decoration: none;
-	color: #21759B;
 	}

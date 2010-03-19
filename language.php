@@ -209,4 +209,29 @@ $lang[59] = array(
 	"pl_PL"	=> " (nierozwijany)",
 	"en_US"	=> " (not expandable)");
 
+$lang[60] = array(
+	"pl_PL"	=> "Co zrobić, gdy Social Slider nie działa?",
+	"en_US"	=> "What to do when Social Slider doesn't work?");
+
+$lang[61] = array(
+	"pl_PL"	=> "Może się zdarzyć tak, że <strong>Social Slider</strong> nie pojawia się na blogu mimo włączenia i poprawnego skonfigurowania wtyczki. Zanim podejmiesz jakiekolwiek działania upewnij się, że na Twoim blogu nie działa żaden system cachowania stron (np. wtyczka WP-SuperCache). Być może Social Slider działa poprawnie, ale z cache jest ładowana wersja strony zapisana jeszcze przed jego uruchomieniem. Jeżeli jednak <strong>Social Slider</strong> nadal nie pojawia się na stronie, możesz spróbować wstawić ręcznie funkcję uruchamiającą <strong>Social Slidera</strong> w dowolnym miejscu w szablonie strony (np. w stopce, lub sidebarze). Miejsce wstawienia poniższego kodu w szablonie nie ma dużego znaczenia - <strong>Social Slider</strong> zawsze będzie wyświetlał się tak samo.",
+	"en_US"	=> "It may happen that Social Slider won't show on your blog, even if it's activated and configured. First of all, make sure that there's no caching plugin (eg. WP-SuperCache) turned on - Social Slider may be working properly, but the cache is created before <strong>Social Slider</strong> is loaded. If <strong>Social Slider</strong> still doesn't show up on page, try placing the function that starts Social Slider manually in the template file - in the header or sidebar, the position of the function doesn't matter, it will be displayed in the same way.");
+
+$lang[62] = array(
+	"pl_PL"	=> "Poniżej znajduje się kod, który należy wkieić w szablonie, aby ręcznie uruchomić <strong>Social Slider</strong> na swoim blogu:",
+	"en_US"	=> "Below you can find the code to put in the template file if you would like to run <strong>Social Slider</strong> manually.");
+
+
+$lang[63] = array(
+	"pl_PL"	=> "Schemat kolorów",
+	"en_US"	=> "Color Scheme");
+
+$lang[64] = array(
+	"pl_PL"	=> "Jasny",
+	"en_US"	=> "Light");
+
+$lang[65] = array(
+	"pl_PL"	=> "Ciemny",
+	"en_US"	=> "Dark");
+
 ?>

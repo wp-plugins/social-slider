@@ -3,7 +3,7 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 2.2.1
+Version: 2.3.1
 Author: Łukasz Więcek
 Author URI: http://xn--wicek-k0a.pl/
 */
@@ -73,38 +73,6 @@ function SocialSliderUstawienia()
 			
 			(NULL,		'".$is++."',			'delicious',		'Delicious','')
 			;");
-		
-		// Czyszczenie tabeli _options
-		delete_option('socialslider_rss');
-		delete_option('socialslider_newsletter');
-		delete_option('socialslider_sledzik');
-		delete_option('socialslider_blip');
-		delete_option('socialslider_flaker');
-		delete_option('socialslider_twitter');
-		delete_option('socialslider_soup');
-		delete_option('socialslider_buzz');
-		
-		delete_option('socialslider_facebook');
-		delete_option('socialslider_spinacz');
-		delete_option('socialslider_goldenline');
-		delete_option('socialslider_naszaklasa');
-		delete_option('socialslider_networkedblogs');
-		delete_option('socialslider_myspace');
-		delete_option('socialslider_digg');
-		delete_option('socialslider_wykop');
-		delete_option('socialslider_kciuk');
-		
-		delete_option('socialslider_picasa');
-		delete_option('socialslider_flickr');
-		delete_option('socialslider_panoramio');
-		
-		delete_option('socialslider_youtube');
-		delete_option('socialslider_vimeo');
-		
-		delete_option('socialslider_lastfm');
-		delete_option('socialslider_ising');
-		
-		delete_option('socialslider_delicious');
 		}
 	
 	// Uaktualnienia w tabeli
@@ -113,12 +81,6 @@ function SocialSliderUstawienia()
 		if($wpdb->get_row("SELECT nazwa FROM `".$socialtabela."` WHERE nazwa = 'Kanał RSS'"))
 			{
 			$wpdb->query("UPDATE `".$socialtabela."` SET `nazwa` = 'RSS' WHERE `nazwa` = 'Kanał RSS'");
-			}
-
-		// Dodanie serwisu LinkedIn
-		if(!$wpdb->get_row("SELECT nazwa FROM `".$socialtabela."` WHERE ikona = 'linkedin'"))
-			{
-			$wpdb->query("INSERT INTO  `".$socialtabela."` (`id`,`lp`,`ikona`,`nazwa`,`adres`) VALUES (NULL, '26', 'linkedin', 'LinkedIn','');");
 			}
 
 	// END
@@ -173,6 +135,18 @@ function SocialSliderUstawienia()
 			{
 			if(get_option('socialslider_miejsce'))		{update_option('socialslider_miejsce', 'lewa');}
 			else										{add_option('socialslider_miejsce', 'lewa', ' ', 'yes');}
+			}
+		
+		// Kolor
+		if(!empty($_POST['socialslider_kolor']))
+			{
+			if(get_option('socialslider_kolor'))		{update_option('socialslider_kolor', $_POST['socialslider_kolor']);}
+			else										{add_option('socialslider_kolor', $_POST['socialslider_kolor'], ' ', 'yes');}
+			}
+		else
+			{
+			if(get_option('socialslider_kolor'))		{update_option('socialslider_kolor', 'jasny');}
+			else										{add_option('socialslider_kolor', 'ciemny', ' ', 'yes');}
 			}
 			
 		// Szybkosc
@@ -317,6 +291,7 @@ function SocialSliderUstawienia()
 			div.pro
 				{
 				width: 800px;
+				margin: 10px 0 10px 20px;
 				}
 			
 			div.pro input.text, div.pro select
@@ -386,6 +361,12 @@ function SocialSliderUstawienia()
 					<p class="radio"><input type="radio" name="socialslider_miejsce" id="socialslider_miejsce_prawa" value="prawa"<?php if(get_option('socialslider_miejsce')=="prawa") echo " checked"; if(date("Y-m-d")>base64_decode(get_option('socialslider_licencja'))) {echo "disabled";} ?> /> <label for="socialslider_miejsce_prawa"><?php echo $lang[52][$la]; ?></label> <?php if(date("Y-m-d")>base64_decode($socialslider_licencja)) {echo " (".$lang[15][$la].")";}?></p>
 				</div>
 				
+				<div class="opcja" style="display: none;">
+					<p><?php echo $lang[63][$la]; ?>:</p>
+					<p class="radio"><input type="radio" name="socialslider_kolor" id="socialslider_kolor_jasny" value="jasny"<?php if(get_option('socialslider_kolor')=="jasny" OR !get_option('socialslider_kolor')) echo " checked"; ?> /> <label for="socialslider_kolor_jasny"><?php echo $lang[64][$la]; ?></label></p>
+					<p class="radio"><input type="radio" name="socialslider_kolor" id="socialslider_kolor_ciemny" value="ciemny"<?php if(get_option('socialslider_kolor')=="ciemny") echo " checked"; if(date("Y-m-d")>base64_decode(get_option('socialslider_licencja'))) {echo "disabled";} ?> /> <label for="socialslider_kolor_ciemny"><?php echo $lang[65][$la]; ?></label> <?php if(date("Y-m-d")>base64_decode($socialslider_licencja)) {echo " (".$lang[15][$la].")";}?></p>
+				</div>
+				
 				<div class="opcja">
 					<p><?php echo $lang[53][$la]; ?>:</p>
 					<p class="radio"><input type="radio" name="socialslider_szybkosc" id="socialslider_szybkosc_slow" value="slow"<?php if(get_option('socialslider_szybkosc')=="slow") echo " checked"; ?> /> <label for="socialslider_szybkosc_slow"><?php echo $lang[54][$la]; ?></label></p>
@@ -426,7 +407,7 @@ function SocialSliderUstawienia()
 						foreach ($serwisy as $serwis)
 							{
 							echo "<li id='rA_".$serwis->id."'>
-								<label for 'socialslider_".$serwis->ikona."'><img src='/wp-content/plugins/social-slider/images/".$serwis->ikona."-20.png' alt='".$serwis->nazwa."' />".$serwis->nazwa.":</label>
+								<label for 'socialslider_".$serwis->ikona."'><img src='/wp-content/plugins/social-slider/images/jasny/".$serwis->ikona."-20.png' alt='".$serwis->nazwa."' />".$serwis->nazwa.":</label>
 								<input type='text' class='text' value='".$serwis->adres."' name='socialslider_".$serwis->ikona."' id='socialslider_".$serwis->ikona."' /><br style='clear: both;' />
 							</li>";
 							}
@@ -442,11 +423,18 @@ function SocialSliderUstawienia()
 					
 					<input type="submit" name="SocialSliderZapisz" value="<?php echo $lang[12][$la]; ?>" style="margin: 10px 0 15px 178px;" />
 					
-					
-				</div><p><?php echo $lang[35][$la]; ?></p>
+				</div>
 
 			</form>
 
+			<h2 id="pro"><?php echo $lang[60][$la]; ?></h2>
+			<div class="pro">
+				<p><?php echo $lang[61][$la]; ?></p>
+				<p><?php echo $lang[62][$la]; ?></p>
+			
+				<pre style="margin-left: 20px;"><span style="color: #FF0000;">&lt;?php</span><span style="color: #333333;"> SocialSlider</span><span style="color: #AE00FB;">(); </span><span style="color: #FF0000;">?&gt;</span></pre>
+			</div>
+			
 			<h2 id="pro"><?php echo $lang[16][$la]; ?></h2>
 			<div class="pro">
 			
@@ -574,7 +562,7 @@ function SocialSliderUstawienia()
 					<li><?php echo $lang[32][$la]; ?></li>
 				</ol></p>
 			</div>
-			
+			<p style="margin-top: 30px;"><?php echo $lang[35][$la]; ?></p>
 		</div>
 		<div id="ajax">&nbsp;</div>
 	</div>
@@ -592,14 +580,16 @@ function SocialSlider()
 	$socialslider_widget		= get_option('socialslider_widget');
 	$socialslider_szybkosc		= get_option('socialslider_szybkosc');
 	
-	if(empty($socialslider_szybkosc)) {$socialslider_szybkosc = "normal";}
-	
+	if(empty($socialslider_szybkosc))	{$socialslider_szybkosc = "normal";}
+
 	if(date("Y-m-d")<=base64_decode($socialslider_licencja))
 		{
 		$socialslider_sort			= "lp";
 		$socialslider_widget_width	= get_option('socialslider_widget_width');
 		$socialslider_link			= get_option('socialslider_link');
 		$socialslider_miejsce		= get_option('socialslider_miejsce');
+		//$socialslider_kolor		= get_option('socialslider_kolor');
+		$socialslider_kolor			= "jasny";
 		}
 	else
 		{
@@ -607,11 +597,29 @@ function SocialSlider()
 		$socialslider_widget_width	= "200";
 		$socialslider_link			= "tak";
 		$socialslider_miejsce		= "lewa";
+		$socialslider_kolor			= "jasny";
+		}
+
+	switch($socialslider_kolor)
+		{
+		case "jasny":
+			$socialslider_bg_color		= "#fff";
+			$socialslider_border_color	= "#ccc";
+			$socialslider_a_color		= "#666";
+			$socialslider_autor_color	= "#2275ad";
+			break;
+		
+		case "ciemny":
+			$socialslider_bg_color		= "#222";
+			$socialslider_border_color	= "#ccc";
+			$socialslider_a_color		= "#eee";
+			$socialslider_autor_color	= "#2275ad";
+			break;
 		}
 
 	if($socialslider_miejsce=="lewa" || empty($socialslider_miejsce))
 		{
-		$socialslider_handle = "handle";
+		$socialslider_handle = $socialslider_kolor."/handle-lewy";
 
 		switch($socialslider_tryb)
 			{
@@ -620,26 +628,26 @@ function SocialSlider()
 				$socialslider_width1		= 102+$socialslider_widget_width;
 				$socialslider_width_js		= "left:'-".$socialslider_width1."'";
 				$socialslider_width_0js		= "left:'0'";
-				$socialslider_width_css		= "width: ".$socialslider_width0."px; left: -".$socialslider_width1."px; border-right: 1px solid #ccc;";
+				$socialslider_width_css		= "width: ".$socialslider_width0."px; left: -".$socialslider_width1."px; border-right: 1px solid ".$socialslider_border_color."; border-top: 1px solid ".$socialslider_border_color."; border-bottom: 1px solid ".$socialslider_border_color."; background-color: ".$socialslider_bg_color.";";
 				$socialslider_width_ikony	= "style='right: -32px;'";
 				break;
 			
 			case "uproszczony":
 				$socialslider_width_js		= "left:'-86'";
 				$socialslider_width_0js		= "left:'0'";
-				$socialslider_width_css		= "width: 85px; left: -86px; border-right: 1px solid #ccc;";
+				$socialslider_width_css		= "width: 85px; left: -86px; border-right: 1px solid ".$socialslider_border_color."; border-top: 1px solid ".$socialslider_border_color."; border-bottom: 1px solid ".$socialslider_border_color."; background-color: ".$socialslider_bg_color.";";
 				$socialslider_width_ikony	= "style='right: -32px;'";
 				break;
 			
 			case "kompaktowy":
 				$socialslider_width_js		= "left:'-86'";
 				$socialslider_width_0js		= "left:'0'";
-				$socialslider_width_css		= "width: 85px; left: -86px; border-right: 1px solid #ccc;";
+				$socialslider_width_css		= "width: 85px; left: -86px; border-right: 1px solid ".$socialslider_border_color."; border-top: 1px solid ".$socialslider_border_color."; border-bottom: 1px solid ".$socialslider_border_color."; background-color: ".$socialslider_bg_color.";";
 				$socialslider_width_ikony	= "style='right: -32px;'";
 				break;
 			
 			case "minimalny":
-				$socialslider_width_css		= "width: 0px; left: -1px; border-right: 1px solid #ccc;";
+				$socialslider_width_css		= "width: 0px; left: -1px; border-right: 1px solid ".$socialslider_border_color."; border-top: 1px solid ".$socialslider_border_color."; border-bottom: 1px solid ".$socialslider_border_color."; background-color: ".$socialslider_bg_color.";";
 				$socialslider_width_ikony	= "style='right: -32px;'";
 				break;
 			}
@@ -647,7 +655,7 @@ function SocialSlider()
 
 	if($socialslider_miejsce=="prawa")
 		{
-		$socialslider_handle = "handle-r";
+		$socialslider_handle = $socialslider_kolor."/handle-prawy";
 		
 		switch($socialslider_tryb)
 			{
@@ -656,40 +664,37 @@ function SocialSlider()
 				$socialslider_width1		= 102+$socialslider_widget_width;
 				$socialslider_width_js		= "right:'-".$socialslider_width1."'";
 				$socialslider_width_0js		= "right:'0'";
-				$socialslider_width_css		= "width: ".$socialslider_width0."px; right: -".$socialslider_width1."px; border-left: 1px solid #ccc;";
+				$socialslider_width_css		= "width: ".$socialslider_width0."px; right: -".$socialslider_width1."px; border-left: 1px solid ".$socialslider_border_color."; border-top: 1px solid ".$socialslider_border_color."; border-bottom: 1px solid ".$socialslider_border_color."; background-color: ".$socialslider_bg_color.";";
 				$socialslider_width_ikony	= "style='right: ".$socialslider_width0."px;'";
 				break;
 			
 			case "uproszczony":
 				$socialslider_width_js		= "right:'-88'";
 				$socialslider_width_0js		= "right:'0'";
-				$socialslider_width_css		= "width: 85px; right: -88px; border-left: 1px solid #ccc;";
+				$socialslider_width_css		= "width: 85px; right: -88px; border-left: 1px solid ".$socialslider_border_color."; border-top: 1px solid ".$socialslider_border_color."; border-bottom: 1px solid ".$socialslider_border_color."; background-color: ".$socialslider_bg_color.";";
 				$socialslider_width_ikony	= "style='right: 85px;'";
 				break;
 			
 			case "kompaktowy":
 				$socialslider_width_js		= "right:'-88'";
 				$socialslider_width_0js		= "right:'0'";
-				$socialslider_width_css		= "width: 85px; right: -88px; border-left: 1px solid #ccc;";
+				$socialslider_width_css		= "width: 85px; right: -88px; border-left: 1px solid ".$socialslider_border_color."; border-top: 1px solid ".$socialslider_border_color."; border-bottom: 1px solid ".$socialslider_border_color."; background-color: ".$socialslider_bg_color.";";
 				$socialslider_width_ikony	= "style='right: 85px;'";
 				break;
 			
 			case "minimalny":
-				$socialslider_width_css		= "width: 0px; right: -1px; border-left: 1px solid #ccc;";
+				$socialslider_width_css		= "width: 0px; right: -1px; border-left: 1px solid ".$socialslider_border_color."; border-top: 1px solid ".$socialslider_border_color."; border-bottom: 1px solid ".$socialslider_border_color."; background-color: ".$socialslider_bg_color.";";
 				$socialslider_width_ikony	= "style='right: 0;'";
 				break;
 			}
 		}
 
-
-
 	$serwisy = $wpdb->get_results("SELECT * FROM ".$table_prefix."socialslider WHERE adres!='' ORDER BY ".$socialslider_sort." ASC");
 	?>
-	
-	<script type="text/javascript">
-		jQuery(document).ready(function(){jQuery("#socialslider").hover(function(){jQuery("#socialslider").animate({<?php echo $socialslider_width_0js; ?>},"<?php echo $socialslider_szybkosc; ?>");},function(){jQuery("#socialslider").animate({<?php echo $socialslider_width_js; ?>},"<?php echo $socialslider_szybkosc; ?>");});});
-	</script>
 
+	<script type="text/javascript"> 
+			jQuery(document).ready(function () {var hideDelay=200;var hideDelayTimer=null;jQuery("#socialslider").hover(function(){if(hideDelayTimer)clearTimeout(hideDelayTimer);jQuery("#socialslider").animate({<?php echo $socialslider_width_0js; ?>},"<?php echo $socialslider_szybkosc; ?>");},function(){if(hideDelayTimer)clearTimeout(hideDelayTimer);hideDelayTimer=setTimeout(function(){hideDelayTimer=null;jQuery("#socialslider").animate({<?php echo $socialslider_width_js; ?>},"<?php echo $socialslider_szybkosc; ?>");},hideDelay);});});
+	</script>
 	<style type="text/css">
 		#socialslider-ikony				{background: url('/wp-content/plugins/social-slider/images/<?php echo $socialslider_handle; ?>.png') no-repeat right top;}
 		#socialslider-ikony ul			{background: url('/wp-content/plugins/social-slider/images/<?php echo $socialslider_handle; ?>.png') no-repeat right bottom;}
@@ -709,16 +714,16 @@ function SocialSlider()
 						<?php
 						if($socialslider_tryb!="kompaktowy")
 							{
-							foreach ($serwisy as $serwis) {echo "<li><a href='".$serwis->adres."' title='".$serwis->nazwa."'><img src='".$socialslider_baza."/wp-content/plugins/social-slider/images/".$serwis->ikona."-32.png' alt='".$serwis->nazwa."' />".$serwis->nazwa."</a></li>";}
+							foreach ($serwisy as $serwis) {echo "<li><a href='".$serwis->adres."' title='".$serwis->nazwa."' style='color: ".$socialslider_a_color.";'><img src='".$socialslider_baza."/wp-content/plugins/social-slider/images/".$socialslider_kolor."/".$serwis->ikona."-32.png' alt='".$serwis->nazwa."' />".$serwis->nazwa."</a></li>";}
 							}
 						else
 							{
-							foreach ($serwisy as $serwis) {echo "<li><a href='".$serwis->adres."' title='".$serwis->nazwa."'>".$serwis->nazwa."</a></li>";}
+							foreach ($serwisy as $serwis) {echo "<li><a href='".$serwis->adres."' title='".$serwis->nazwa."' style='color: ".$socialslider_a_color.";'>".$serwis->nazwa."</a></li>";}
 							}
 						
 						if($socialslider_tryb!="minimalny" && (date("Y-m-d")>base64_decode($socialslider_licencja) || $socialslider_link=="tak"))
 							{
-							echo "<li id='socialslider-autor'><a href='http://xn--wicek-k0a.pl/projekty/social-slider' title='Social Slider'>Social Slider</a></li>";
+							echo "<li id='socialslider-autor'><a href='http://xn--wicek-k0a.pl/projekty/social-slider' title='Social Slider' style='color: ".$socialslider_autor_color.";'>Social Slider</a></li>";
 							}
 						?>
 					</ul>
@@ -733,15 +738,15 @@ function SocialSlider()
 				<?php
 				if($socialslider_tryb=="minimalny")
 					{
-					foreach ($serwisy as $serwis) {echo "<li><a href='".$serwis->adres."' title='".$serwis->nazwa."'><img src='".$socialslider_baza."/wp-content/plugins/social-slider/images/".$serwis->ikona."-20.png' alt='".$serwis->nazwa."' /></a></li>";}
+					foreach ($serwisy as $serwis) {echo "<li><a href='".$serwis->adres."' title='".$serwis->nazwa."'><img src='".$socialslider_baza."/wp-content/plugins/social-slider/images/$socialslider_kolor."/".".$serwis->ikona."-20.png' alt='".$serwis->nazwa."' /></a></li>";}
 					if(date("Y-m-d")>base64_decode($socialslider_licencja) || $socialslider_link=="tak")
 						{
-						echo "<li id='socialslider-autor'><a href='http://xn--wicek-k0a.pl/projekty/social-slider' title='Social Slider'>Slider</a></li>";
+						echo "<li id='socialslider-autor'><a href='http://xn--wicek-k0a.pl/projekty/social-slider' title='Social Slider' style='color: ".$socialslider_autor_color.";'>Slider</a></li>";
 						}
 					}
 				else
 					{
-					foreach ($serwisy as $serwis) {echo "<li><img src='".$socialslider_baza."/wp-content/plugins/social-slider/images/".$serwis->ikona."-20.png' alt='".$serwis->nazwa."' /></li>";}
+					foreach ($serwisy as $serwis) {echo "<li><img src='".$socialslider_baza."/wp-content/plugins/social-slider/images/".$socialslider_kolor."/".$serwis->ikona."-20.png' alt='".$serwis->nazwa."' /></li>";}
 					}
 				?>
 				</ul>
@@ -755,7 +760,7 @@ function SocialSlider()
 function SocialSliderMenu()
 	{
 	if(date("Y-m-d")<=base64_decode(base64_decode(get_option('socialslider_licencja'))))	{$socialslider_name = "Social Slider Pro";}
-	else																			{$socialslider_name = "Social Slider";}
+	else																					{$socialslider_name = "Social Slider";}
 
 	add_options_page($socialslider_name, $socialslider_name, 7, __FILE__, 'SocialSliderUstawienia');
 	}
