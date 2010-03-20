@@ -218,8 +218,8 @@ $lang[61] = array(
 	"en_US"	=> "It may happen that Social Slider won't show on your blog, even if it's activated and configured. First of all, make sure that there's no caching plugin (eg. WP-SuperCache) turned on - Social Slider may be working properly, but the cache is created before <strong>Social Slider</strong> is loaded. If <strong>Social Slider</strong> still doesn't show up on page, try placing the function that starts Social Slider manually in the template file - in the header or sidebar, the position of the function doesn't matter, it will be displayed in the same way.");
 
 $lang[62] = array(
-	"pl_PL"	=> "Poniżej znajduje się kod, który należy wkieić w szablonie, aby ręcznie uruchomić <strong>Social Slider</strong> na swoim blogu:",
-	"en_US"	=> "Below you can find the code to put in the template file if you would like to run <strong>Social Slider</strong> manually.");
+	"pl_PL"	=> "Poniżej znajduje się kod, który należy wkieić w szablonie, aby ręcznie uruchomić <strong>Social Slider</strong> na swoim blogu",
+	"en_US"	=> "Below you can find the code to put in the template file if you would like to run <strong>Social Slider</strong> manually");
 
 
 $lang[63] = array(

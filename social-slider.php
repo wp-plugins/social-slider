@@ -3,7 +3,7 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 2.3.1
+Version: 2.3.2
 Author: Łukasz Więcek
 Author URI: http://xn--wicek-k0a.pl/
 */
@@ -430,7 +430,7 @@ function SocialSliderUstawienia()
 			<h2 id="pro"><?php echo $lang[60][$la]; ?></h2>
 			<div class="pro">
 				<p><?php echo $lang[61][$la]; ?></p>
-				<p><?php echo $lang[62][$la]; ?></p>
+				<p><?php echo $lang[62][$la]; ?>:</p>
 			
 				<pre style="margin-left: 20px;"><span style="color: #FF0000;">&lt;?php</span><span style="color: #333333;"> SocialSlider</span><span style="color: #AE00FB;">(); </span><span style="color: #FF0000;">?&gt;</span></pre>
 			</div>
@@ -738,7 +738,8 @@ function SocialSlider()
 				<?php
 				if($socialslider_tryb=="minimalny")
 					{
-					foreach ($serwisy as $serwis) {echo "<li><a href='".$serwis->adres."' title='".$serwis->nazwa."'><img src='".$socialslider_baza."/wp-content/plugins/social-slider/images/$socialslider_kolor."/".".$serwis->ikona."-20.png' alt='".$serwis->nazwa."' /></a></li>";}
+					foreach ($serwisy as $serwis) {echo "<li><a href='".$serwis->adres."' title='".$serwis->nazwa."'><img src='".$socialslider_baza."/wp-content/plugins/social-slider/images/".$socialslider_kolor."/".$serwis->ikona."-20.png' alt='".$serwis->nazwa."' /></a></li>";}
+					
 					if(date("Y-m-d")>base64_decode($socialslider_licencja) || $socialslider_link=="tak")
 						{
 						echo "<li id='socialslider-autor'><a href='http://xn--wicek-k0a.pl/projekty/social-slider' title='Social Slider' style='color: ".$socialslider_autor_color.";'>Slider</a></li>";
