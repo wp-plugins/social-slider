@@ -234,4 +234,26 @@ $lang[65] = array(
 	"pl_PL"	=> "Ciemny",
 	"en_US"	=> "Dark");
 
+$lang[66] = array(
+	"pl_PL"	=> "",
+	"en_US"	=> "");
+
+$lang[67] = array(
+	"pl_PL"	=> "",
+	"en_US"	=> "");
+
+$lang[68] = array(
+	"pl_PL"	=> "",
+	"en_US"	=> "");
+
+$lang[69] = array(
+	"pl_PL"	=> "",
+	"en_US"	=> "");
+
+$lang[70] = array(
+	"pl_PL"	=> "",
+	"en_US"	=> "");
+
+
+
 ?>

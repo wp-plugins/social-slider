@@ -3,7 +3,7 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 2.3.2
+Version: 2.3.3
 Author: Łukasz Więcek
 Author URI: http://xn--wicek-k0a.pl/
 */
@@ -29,7 +29,8 @@ function SocialSliderUstawienia()
 	{
 	global $wpdb, $table_prefix;
 
-	$socialtabela = $table_prefix."socialslider";
+	$socialtabela			= $table_prefix."socialslider";
+	$socialslider_baza		= get_bloginfo('wpurl');
 	
 	// Czy tabela istnieje?
 	if($wpdb->get_var("SHOW TABLES LIKE '".$socialtabela."'") != $socialtabela)
@@ -43,7 +44,7 @@ function SocialSliderUstawienia()
 
 		$wpdb->query("INSERT INTO  `".$socialtabela."` (`id`,`lp`,`ikona`,`nazwa`,`adres`) VALUES
 			(NULL,		'".$is++."',			'rss',				'RSS',''),
-			(NULL,		'".$is++."',			'newsletter',		'Newsletter',''),
+			(NULL,		'".$is++."',			'newsletter',			'Newsletter',''),
 			(NULL,		'".$is++."',			'sledzik',			'Śledzik',''),
 			(NULL,		'".$is++."',			'blip',				'Blip',''),
 			(NULL,		'".$is++."',			'flaker',			'Flaker',''),
@@ -53,25 +54,28 @@ function SocialSliderUstawienia()
 		
 			(NULL,		'".$is++."',			'facebook',			'Facebook',''),
 			(NULL,		'".$is++."',			'spinacz',			'Spinacz',''),
-			(NULL,		'".$is++."',			'goldenline',		'GoldenLine',''),
+			(NULL,		'".$is++."',			'goldenline',			'GoldenLine',''),
 			(NULL,		'".$is++."',			'linkedin',			'LinkedIn',''),
-			(NULL,		'".$is++."',			'networkedblogs',	'NetworkedBlogs',''),
+			(NULL,		'".$is++."',			'naszaklasa',			'Nasza Klasa',''),
+			(NULL,		'".$is++."',			'networkedblogs',		'NetworkedBlogs',''),
 			(NULL,		'".$is++."',			'myspace',			'MySpace',''),
+			(NULL,		'".$is++."',			'orkut',				'Orkut',''),
+						
 			(NULL,		'".$is++."',			'digg',				'Digg',''),
-			(NULL,		'".$is++."',			'wykop',			'Wykop',''),
-			(NULL,		'".$is++."',			'kciuk',			'Kciuk',''),
+			(NULL,		'".$is++."',			'wykop',				'Wykop',''),
+			(NULL,		'".$is++."',			'kciuk',				'Kciuk',''),
 			
 			(NULL,		'".$is++."',			'picasa',			'Picasa',''),
 			(NULL,		'".$is++."',			'flickr',			'Flickr',''),
-			(NULL,		'".$is++."',			'panoramio',		'Panoramio',''),
+			(NULL,		'".$is++."',			'panoramio',			'Panoramio',''),
 			
 			(NULL,		'".$is++."',			'youtube',			'YouTube',''),
-			(NULL,		'".$is++."',			'vimeo',			'Vimeo',''),
+			(NULL,		'".$is++."',			'vimeo',				'Vimeo',''),
 			
 			(NULL,		'".$is++."',			'lastfm',			'Last.fm',''),
-			(NULL,		'".$is++."',			'ising',			'iSing',''),
+			(NULL,		'".$is++."',			'ising',				'iSing',''),
 			
-			(NULL,		'".$is++."',			'delicious',		'Delicious','')
+			(NULL,		'".$is++."',			'delicious',			'Delicious','')
 			;");
 		}
 	
@@ -83,6 +87,18 @@ function SocialSliderUstawienia()
 			$wpdb->query("UPDATE `".$socialtabela."` SET `nazwa` = 'RSS' WHERE `nazwa` = 'Kanał RSS'");
 			}
 
+		// Dodanie serwisu Orkut
+		if(!$wpdb->get_row("SELECT ikona FROM `".$socialtabela."` WHERE ikona = 'orkut'"))
+			{
+			$wpdb->query("INSERT INTO `".$socialtabela."` (`id`,`lp`,`ikona`,`nazwa`,`adres`) VALUES (NULL, '27', 'orkut', 'Orkut', '')");
+			}
+
+		// Dodanie serwisu Nasza-Klasa
+		if(!$wpdb->get_row("SELECT ikona FROM `".$socialtabela."` WHERE ikona = 'orkut'"))
+			{
+			$wpdb->query("INSERT INTO `".$socialtabela."` (`id`,`lp`,`ikona`,`nazwa`,`adres`) VALUES (NULL, '28', 'naszaklasa', 'Nasza Klasa', '')");
+			}
+		
 	// END
 	
 	include("language.php");
@@ -140,12 +156,12 @@ function SocialSliderUstawienia()
 		// Kolor
 		if(!empty($_POST['socialslider_kolor']))
 			{
-			if(get_option('socialslider_kolor'))		{update_option('socialslider_kolor', $_POST['socialslider_kolor']);}
+			if(get_option('socialslider_kolor'))			{update_option('socialslider_kolor', $_POST['socialslider_kolor']);}
 			else										{add_option('socialslider_kolor', $_POST['socialslider_kolor'], ' ', 'yes');}
 			}
 		else
 			{
-			if(get_option('socialslider_kolor'))		{update_option('socialslider_kolor', 'jasny');}
+			if(get_option('socialslider_kolor'))			{update_option('socialslider_kolor', 'jasny');}
 			else										{add_option('socialslider_kolor', 'ciemny', ' ', 'yes');}
 			}
 			
@@ -337,10 +353,10 @@ function SocialSliderUstawienia()
 					<p class="radio"><input type="radio" name="socialslider_tryb" id="socialslider_tryb_kompaktowy" value="kompaktowy"<?php if(get_option('socialslider_tryb')=="kompaktowy") echo " checked"; ?> /> <label for="socialslider_tryb_kompaktowy"><?php echo $lang[5][$la].$lang[58][$la]; ?></label></p>
 					<p class="radio"><input type="radio" name="socialslider_tryb" id="socialslider_tryb_minimalny" value="minimalny"<?php if(get_option('socialslider_tryb')=="minimalny") echo " checked"; ?> /> <label for="socialslider_tryb_minimalny"><?php echo $lang[6][$la].$lang[59][$la]; ?></label></p>
 				
-					<div class="tryby" style="margin-left: 20px;"><label for="socialslider_tryb_pelny"><img style="width: 235px;" src="/wp-content/plugins/social-slider/images/socialslider-pelny-250.jpg" alt="<?php echo $lang[3][$la]; ?>" /><br /><?php echo $lang[3][$la]; ?></label></div>
-					<div class="tryby"><label for="socialslider_tryb_uproszczony"><img style="width: 120px;" src="/wp-content/plugins/social-slider/images/socialslider-uproszczony-250.jpg" alt="<?php echo $lang[4][$la].$lang[57][$la]; ?>" /><br /><?php echo $lang[4][$la]; ?></label></div>
-					<div class="tryby"><label for="socialslider_tryb_kompaktowy"><img style="width: 120px;" src="/wp-content/plugins/social-slider/images/socialslider-kompaktowy-250.jpg" alt="<?php echo $lang[5][$la].$lang[58][$la]; ?>" /><br /><?php echo $lang[5][$la]; ?></label></div>
-					<div class="tryby"><label for="socialslider_tryb_minimalny"><img style="width: 120px;" src="/wp-content/plugins/social-slider/images/socialslider-minimalny-250.jpg" alt="<?php echo $lang[6][$la].$lang[59][$la]; ?>" /><br /><?php echo $lang[6][$la]; ?></label></div>
+					<div class="tryby" style="margin-left: 20px;"><label for="socialslider_tryb_pelny"><img style="width: 235px;" src="<?php echo $socialslider_baza; ?>/wp-content/plugins/social-slider/images/socialslider-pelny-250.jpg" alt="<?php echo $lang[3][$la]; ?>" /><br /><?php echo $lang[3][$la]; ?></label></div>
+					<div class="tryby"><label for="socialslider_tryb_uproszczony"><img style="width: 120px;" src="<?php echo $socialslider_baza; ?>/wp-content/plugins/social-slider/images/socialslider-uproszczony-250.jpg" alt="<?php echo $lang[4][$la].$lang[57][$la]; ?>" /><br /><?php echo $lang[4][$la]; ?></label></div>
+					<div class="tryby"><label for="socialslider_tryb_kompaktowy"><img style="width: 120px;" src="<?php echo $socialslider_baza; ?>/wp-content/plugins/social-slider/images/socialslider-kompaktowy-250.jpg" alt="<?php echo $lang[5][$la].$lang[58][$la]; ?>" /><br /><?php echo $lang[5][$la]; ?></label></div>
+					<div class="tryby"><label for="socialslider_tryb_minimalny"><img style="width: 120px;" src="<?php echo $socialslider_baza; ?>/wp-content/plugins/social-slider/images/socialslider-minimalny-250.jpg" alt="<?php echo $lang[6][$la].$lang[59][$la]; ?>" /><br /><?php echo $lang[6][$la]; ?></label></div>
 					
 					<br style='clear: both;' />
 				</div>
@@ -407,7 +423,7 @@ function SocialSliderUstawienia()
 						foreach ($serwisy as $serwis)
 							{
 							echo "<li id='rA_".$serwis->id."'>
-								<label for 'socialslider_".$serwis->ikona."'><img src='/wp-content/plugins/social-slider/images/jasny/".$serwis->ikona."-20.png' alt='".$serwis->nazwa."' />".$serwis->nazwa.":</label>
+								<label for 'socialslider_".$serwis->ikona."'><img src='".$socialslider_baza."/wp-content/plugins/social-slider/images/jasny/".$serwis->ikona."-20.png' alt='".$serwis->nazwa."' />".$serwis->nazwa.":</label>
 								<input type='text' class='text' value='".$serwis->adres."' name='socialslider_".$serwis->ikona."' id='socialslider_".$serwis->ikona."' /><br style='clear: both;' />
 							</li>";
 							}
@@ -684,7 +700,7 @@ function SocialSlider()
 			
 			case "minimalny":
 				$socialslider_width_css		= "width: 0px; right: -1px; border-left: 1px solid ".$socialslider_border_color."; border-top: 1px solid ".$socialslider_border_color."; border-bottom: 1px solid ".$socialslider_border_color."; background-color: ".$socialslider_bg_color.";";
-				$socialslider_width_ikony	= "style='right: 0;'";
+				$socialslider_width_ikony		= "style='right: 0;'";
 				break;
 			}
 		}
@@ -696,10 +712,10 @@ function SocialSlider()
 			jQuery(document).ready(function () {var hideDelay=200;var hideDelayTimer=null;jQuery("#socialslider").hover(function(){if(hideDelayTimer)clearTimeout(hideDelayTimer);jQuery("#socialslider").animate({<?php echo $socialslider_width_0js; ?>},"<?php echo $socialslider_szybkosc; ?>");},function(){if(hideDelayTimer)clearTimeout(hideDelayTimer);hideDelayTimer=setTimeout(function(){hideDelayTimer=null;jQuery("#socialslider").animate({<?php echo $socialslider_width_js; ?>},"<?php echo $socialslider_szybkosc; ?>");},hideDelay);});});
 	</script>
 	<style type="text/css">
-		#socialslider-ikony				{background: url('/wp-content/plugins/social-slider/images/<?php echo $socialslider_handle; ?>.png') no-repeat right top;}
-		#socialslider-ikony ul			{background: url('/wp-content/plugins/social-slider/images/<?php echo $socialslider_handle; ?>.png') no-repeat right bottom;}
-		* html #socialslider-ikony		{background: url('/wp-content/plugins/social-slider/images/<?php echo $socialslider_handle; ?>.gif') no-repeat right top;}
-		* html #socialslider-ikony ul	{background: url('/wp-content/plugins/social-slider/images/<?php echo $socialslider_handle; ?>.gif') no-repeat right bottom;}
+		#socialslider-ikony			{background: url('<?php echo $socialslider_baza; ?>/wp-content/plugins/social-slider/images/<?php echo $socialslider_handle; ?>.png') no-repeat right top;}
+		#socialslider-ikony ul			{background: url('<?php echo $socialslider_baza; ?>/wp-content/plugins/social-slider/images/<?php echo $socialslider_handle; ?>.png') no-repeat right bottom;}
+		* html #socialslider-ikony		{background: url('<?php echo $socialslider_baza; ?>/wp-content/plugins/social-slider/images/<?php echo $socialslider_handle; ?>.gif') no-repeat right top;}
+		* html #socialslider-ikony ul	{background: url('<?php echo $socialslider_baza; ?>/wp-content/plugins/social-slider/images/<?php echo $socialslider_handle; ?>.gif') no-repeat right bottom;}
 	</style>
 	
 	<div id="socialslider" style="top: <?php echo $socialslider_top; ?>px; <?php echo $socialslider_width_css; ?>">
