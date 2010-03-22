@@ -3,7 +3,7 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 2.3.3
+Version: 2.3.4
 Author: Łukasz Więcek
 Author URI: http://xn--wicek-k0a.pl/
 */
