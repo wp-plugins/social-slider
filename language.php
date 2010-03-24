@@ -235,8 +235,8 @@ $lang[65] = array(
 	"en_US"	=> "Dark");
 
 $lang[66] = array(
-	"pl_PL"	=> "",
-	"en_US"	=> "");
+	"pl_PL"	=> "Waluta",
+	"en_US"	=> "Currency");
 
 $lang[67] = array(
 	"pl_PL"	=> "",
@@ -253,7 +253,4 @@ $lang[69] = array(
 $lang[70] = array(
 	"pl_PL"	=> "",
 	"en_US"	=> "");
-
-
-
 ?>
