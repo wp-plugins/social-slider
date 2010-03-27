@@ -3,7 +3,7 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 2.5.1
+Version: 2.5.2
 Author: Łukasz Więcek
 Author URI: http://xn--wicek-k0a.pl/
 */
@@ -71,6 +71,8 @@ function SocialSliderUstawienia()
 			
 			(NULL,		'".$is++."',			'youtube',			'YouTube',''),
 			(NULL,		'".$is++."',			'vimeo',				'Vimeo',''),
+			(NULL,		'".$is++."',			'imdb',				'IMDb',''),
+			
 			
 			(NULL,		'".$is++."',			'lastfm',			'Last.fm',''),
 			(NULL,		'".$is++."',			'ising',				'iSing',''),
@@ -97,6 +99,12 @@ function SocialSliderUstawienia()
 		if(!$wpdb->get_row("SELECT ikona FROM `".$socialtabela."` WHERE ikona = 'naszaklasa'"))
 			{
 			$wpdb->query("INSERT INTO `".$socialtabela."` (`id`,`lp`,`ikona`,`nazwa`,`adres`) VALUES (NULL, '28', 'naszaklasa', 'Nasza Klasa', '')");
+			}
+			
+		// Dodanie serwisu IMDb
+		if(!$wpdb->get_row("SELECT ikona FROM `".$socialtabela."` WHERE ikona = 'imdb'"))
+			{
+			$wpdb->query("INSERT INTO `".$socialtabela."` (`id`,`lp`,`ikona`,`nazwa`,`adres`) VALUES (NULL, '29', 'imdb', 'IMDb', '')");
 			}
 		
 	// END
