@@ -45,7 +45,7 @@ function SocialSliderUstawienia()
 		$wpdb->query("INSERT INTO  `".$socialtabela."` (`id`,`lp`,`ikona`,`nazwa`,`adres`) VALUES
 			(NULL,		'".$is++."',			'rss',				'RSS',''),
 			(NULL,		'".$is++."',			'newsletter',			'Newsletter',''),
-			(NULL,		'".$is++."',			'sledzik',			'Ĺšledzik',''),
+			(NULL,		'".$is++."',			'sledzik',			'Śledzik',''),
 			(NULL,		'".$is++."',			'blip',				'Blip',''),
 			(NULL,		'".$is++."',			'flaker',			'Flaker',''),
 			(NULL,		'".$is++."',			'twitter',			'Twitter',''),
@@ -59,23 +59,23 @@ function SocialSliderUstawienia()
 			(NULL,		'".$is++."',			'naszaklasa',			'Nasza Klasa',''),
 			(NULL,		'".$is++."',			'networkedblogs',		'NetworkedBlogs',''),
 			(NULL,		'".$is++."',			'myspace',			'MySpace',''),
-			(NULL,		'".$is++."',			'orkut',				'Orkut',''),
+			(NULL,		'".$is++."',			'orkut',			'Orkut',''),
 						
 			(NULL,		'".$is++."',			'digg',				'Digg',''),
-			(NULL,		'".$is++."',			'wykop',				'Wykop',''),
-			(NULL,		'".$is++."',			'kciuk',				'Kciuk',''),
+			(NULL,		'".$is++."',			'wykop',			'Wykop',''),
+			(NULL,		'".$is++."',			'kciuk',			'Kciuk',''),
 			
 			(NULL,		'".$is++."',			'picasa',			'Picasa',''),
 			(NULL,		'".$is++."',			'flickr',			'Flickr',''),
 			(NULL,		'".$is++."',			'panoramio',			'Panoramio',''),
 			
 			(NULL,		'".$is++."',			'youtube',			'YouTube',''),
-			(NULL,		'".$is++."',			'vimeo',				'Vimeo',''),
+			(NULL,		'".$is++."',			'vimeo',			'Vimeo',''),
 			(NULL,		'".$is++."',			'imdb',				'IMDb',''),
 			
 			
 			(NULL,		'".$is++."',			'lastfm',			'Last.fm',''),
-			(NULL,		'".$is++."',			'ising',				'iSing',''),
+			(NULL,		'".$is++."',			'ising',			'iSing',''),
 			
 			(NULL,		'".$is++."',			'delicious',			'Delicious','')
 			;");
