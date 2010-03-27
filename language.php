@@ -239,8 +239,8 @@ $lang[66] = array(
 	"en_US"	=> "Currency");
 
 $lang[67] = array(
-	"pl_PL"	=> "",
-	"en_US"	=> "");
+	"pl_PL"	=> "Wyświetlaj Social Slider w mobilnych przeglądarkach",
+	"en_US"	=> "Show Social Slider in mobile browsers");
 
 $lang[68] = array(
 	"pl_PL"	=> "",
