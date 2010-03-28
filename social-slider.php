@@ -3,26 +3,9 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 2.5.6
+Version: 2.6.0
 Author: Łukasz Więcek
 Author URI: http://xn--wicek-k0a.pl/
-*/
-
-/*
-=========================================================
-License
-
-Any interference or modification of the Social Slider's
-and Social Slider Pro's source code, without the author's
-written consent, is strictly forbidden.
-
-
-Licencja
-
-Zabrania się jakichkolwiek ingerencji w kodzie wtyczki,
-oraz usuwania informacji o jej autorze, bez uzyskania
-jego wczesniejszej zgody.
-=========================================================
 */
 
 function SocialSliderUstawienia()
@@ -405,7 +388,7 @@ function SocialSliderUstawienia()
 					<p class="radio"><input type="radio" name="socialslider_miejsce" id="socialslider_miejsce_prawa" value="prawa"<?php if(get_option('socialslider_miejsce')=="prawa" AND empty($socialslider_disable)) {echo " checked";} echo $socialslider_disable; ?> /> <label for="socialslider_miejsce_prawa"><?php echo $lang[52][$la]; ?></label> <?php echo $socialslider_only; ?></p>
 				</div>
 
-				<div class="opcja" style="display: none;">
+				<div class="opcja">
 					<p><?php echo $lang[63][$la]; ?>:</p>
 					<p class="radio"><input type="radio" name="socialslider_kolor" id="socialslider_kolor_jasny" value="jasny"<?php if(get_option('socialslider_kolor')=="jasny" OR !get_option('socialslider_kolor') OR !empty($socialslider_disable)) {echo " checked";} ?> /> <label for="socialslider_kolor_jasny"><?php echo $lang[64][$la]; ?></label></p>
 					<p class="radio"><input type="radio" name="socialslider_kolor" id="socialslider_kolor_ciemny" value="ciemny"<?php if(get_option('socialslider_kolor')=="ciemny" AND empty($socialslider_disable)) {echo " checked";} echo $socialslider_disable; ?> /> <label for="socialslider_kolor_ciemny"><?php echo $lang[65][$la]; ?></label> <?php echo $socialslider_only; ?></p>
@@ -772,10 +755,8 @@ function SocialSliderUstawienia()
 			<h2><?php echo $lang[28][$la]; ?></h2>
 			<div class="pro">
 				<p><ol>
-					<li><?php echo $lang[29][$la]; ?></li>
+					<li><?php echo $lang[68][$la]; ?></li>
 					<li><?php echo $lang[49][$la]; ?></li>
-					<li><?php echo $lang[30][$la]; ?></li>
-					<li><?php echo $lang[31][$la]; ?></li>
 					<li><?php echo $lang[32][$la]; ?></li>
 				</ol></p>
 			</div>
@@ -805,8 +786,8 @@ function SocialSlider()
 		$socialslider_widget_width	= get_option('socialslider_widget_width');
 		$socialslider_link			= get_option('socialslider_link');
 		$socialslider_miejsce		= get_option('socialslider_miejsce');
-		//$socialslider_kolor		= get_option('socialslider_kolor');
-		$socialslider_kolor			= "jasny";
+		$socialslider_kolor		= get_option('socialslider_kolor');
+		//$socialslider_kolor			= "jasny";
 		}
 	else
 		{

@@ -243,8 +243,8 @@ $lang[67] = array(
 	"en_US"	=> "Show Social Slider in mobile browsers");
 
 $lang[68] = array(
-	"pl_PL"	=> "",
-	"en_US"	=> "");
+	"pl_PL"	=> "Kod źródłowy wtyczki <strong>Social Slider</strong> jest oparty na licencji <a href=\"http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt\" alt=\"GPL v2.0\">GPL v2.0</a>.",
+	"en_US"	=> "Source code <strong>Social Slider</strong> plugin is based on the license <a href=\"http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt\" alt=\"GPL v2.0\">GPL v2.0</a>.");
 
 $lang[69] = array(
 	"pl_PL"	=> "",
