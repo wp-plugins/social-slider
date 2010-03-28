@@ -388,7 +388,7 @@ function SocialSliderUstawienia()
 					<p class="radio"><input type="radio" name="socialslider_miejsce" id="socialslider_miejsce_prawa" value="prawa"<?php if(get_option('socialslider_miejsce')=="prawa" AND empty($socialslider_disable)) {echo " checked";} echo $socialslider_disable; ?> /> <label for="socialslider_miejsce_prawa"><?php echo $lang[52][$la]; ?></label> <?php echo $socialslider_only; ?></p>
 				</div>
 
-				<div class="opcja">
+				<div class="opcja" style="display: none;">
 					<p><?php echo $lang[63][$la]; ?>:</p>
 					<p class="radio"><input type="radio" name="socialslider_kolor" id="socialslider_kolor_jasny" value="jasny"<?php if(get_option('socialslider_kolor')=="jasny" OR !get_option('socialslider_kolor') OR !empty($socialslider_disable)) {echo " checked";} ?> /> <label for="socialslider_kolor_jasny"><?php echo $lang[64][$la]; ?></label></p>
 					<p class="radio"><input type="radio" name="socialslider_kolor" id="socialslider_kolor_ciemny" value="ciemny"<?php if(get_option('socialslider_kolor')=="ciemny" AND empty($socialslider_disable)) {echo " checked";} echo $socialslider_disable; ?> /> <label for="socialslider_kolor_ciemny"><?php echo $lang[65][$la]; ?></label> <?php echo $socialslider_only; ?></p>
@@ -786,8 +786,8 @@ function SocialSlider()
 		$socialslider_widget_width	= get_option('socialslider_widget_width');
 		$socialslider_link			= get_option('socialslider_link');
 		$socialslider_miejsce		= get_option('socialslider_miejsce');
-		$socialslider_kolor		= get_option('socialslider_kolor');
-		//$socialslider_kolor			= "jasny";
+		//$socialslider_kolor		= get_option('socialslider_kolor');
+		$socialslider_kolor		= "jasny";
 		}
 	else
 		{
@@ -795,7 +795,7 @@ function SocialSlider()
 		$socialslider_widget_width	= "200";
 		$socialslider_link			= "tak";
 		$socialslider_miejsce		= "lewa";
-		$socialslider_kolor			= "jasny";
+		$socialslider_kolor		= "jasny";
 		}
 
 	switch($socialslider_kolor)
