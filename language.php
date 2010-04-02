@@ -247,10 +247,53 @@ $lang[68] = array(
 	"en_US"	=> "Source code <strong>Social Slider</strong> plugin is based on the license <a href=\"http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt\" alt=\"GPL v2.0\">GPL v2.0</a>.");
 
 $lang[69] = array(
-	"pl_PL"	=> "",
-	"en_US"	=> "");
+	"pl_PL"	=> "Zestaw ikon",
+	"en_US"	=> "Icon set");
 
 $lang[70] = array(
+	"pl_PL"	=> "Standardowy zestaw ikon (tylko dla jasnej wersji kolorystycznej)",
+	"en_US"	=> "Standard icon set (only for light color set)");
+	
+$lang[71] = array(
+	"pl_PL"	=> "Zestaw autorstwa <a href=\"http://futomaki.pl\" title=\"Alex Apleczny\">Alexa Palecznego</a>",
+	"en_US"	=> "Icons created by <a href=\"http://futomaki.pl\" title=\"Alex Apleczny\">Alex Paleczny</a>");
+	
+$lang[72] = array(
 	"pl_PL"	=> "",
 	"en_US"	=> "");
+	
+$lang[73] = array(
+	"pl_PL"	=> "",
+	"en_US"	=> "");
+	
+$lang[74] = array(
+	"pl_PL"	=> "",
+	"en_US"	=> "");
+	
+$lang[75] = array(
+	"pl_PL"	=> "",
+	"en_US"	=> "");
+	
+$lang[76] = array(
+	"pl_PL"	=> "",
+	"en_US"	=> "");
+	
+$lang[77] = array(
+	"pl_PL"	=> "",
+	"en_US"	=> "");
+	
+$lang[78] = array(
+	"pl_PL"	=> "",
+	"en_US"	=> "");
+	
+$lang[79] = array(
+	"pl_PL"	=> "",
+	"en_US"	=> "");
+	
+$lang[80] = array(
+	"pl_PL"	=> "",
+	"en_US"	=> "");
+	
+
+
 ?>
