@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: LukaszWiecek
-Tags: social, widget, blip, buzz, twitter, flaker, śledzik, sledzik, nasza-klasa, nasza klasa, nk, rss, newsletter, delicious, picasa, flickr, youtube, vimeo, soup, wykop, goldenline, lastfm, kciuk, digg, myspace, linkedin, orkut
+Tags: social, widget, blip, buzz, twitter, flaker, śledzik, sledzik, nasza-klasa, nasza klasa, nk, rss, newsletter, delicious, picasa, flickr, youtube, vimeo, soup, wykop, goldenline, lastfm, kciuk, digg, myspace, linkedin, orkut, blip.fm, deviantart, friendconnect, friendfeed, grono, tumblr
 Requires at least: 2.9.0
 Tested up to: 2.9.2
-Stable tag: 2.8.0
+Stable tag: 2.9.0
 
 This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
 

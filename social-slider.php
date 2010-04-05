@@ -3,7 +3,7 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 2.8.0
+Version: 2.9.0
 Author: Łukasz Więcek
 Author URI: http://xn--wicek-k0a.pl/
 */
@@ -34,6 +34,7 @@ function SocialSliderUstawienia()
 			(NULL,		'".$is++."',			'twitter',			'Twitter',''),
 			(NULL,		'".$is++."',			'soup',				'Soup.io',''),
 			(NULL,		'".$is++."',			'buzz',				'Buzz',''),
+			(NULL,		'".$is++."',			'tumblr',			'Tumblr',''),
 
 			(NULL,		'".$is++."',			'facebook',			'Facebook',''),
 			(NULL,		'".$is++."',			'spinacz',			'Spinacz',''),
@@ -43,6 +44,10 @@ function SocialSliderUstawienia()
 			(NULL,		'".$is++."',			'networkedblogs',		'NetworkedBlogs',''),
 			(NULL,		'".$is++."',			'myspace',			'MySpace',''),
 			(NULL,		'".$is++."',			'orkut',				'Orkut',''),
+			(NULL,		'".$is++."',			'grono',				'Grono',''),
+			(NULL,		'".$is++."',			'friendconnect',		'FriendConnect',''),	
+			(NULL,		'".$is++."',			'friendfeed',			'FriendFeed',''),
+			
 
 			(NULL,		'".$is++."',			'digg',				'Digg',''),
 			(NULL,		'".$is++."',			'wykop',				'Wykop',''),
@@ -51,6 +56,8 @@ function SocialSliderUstawienia()
 			(NULL,		'".$is++."',			'picasa',			'Picasa',''),
 			(NULL,		'".$is++."',			'flickr',			'Flickr',''),
 			(NULL,		'".$is++."',			'panoramio',			'Panoramio',''),
+			(NULL,		'".$is++."',			'deviantart',			'DeviantArt',''),
+			
 
 			(NULL,		'".$is++."',			'youtube',			'YouTube',''),
 			(NULL,		'".$is++."',			'vimeo',				'Vimeo',''),
@@ -58,6 +65,7 @@ function SocialSliderUstawienia()
 
 			(NULL,		'".$is++."',			'lastfm',			'Last.fm',''),
 			(NULL,		'".$is++."',			'ising',				'iSing',''),
+			(NULL,		'".$is++."',			'blipfm',			'Blip.fm',''),
 
 			(NULL,		'".$is++."',			'delicious',			'Delicious','')
 			;");
@@ -88,6 +96,44 @@ function SocialSliderUstawienia()
 			{
 			$wpdb->query("INSERT INTO `".$socialtabela."` (`id`,`lp`,`ikona`,`nazwa`,`adres`) VALUES (NULL, '29', 'imdb', 'IMDb', '')");
 			}
+		
+		// Dodanie serwisu Blip.fm
+		if(!$wpdb->get_row("SELECT ikona FROM `".$socialtabela."` WHERE ikona = 'blipfm'"))
+			{
+			$wpdb->query("INSERT INTO `".$socialtabela."` (`id`,`lp`,`ikona`,`nazwa`,`adres`) VALUES (NULL, '30', 'blipfm', 'Blip.fm', '')");
+			}
+		
+		// Dodanie serwisu DeviantArt
+		if(!$wpdb->get_row("SELECT ikona FROM `".$socialtabela."` WHERE ikona = 'deviantart'"))
+			{
+			$wpdb->query("INSERT INTO `".$socialtabela."` (`id`,`lp`,`ikona`,`nazwa`,`adres`) VALUES (NULL, '31', 'deviantart', 'DeviantArt', '')");
+			}
+		
+		// Dodanie serwisu FriendConnect
+		if(!$wpdb->get_row("SELECT ikona FROM `".$socialtabela."` WHERE ikona = 'friendconnect'"))
+			{
+			$wpdb->query("INSERT INTO `".$socialtabela."` (`id`,`lp`,`ikona`,`nazwa`,`adres`) VALUES (NULL, '32', 'friendconnect', 'FriendConnect', '')");
+			}
+		
+		// Dodanie serwisu FriendFeed
+		if(!$wpdb->get_row("SELECT ikona FROM `".$socialtabela."` WHERE ikona = 'friendfeed'"))
+			{
+			$wpdb->query("INSERT INTO `".$socialtabela."` (`id`,`lp`,`ikona`,`nazwa`,`adres`) VALUES (NULL, '33', 'friendfeed', 'FriendFeed', '')");
+			}
+		
+		// Dodanie serwisu Grono
+		if(!$wpdb->get_row("SELECT ikona FROM `".$socialtabela."` WHERE ikona = 'grono'"))
+			{
+			$wpdb->query("INSERT INTO `".$socialtabela."` (`id`,`lp`,`ikona`,`nazwa`,`adres`) VALUES (NULL, '34', 'grono', 'Grono', '')");
+			}
+		
+		// Dodanie serwisu Tumblr
+		if(!$wpdb->get_row("SELECT ikona FROM `".$socialtabela."` WHERE ikona = 'tumblr'"))
+			{
+			$wpdb->query("INSERT INTO `".$socialtabela."` (`id`,`lp`,`ikona`,`nazwa`,`adres`) VALUES (NULL, '35', 'tumblr', 'Tumblr', '')");
+			}
+		
+		
 	// END
 
 	include("language.php");
