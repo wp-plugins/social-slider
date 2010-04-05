@@ -50,8 +50,8 @@ $lang[13] = array(
 	"en_US"	=> "default");
 
 $lang[14] = array(
-	"pl_PL"	=> "Szerokość widgetu (dotyczy tylko trybu pełnego)",
-	"en_US"	=> "Widget's width in full mode");
+	"pl_PL"	=> "Rozmiar kontenera widgetu (dotyczy tylko trybu pełnego)",
+	"en_US"	=> "Widget's container size in full mode");
 
 $lang[15] = array(
 	"pl_PL"	=> "opcja dostępna w <a href=\"#pro\">wersji Pro</a>",
@@ -82,8 +82,8 @@ $lang[21] = array(
 	"en_US"	=> "To gain access to all the features of <strong>Social Slider Pro</strong>, simply buy a license using <a href=\"http://paypal.com/\" title=\"PayPal\">PayPal</a>. You can choose an annual or an unlimited license.");
 
 $lang[25] = array(
-	"pl_PL"	=> "Po zaksięgowaniu wpłaty zostanie wysłany na podany adres e-mail klucz licencyjny, który należy wprowadzić w poniższym polu:",
-	"en_US"	=> "After receiving the payment, the license key will be sent to your e-mail adress. Paste the license key in the field below:");
+	"pl_PL"	=> "Po zaksięgowaniu wpłaty (do 12 godzin) zostanie wysłany na podany adres e-mail klucz licencyjny, który należy wprowadzić w poniższym polu:",
+	"en_US"	=> "After receiving the payment (max 12h), the license key will be sent to your e-mail adress. Paste the license key in the field below:");
 
 $lang[26] = array(
 	"pl_PL"	=> "Wprowadź klucz",
@@ -259,41 +259,19 @@ $lang[71] = array(
 	"en_US"	=> "Icons created by <a href=\"http://futomaki.pl\" title=\"Alex Apleczny\">Alex Paleczny</a>");
 	
 $lang[72] = array(
-	"pl_PL"	=> "",
-	"en_US"	=> "");
+	"pl_PL"	=> "Szerokość",
+	"en_US"	=> "Width");
 	
 $lang[73] = array(
-	"pl_PL"	=> "",
-	"en_US"	=> "");
+	"pl_PL"	=> "Wysokość",
+	"en_US"	=> "Height");
 	
 $lang[74] = array(
 	"pl_PL"	=> "",
 	"en_US"	=> "");
 	
 $lang[75] = array(
-	"pl_PL"	=> "",
-	"en_US"	=> "");
+	"pl_PL"	=> "Przejdź do konfiguracji wtyczki <strong>Social Slider</strong> i ponownie zapisz ustawienia. Jeżeli tego nie zrobisz, wtyczka może nie działać poprawnie.",
+	"en_US"	=> "Please go to the <strong>Social Slider's</strong> configuration page and save the settings. If you don't do it, the plugin may work incorrectly.");
 	
-$lang[76] = array(
-	"pl_PL"	=> "",
-	"en_US"	=> "");
-	
-$lang[77] = array(
-	"pl_PL"	=> "",
-	"en_US"	=> "");
-	
-$lang[78] = array(
-	"pl_PL"	=> "",
-	"en_US"	=> "");
-	
-$lang[79] = array(
-	"pl_PL"	=> "",
-	"en_US"	=> "");
-	
-$lang[80] = array(
-	"pl_PL"	=> "",
-	"en_US"	=> "");
-	
-
-
 ?>
