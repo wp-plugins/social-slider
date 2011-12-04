@@ -4,13 +4,24 @@
 	border-bottom: 1px solid #ccc;
 	display: block;
 	padding: 0;
-	position: fixed;
-	z-index: 100;
+	z-index: 9999;
 	}
 
 * html #socialslider
 	{
 	position: absolute;
+	}
+
+#socialslider li
+	{
+	background: none;
+	}
+
+#socialslider img
+	{
+	padding: 0;
+	margin: 0;
+	border: none;
 	}
 
 .socialslider-grupa
@@ -65,7 +76,7 @@
 
 #socialslider-linki ul
 	{
-	padding-top: 8px;
+	padding-top: 10px;
 	}
 
 #socialslider-linki ul li

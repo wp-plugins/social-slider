@@ -2,8 +2,7 @@
 	{
 	display: block;
 	padding: 0;
-	position: fixed;
-	z-index: 100;
+	z-index: 9999;
 	}
 
 * html #socialslider
@@ -11,32 +10,22 @@
 	position: absolute;
 	}
 
-.socialslider-grupa
+#socialslider li
 	{
-	float: left;
+	background: none;
 	}
 
-#socialslider-linki
+#socialslider img
 	{
-	float: left;
-	width: 70px;
-	}
-
-#socialslider-linki img
-	{
-	width: 32px;
-	height: 32px;
-	}
-
-#socialslider-widget
-	{
-	float: left;
-	padding: 10px 0 18px 10px;
+	padding: 0;
+	margin: 0;
+	border: none;
 	}
 
 #socialslider-ikony
 	{
 	position: absolute;
+	right: -32px;
 	top: -1px;
 	width: 32px;
 	z-index: 110;
@@ -65,38 +54,23 @@
 	height: 20px;
 	}
 
-#socialslider-ikony ul, #socialslider-linki ul, #socialslider-ikony li, #socialslider-linki li
+#socialslider-ikony ul, #social-ikony li
 	{
 	display: block;
 	list-style: none;
 	margin: 0;
-	padding:0;
+	padding: 0;
 	}
 
-#socialslider-linki li
+#socialslider-autor
 	{
-	padding: 5px;
 	text-align: center;
-	width: 70px;
-	}
-
-#socialslider-linki img
-	{
-	display: block;
-	border: none;
-	margin: 0 auto;
-	}
-
-#socialslider-linki a
-	{
-	border: none;
-	font-size: 10px;
-	text-decoration: none;
+	padding: 0 5px 6px 5px !important;
 	}
 
 #socialslider-autor a
 	{
 	font-family: Segoe UI, Tahoma;
-	font-size: 10px;
+	font-size: 9px;
 	text-decoration: none;
 	}
