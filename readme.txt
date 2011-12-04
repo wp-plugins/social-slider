@@ -4,15 +4,15 @@ Donate link: http://goo.gl/2SLt
 Tags: social, widget, icons, links, bookmarking, bookmarks, bookmark, profile, profiles, facebook, google+, google, googleplus, google plus, plus, buzz, twitter, rss, newsletter, delicious, picasa, flickr, youtube, vimeo, goldenline, lastfm, digg, myspace, linkedin, orkut, blip.fm, deviantart, friendconnect, friendfeed, tumblr
 Requires at least: 2.9.0
 Tested up to: 3.2.1
-Stable tag: 7.0.0
+Stable tag: 7.0.1
 
 This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
 
 == Description ==
 
-= What is Social Icons Box? =
+= What is Social Slider? =
 
-The Social Icons Box plugin display on your blog an expandable box, that has links to your profiles in different social sites.
+The Social Slider plugin display on your blog an expandable box, that has links to your profiles in different social sites.
 
 By default, the box is attached to the left side of the browser window, but you can easily put it on the right side.
 
@@ -85,19 +85,17 @@ You can see a live example of the plugin working in different modes:
 Administration panel plugin is available in languages:
 
 * English (thanks to [Tomasz Topa](http://tomasz.topa.pl "Tomasz Topa"))
-* Polish
-* Spanish (thanks to [Jordi Sancho](http://www.qasolutions.net/blog "Jordi Sancho"))
 
 == Frequently Asked Questions ==
 
 = How to Configure Facebook widget? =
 
-* The plug-in settings enable full mode: [screen](http://screen.piszczy.pl/2011-03-02_170726.png "screen")
-* Go to FanPage which you want to create a widget and click "Edit Page": [screen](http://screen.piszczy.pl/2011-03-02_171017.png "screen")
-* Click the "Marketing" and "Add Like a Box to your Website": [screen](http://screen.piszczy.pl/2011-03-02_171346.png "screen")
-* Customize the look to meet your needs (set the width to 200!), and click "Get Code": [screen](http://screen.piszczy.pl/2011-03-02_171618.png "screen")
-* Copy this code: [screen](http://screen.piszczy.pl/2011-03-02_171659.png "screen")
-* Return to the plugin settings and paste the code in the "Custom widget" and then click "Save": [screen](http://screen.piszczy.pl/2011-03-02_171844.png "screen")
+* The plug-in settings enable full mode: [screen](http://screen.mydiy.pl/2011-03-02_170726.png "screen")
+* Go to FanPage which you want to create a widget and click "Edit Page": [screen](http://screen.mydiy.pl/2011-03-02_171017.png "screen")
+* Click the "Marketing" and "Add Like a Box to your Website": [screen](http://screen.mydiy.pl/2011-03-02_171346.png "screen")
+* Customize the look to meet your needs (set the width to 200!), and click "Get Code": [screen](http://screen.mydiy.pl/2011-03-02_171618.png "screen")
+* Copy this code: [screen](http://screen.mydiy.pl/2011-03-02_171659.png "screen")
+* Return to the plugin settings and paste the code in the "Custom widget" and then click "Save": [screen](http://screen.mydiy.pl/2011-03-02_171844.png "screen")
 * Done :)
 
 = What if Facebook widget is very small? =
