@@ -3,8 +3,8 @@ Contributors: LukaszWiecek
 Donate link: http://goo.gl/2SLt
 Tags: social, widget, icons, links, bookmarking, bookmarks, bookmark, profile, profiles, facebook, google+, google, googleplus, google plus, plus, buzz, twitter, rss, newsletter, delicious, picasa, flickr, youtube, vimeo, goldenline, lastfm, digg, myspace, linkedin, orkut, blip.fm, deviantart, friendconnect, friendfeed, tumblr
 Requires at least: 2.9.0
-Tested up to: 3.2.1
-Stable tag: 7.0.1
+Tested up to: 3.3
+Stable tag: 7.0.2
 
 This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
 
@@ -107,6 +107,11 @@ In the code copied from Facebook you need to change the height of the default "6
 After you activate the plugin, go to the configuration page and enter the URLs of your profiles on social networking sites. If you don't use a particular site, leave the field blank - the icon will not be displayed.
 
 == Changelog ==
+
+= 7.0.2 =
+
+* Fixed a small bug
+* Added Polish language
 
 = 7.0.0 =
 

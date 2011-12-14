@@ -3,15 +3,18 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 7.0.1
+Version: 7.0.2
 Author: Łukasz Więcek
 Author URI: http://mydiy.pl/
 */
 
 $socialslider			= "social-slider";
-$socialslider_wersja	= "7.0.1";
+$socialslider_wersja	= "7.0.2";
 $socialslider_baza		= str_replace("https://", "http://", get_bloginfo('wpurl'));
 $socialslider_katalog	= WP_PLUGIN_URL .'/'.$socialslider;
+
+// Language
+add_action('init', 'ss_language'); function ss_language() {load_plugin_textdomain('social-slider', false, dirname(plugin_basename( __FILE__ )).'/language');}
 
 if(get_option('socialslider_tryb'))			$socialslider_tryb = get_option('socialslider_tryb');
 else										$socialslider_tryb = "uproszczony";
@@ -197,9 +200,6 @@ function SocialSliderUstawienia()
 
 		if(get_option('socialslider_tryb'))				{delete_option('socialslider_tryb');}
 		}
-
-	// Language
-    add_action('init', 'ss_language'); function ss_language() {global $socialslider; load_plugin_textdomain($socialslider, false, dirname(plugin_basename( __FILE__ )).'/language');}
 
 	// Zapisywanie ustawień
 	if($_POST['SocialSliderZapisz'])
@@ -411,7 +411,8 @@ function SocialSliderUstawienia()
 		$socialslider_name		= "Social Slider";
 		$socialslider_sort		= "id";
 		$socialslider_disable	= " disabled";
-		$socialslider_only		= " (".__('This option is available in the <a href=\'#pro\'>Pro version</a>', $socialslider).")";
+		$socialslider_only		= " (".__('This option is available in the <a href=\'#pro\'>Pro version</a>', 'social-slider').")";
+        $socialslider_promo     = '<div class="error fade" style="background-color: #c6ffc7; border-color: #114212;"><p style="line-height: 18px;">'.__("Hey Blogger! I've got some great news! Social Slider Pro plugin is now on sale, so if you decide to buy the license now, <strong>the price will be 50&#37; lower</strong>! Only 113 PLN (~34 USD)!", 'social-slider').' '.__("<a href='#pro'>More info...</a>", 'social-slider').'</p></div>';
 
 		if(date("Y-m-d")<=base64_decode($socialslider_data))
 			{
@@ -419,6 +420,7 @@ function SocialSliderUstawienia()
 			$socialslider_sort		= "lp";
 			$socialslider_disable	= "";
 			$socialslider_only		= "";
+            $socialslider_promo     = "";
 			}
 
 		if(get_option('socialslider_ikony'))
@@ -432,79 +434,78 @@ function SocialSliderUstawienia()
 		?>
 
 		<div id="socialslider">
-			<h2><?php _e('Configuration of', $socialslider) ?> <?php echo $socialslider_name; ?></h2>
+			<h2><?php _e('Configuration of', 'social-slider') ?> <?php echo $socialslider_name; ?></h2>
 
-			<div class='error fade' style='background-color: #c6ffc7; border-color: #114212;'><p style='line-height: 18px;'><?php _e("Hey Blogger! I've got some great news! Social Slider Pro plugin is now on sale, so if you decide to buy the license now, <strong>the price will be 50% lower</strong>! Only 113 PLN (~34 USD)!", $socialslider) ?> <?php _e("<a href='#pro'>More info...</a>", $socialslider) ?></p></div>
-			
-			
+            <?php echo $socialslider_promo ?>
+
 			<form action="options-general.php?page=<?php echo $socialslider; ?>/<?php echo $socialslider; ?>.php" method="post" id="social-slider-config">
 
 				<div class="opcja">
-					<p><?php _e("Social Slider display mode:", $socialslider) ?></p>
-					<p class="radio" id="ss_pelny"><input type="radio" name="socialslider_tryb" id="socialslider_tryb_pelny" value="pelny"<?php if(get_option('socialslider_tryb')=="pelny") echo " checked"; ?> /> <label for="socialslider_tryb_pelny"><?php _e("Full", $socialslider) ?> (<a href="http://social-slider.com/demo/full.html" target="_blank"><?php _e("live demo", $socialslider) ?></a>)</label></p>
-					<p class="radio"><input type="radio" name="socialslider_tryb" id="socialslider_tryb_uproszczony" value="uproszczony"<?php if(get_option('socialslider_tryb')=="uproszczony" OR !get_option('socialslider_tryb')) echo " checked"; ?> /> <label for="socialslider_tryb_uproszczony"><?php _e("Simple (without the widget)", $socialslider) ?> (<a href="http://social-slider.com/demo/simple.html" target="_blank"><?php _e("live demo", $socialslider) ?></a>)</label></p>
-					<p class="radio"><input type="radio" name="socialslider_tryb" id="socialslider_tryb_kompaktowy" value="kompaktowy"<?php if(get_option('socialslider_tryb')=="kompaktowy") echo " checked"; ?> /> <label for="socialslider_tryb_kompaktowy"><?php _e("Compact (without the widget and large icons)", $socialslider) ?> (<a href="http://social-slider.com/demo/compact.html" target="_blank"><?php _e("live demo", $socialslider) ?></a>)</label></p>
-					<p class="radio"><input type="radio" name="socialslider_tryb" id="socialslider_tryb_minimalny" value="minimalny"<?php if(get_option('socialslider_tryb')=="minimalny") echo " checked"; ?> /> <label for="socialslider_tryb_minimalny"><?php _e("Minimal with small icons (Non-expandable set of small icons)", $socialslider) ?> (<a href="http://social-slider.com/demo/minimal-small-icons.html" target="_blank"><?php _e("live demo", $socialslider) ?></a>)</label></p>
-					<p class="radio"><input type="radio" name="socialslider_tryb" id="socialslider_tryb_minimalny_duzy" value="minimalny_duzy"<?php if(get_option('socialslider_tryb')=="minimalny_duzy") echo " checked"; echo $socialslider_disable; ?> /> <label for="socialslider_tryb_minimalny_duzy"><?php _e("Minimal with big icons (Non-expandable set of big icons)", $socialslider) ?> (<a href="http://social-slider.com/demo/minimal-big-icons.html" target="_blank"><?php _e("live demo", $socialslider) ?></a>)</label> <?php echo $socialslider_only; ?></p>
-					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", $socialslider) ?>" style="margin: 5px 0 5px 20px;" />
+					<p><?php _e("Social Slider display mode:", 'social-slider') ?></p>
+					<p class="radio" id="ss_pelny"><input type="radio" name="socialslider_tryb" id="socialslider_tryb_pelny" value="pelny"<?php if(get_option('socialslider_tryb')=="pelny") echo " checked"; ?> /> <label for="socialslider_tryb_pelny"><?php _e("Full", 'social-slider') ?> (<a href="http://social-slider.com/demo/full.html" target="_blank"><?php _e("live demo", 'social-slider') ?></a>)</label></p>
+					<p class="radio"><input type="radio" name="socialslider_tryb" id="socialslider_tryb_uproszczony" value="uproszczony"<?php if(get_option('socialslider_tryb')=="uproszczony" OR !get_option('socialslider_tryb')) echo " checked"; ?> /> <label for="socialslider_tryb_uproszczony"><?php _e("Simple (without the widget)", 'social-slider') ?> (<a href="http://social-slider.com/demo/simple.html" target="_blank"><?php _e("live demo", 'social-slider') ?></a>)</label></p>
+					<p class="radio"><input type="radio" name="socialslider_tryb" id="socialslider_tryb_kompaktowy" value="kompaktowy"<?php if(get_option('socialslider_tryb')=="kompaktowy") echo " checked"; ?> /> <label for="socialslider_tryb_kompaktowy"><?php _e("Compact (without the widget and large icons)", 'social-slider') ?> (<a href="http://social-slider.com/demo/compact.html" target="_blank"><?php _e("live demo", 'social-slider') ?></a>)</label></p>
+					<p class="radio"><input type="radio" name="socialslider_tryb" id="socialslider_tryb_minimalny" value="minimalny"<?php if(get_option('socialslider_tryb')=="minimalny") echo " checked"; ?> /> <label for="socialslider_tryb_minimalny"><?php _e("Minimal with small icons (Non-expandable set of small icons)", 'social-slider') ?> (<a href="http://social-slider.com/demo/minimal-small-icons.html" target="_blank"><?php _e("live demo", 'social-slider') ?></a>)</label></p>
+					<p class="radio"><input type="radio" name="socialslider_tryb" id="socialslider_tryb_minimalny_duzy" value="minimalny_duzy"<?php if(get_option('socialslider_tryb')=="minimalny_duzy") echo " checked"; echo $socialslider_disable; ?> /> <label for="socialslider_tryb_minimalny_duzy"><?php _e("Minimal with big icons (Non-expandable set of big icons)", 'social-slider') ?> (<a href="http://social-slider.com/demo/minimal-big-icons.html" target="_blank"><?php _e("live demo", 'social-slider') ?></a>)</label> <?php echo $socialslider_only; ?></p>
+					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", 'social-slider') ?>" style="margin: 5px 0 5px 20px;" />
 				</div>
 
 				<div class="opcja">
-					<p><?php _e("Position of Social Slider from the top of the page:", $socialslider) ?></p>
-					<p class="radio"><input type="text" class="text" style="width: 50px;" value="<?php if(get_option('socialslider_top')) {echo $socialslider_top;} else {echo "150px";} ?>" name="socialslider_top" id="socialslider_top" /> (<?php _e("default:", $socialslider) ?> 150px)</p>
-					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", $socialslider) ?>" style="margin: 5px 0 5px 20px;" />
+					<p><?php _e("Position of Social Slider from the top of the page:", 'social-slider') ?></p>
+					<p class="radio"><input type="text" class="text" style="width: 50px;" value="<?php if(get_option('socialslider_top')) {echo $socialslider_top;} else {echo "150px";} ?>" name="socialslider_top" id="socialslider_top" /> (<?php _e("default:", 'social-slider') ?> 150px)</p>
+					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", 'social-slider') ?>" style="margin: 5px 0 5px 20px;" />
 				</div>
 
 				<div class="opcja">
-					<p><?php _e("Social Slider behaviour during scrolling:", $socialslider) ?></p>
-					<p class="radio"><input type="radio" name="socialslider_position" id="socialslider_position_fixed" value="fixed"<?php if(get_option('socialslider_position')=="fixed" OR !get_option('socialslider_position')) {echo " checked";} ?> /> <label for="socialslider_position_fixed"><?php _e("Place Social Slider on a fixed height of the browser's window", $socialslider) ?></label></p>
-					<p class="radio"><input type="radio" name="socialslider_position" id="socialslider_position_absolute" value="absolute"<?php if(get_option('socialslider_position')=="absolute") {echo " checked";}?> /> <label for="socialslider_position_absolute"><?php _e("Scroll Social Slider along with the page", $socialslider) ?></label></p>
-					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", $socialslider) ?>" style="margin: 5px 0 5px 20px;" />
+					<p><?php _e("Social Slider behaviour during scrolling:", 'social-slider') ?></p>
+					<p class="radio"><input type="radio" name="socialslider_position" id="socialslider_position_fixed" value="fixed"<?php if(get_option('socialslider_position')=="fixed" OR !get_option('socialslider_position')) {echo " checked";} ?> /> <label for="socialslider_position_fixed"><?php _e("Place Social Slider on a fixed height of the browser's window", 'social-slider') ?></label></p>
+					<p class="radio"><input type="radio" name="socialslider_position" id="socialslider_position_absolute" value="absolute"<?php if(get_option('socialslider_position')=="absolute") {echo " checked";}?> /> <label for="socialslider_position_absolute"><?php _e("Scroll Social Slider along with the page", 'social-slider') ?></label></p>
+					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", 'social-slider') ?>" style="margin: 5px 0 5px 20px;" />
 				</div>
 
 				<div class="opcja">
-					<p><?php _e("Widget's container size in full mode:", $socialslider) ?></p>
-					<p class="radio"><?php _e("Width:", $socialslider) ?><br /><input type="text" class="text" style="width: 50px;" value="<?php if(get_option('socialslider_widget_width')) {echo $socialslider_widget_width;} else {echo "200px";} ?>" name="socialslider_widget_width" id="socialslider_widget_width" <?php if(date("Y-m-d")>base64_decode($socialslider_data)) {echo "readonly ";} ?>/> <?php echo $socialslider_only; ?></p>
-					<p class="radio"><?php _e("Height:", $socialslider) ?><br /><input type="text" class="text" style="width: 50px;" value="<?php if(get_option('socialslider_widget_height')) {echo $socialslider_widget_height;} else {echo "auto";} ?>" name="socialslider_widget_height" id="socialslider_widget_height" <?php if(date("Y-m-d")>base64_decode($socialslider_data)) {echo "readonly ";} ?>/> <?php echo $socialslider_only; ?></p>
-					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", $socialslider) ?>" style="margin: 5px 0 5px 20px;" />
+					<p><?php _e("Widget's container size in full mode:", 'social-slider') ?></p>
+					<p class="radio"><?php _e("Width:", 'social-slider') ?><br /><input type="text" class="text" style="width: 50px;" value="<?php if(get_option('socialslider_widget_width')) {echo $socialslider_widget_width;} else {echo "200px";} ?>" name="socialslider_widget_width" id="socialslider_widget_width" <?php if(date("Y-m-d")>base64_decode($socialslider_data)) {echo "readonly ";} ?>/> <?php echo $socialslider_only; ?></p>
+					<p class="radio"><?php _e("Height:", 'social-slider') ?><br /><input type="text" class="text" style="width: 50px;" value="<?php if(get_option('socialslider_widget_height')) {echo $socialslider_widget_height;} else {echo "auto";} ?>" name="socialslider_widget_height" id="socialslider_widget_height" <?php if(date("Y-m-d")>base64_decode($socialslider_data)) {echo "readonly ";} ?>/> <?php echo $socialslider_only; ?></p>
+					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", 'social-slider') ?>" style="margin: 5px 0 5px 20px;" />
 				</div>
 
 				<div class="opcja">
-					<p><?php _e("Placement of Social Slider:", $socialslider) ?></p>
-					<p class="radio"><input type="radio" name="socialslider_miejsce" id="socialslider_miejsce_lewa" value="lewa"<?php if(get_option('socialslider_miejsce')=="lewa" OR !get_option('socialslider_miejsce') OR !empty($socialslider_disable)) {echo " checked";} ?> /> <label for="socialslider_miejsce_lewa"><?php _e("Left side of the screen", $socialslider) ?></label></p>
-					<p class="radio"><input type="radio" name="socialslider_miejsce" id="socialslider_miejsce_prawa" value="prawa"<?php if(get_option('socialslider_miejsce')=="prawa" AND empty($socialslider_disable)) {echo " checked";} echo $socialslider_disable; ?> /> <label for="socialslider_miejsce_prawa"><?php _e("Right side of the screen", $socialslider) ?></label> <?php echo $socialslider_only; ?></p>
-					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", $socialslider) ?>" style="margin: 5px 0 5px 20px;" />
+					<p><?php _e("Placement of Social Slider:", 'social-slider') ?></p>
+					<p class="radio"><input type="radio" name="socialslider_miejsce" id="socialslider_miejsce_lewa" value="lewa"<?php if(get_option('socialslider_miejsce')=="lewa" OR !get_option('socialslider_miejsce') OR !empty($socialslider_disable)) {echo " checked";} ?> /> <label for="socialslider_miejsce_lewa"><?php _e("Left side of the screen", 'social-slider') ?></label></p>
+					<p class="radio"><input type="radio" name="socialslider_miejsce" id="socialslider_miejsce_prawa" value="prawa"<?php if(get_option('socialslider_miejsce')=="prawa" AND empty($socialslider_disable)) {echo " checked";} echo $socialslider_disable; ?> /> <label for="socialslider_miejsce_prawa"><?php _e("Right side of the screen", 'social-slider') ?></label> <?php echo $socialslider_only; ?></p>
+					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", 'social-slider') ?>" style="margin: 5px 0 5px 20px;" />
 				</div>
 
 				<div class="opcja">
-					<p><?php _e("Color Scheme:", $socialslider) ?></p>
-					<p class="radio"><input type="radio" name="socialslider_kolor" id="socialslider_kolor_jasny" value="jasny"<?php if(get_option('socialslider_kolor')=="jasny" OR !get_option('socialslider_kolor') OR !empty($socialslider_disable)) {echo " checked";} ?> /> <label for="socialslider_kolor_jasny"><?php _e("Light", $socialslider) ?></label></p>
-					<p class="radio"><input type="radio" name="socialslider_kolor" id="socialslider_kolor_ciemny" value="ciemny"<?php if(get_option('socialslider_kolor')=="ciemny") {echo " checked";}?> /> <label for="socialslider_kolor_ciemny"><?php _e("Dark", $socialslider) ?></label></p>
-					<p class="radio"><input type="radio" name="socialslider_kolor" id="socialslider_kolor_css" value="css"<?php if(get_option('socialslider_kolor')=="css" AND empty($socialslider_disable)) {echo " checked";} echo $socialslider_disable; ?> /> <label for="socialslider_kolor_css"><?php _e("Custom style", $socialslider) ?></label> <?php echo $socialslider_only; ?></p>
+					<p><?php _e("Color Scheme:", 'social-slider') ?></p>
+					<p class="radio"><input type="radio" name="socialslider_kolor" id="socialslider_kolor_jasny" value="jasny"<?php if(get_option('socialslider_kolor')=="jasny" OR !get_option('socialslider_kolor') OR !empty($socialslider_disable)) {echo " checked";} ?> /> <label for="socialslider_kolor_jasny"><?php _e("Light", 'social-slider') ?></label></p>
+					<p class="radio"><input type="radio" name="socialslider_kolor" id="socialslider_kolor_ciemny" value="ciemny"<?php if(get_option('socialslider_kolor')=="ciemny") {echo " checked";}?> /> <label for="socialslider_kolor_ciemny"><?php _e("Dark", 'social-slider') ?></label></p>
+					<p class="radio"><input type="radio" name="socialslider_kolor" id="socialslider_kolor_css" value="css"<?php if(get_option('socialslider_kolor')=="css" AND empty($socialslider_disable)) {echo " checked";} echo $socialslider_disable; ?> /> <label for="socialslider_kolor_css"><?php _e("Custom style", 'social-slider') ?></label> <?php echo $socialslider_only; ?></p>
 
 					<table style="margin: 15px 0 10px 40px;">
-						<tr><td style="width: 140px;"><?php _e("Background color:", $socialslider) ?></td><td><input type="text" class="text" style="width: 70px;" value="<?php if(get_option('socialslider_custom_background')) {echo get_option('socialslider_custom_background');} else {echo "#ffffff";} ?>" name="socialslider_custom_background" id="socialslider_custom_background" <?php if(date("Y-m-d")>base64_decode($socialslider_data)) {echo "readonly ";} ?>/> <?php echo $socialslider_only; ?></td></tr>
-						<tr><td><?php _e("Border color:", $socialslider) ?></td><td><input type="text" class="text" style="width: 70px;" value="<?php if(get_option('socialslider_custom_border')) {echo get_option('socialslider_custom_border');} else {echo "#cccccc";} ?>" name="socialslider_custom_border" id="socialslider_custom_border" <?php if(date("Y-m-d")>base64_decode($socialslider_data)) {echo "readonly ";} ?>/> <?php echo $socialslider_only; ?></td></tr>
-						<tr><td><?php _e("Font color:", $socialslider) ?></td><td><input type="text" class="text" style="width: 70px;" value="<?php if(get_option('socialslider_custom_font')) {echo get_option('socialslider_custom_font');} else {echo "#666666";} ?>" name="socialslider_custom_font" id="socialslider_custom_font" <?php if(date("Y-m-d")>base64_decode($socialslider_data)) {echo "readonly ";} ?>/> <?php echo $socialslider_only; ?></td></tr>
-						<tr><td><?php _e("Corner radius:", $socialslider) ?></td><td><input type="text" class="text" style="width: 70px;" value="<?php if(get_option('socialslider_custom_radius')) {echo get_option('socialslider_custom_radius');} else {echo "6px";} ?>" name="socialslider_custom_radius" id="socialslider_custom_radius" <?php if(date("Y-m-d")>base64_decode($socialslider_data)) {echo "readonly ";} ?>/> <?php echo $socialslider_only; ?></td></tr>
+						<tr><td style="width: 140px;"><?php _e("Background color:", 'social-slider') ?></td><td><input type="text" class="text" style="width: 70px;" value="<?php if(get_option('socialslider_custom_background')) {echo get_option('socialslider_custom_background');} else {echo "#ffffff";} ?>" name="socialslider_custom_background" id="socialslider_custom_background" <?php if(date("Y-m-d")>base64_decode($socialslider_data)) {echo "readonly ";} ?>/> <?php echo $socialslider_only; ?></td></tr>
+						<tr><td><?php _e("Border color:", 'social-slider') ?></td><td><input type="text" class="text" style="width: 70px;" value="<?php if(get_option('socialslider_custom_border')) {echo get_option('socialslider_custom_border');} else {echo "#cccccc";} ?>" name="socialslider_custom_border" id="socialslider_custom_border" <?php if(date("Y-m-d")>base64_decode($socialslider_data)) {echo "readonly ";} ?>/> <?php echo $socialslider_only; ?></td></tr>
+						<tr><td><?php _e("Font color:", 'social-slider') ?></td><td><input type="text" class="text" style="width: 70px;" value="<?php if(get_option('socialslider_custom_font')) {echo get_option('socialslider_custom_font');} else {echo "#666666";} ?>" name="socialslider_custom_font" id="socialslider_custom_font" <?php if(date("Y-m-d")>base64_decode($socialslider_data)) {echo "readonly ";} ?>/> <?php echo $socialslider_only; ?></td></tr>
+						<tr><td><?php _e("Corner radius:", 'social-slider') ?></td><td><input type="text" class="text" style="width: 70px;" value="<?php if(get_option('socialslider_custom_radius')) {echo get_option('socialslider_custom_radius');} else {echo "6px";} ?>" name="socialslider_custom_radius" id="socialslider_custom_radius" <?php if(date("Y-m-d")>base64_decode($socialslider_data)) {echo "readonly ";} ?>/> <?php echo $socialslider_only; ?></td></tr>
 					</table>
 
-					<p class="radio" style="margin: 0 0 20px 40px;"><?php _e("\"Custom style\" option gives you the ability to customize Social Slider, so as it fits your blog's theme. But remember that not all browsers fully support CSS3 on which this option is based. Modern browsers like Chrome or Firefox will display Social Slider correctly, however your readers using Opera or Internet Explorer will see Social Slider without rounded corners. The selected colors will be displayed correctly in all browsers.", $socialslider) ?></p>
+					<p class="radio" style="margin: 0 0 20px 40px;"><?php _e("\"Custom style\" option gives you the ability to customize Social Slider, so as it fits your blog's theme. But remember that not all browsers fully support CSS3 on which this option is based. Modern browsers like Chrome or Firefox will display Social Slider correctly, however your readers using Opera or Internet Explorer will see Social Slider without rounded corners. The selected colors will be displayed correctly in all browsers.", 'social-slider') ?></p>
 
-					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", $socialslider) ?>" style="margin: 5px 0 5px 20px;" />
+					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", 'social-slider') ?>" style="margin: 5px 0 5px 20px;" />
 				</div>
 
 				<div class="opcja">
-					<p><?php _e("Transparency:", $socialslider) ?></p>
-					<p class="radio"><input type="radio" name="socialslider_opacity" id="socialslider_opacity_1" value="1"<?php if(get_option('socialslider_opacity')=="1" OR !get_option('socialslider_opacity') OR !empty($socialslider_disable)) {echo " checked";} ?> /> <label for="socialslider_opacity_1"><?php _e("Opacity 100%", $socialslider) ?></label></p>
-					<p class="radio"><input type="radio" name="socialslider_opacity" id="socialslider_opacity_9" value="9"<?php if(get_option('socialslider_opacity')=="9" AND empty($socialslider_disable)) {echo " checked";} echo $socialslider_disable; ?> /> <label for="socialslider_opacity_9"><?php _e("Opacity 90%", $socialslider) ?></label> <?php echo $socialslider_only; ?></p>
-					<p class="radio"><input type="radio" name="socialslider_opacity" id="socialslider_opacity_8" value="8"<?php if(get_option('socialslider_opacity')=="8" AND empty($socialslider_disable)) {echo " checked";} echo $socialslider_disable; ?> /> <label for="socialslider_opacity_8"><?php _e("Opacity 80%", $socialslider) ?></label> <?php echo $socialslider_only; ?></p>
-					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", $socialslider) ?>" style="margin: 5px 0 5px 20px;" />
+					<p><?php _e("Transparency:", 'social-slider') ?></p>
+					<p class="radio"><input type="radio" name="socialslider_opacity" id="socialslider_opacity_1" value="1"<?php if(get_option('socialslider_opacity')=="1" OR !get_option('socialslider_opacity') OR !empty($socialslider_disable)) {echo " checked";} ?> /> <label for="socialslider_opacity_1"><?php _e("Opacity 100&#37;", 'social-slider') ?></label></p>
+					<p class="radio"><input type="radio" name="socialslider_opacity" id="socialslider_opacity_9" value="9"<?php if(get_option('socialslider_opacity')=="9" AND empty($socialslider_disable)) {echo " checked";} echo $socialslider_disable; ?> /> <label for="socialslider_opacity_9"><?php _e("Opacity 90&#37;", 'social-slider') ?></label> <?php echo $socialslider_only; ?></p>
+					<p class="radio"><input type="radio" name="socialslider_opacity" id="socialslider_opacity_8" value="8"<?php if(get_option('socialslider_opacity')=="8" AND empty($socialslider_disable)) {echo " checked";} echo $socialslider_disable; ?> /> <label for="socialslider_opacity_8"><?php _e("Opacity 80&#37;", 'social-slider') ?></label> <?php echo $socialslider_only; ?></p>
+					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", 'social-slider') ?>" style="margin: 5px 0 5px 20px;" />
 				</div>
 
 				<div class="opcja">
-					<p><?php _e("Icon set:", $socialslider) ?></p>
-					<p class="radio"><input type="radio" name="socialslider_ikony" id="socialslider_ikony_standard" value="standard"<?php if(get_option('socialslider_ikony')=="standard" OR !get_option('socialslider_ikony')) {echo " checked";} ?> /> <label for="socialslider_ikony_standard"><?php _e("Standard icon set", $socialslider) ?>
+					<p><?php _e("Icon set:", 'social-slider') ?></p>
+					<p class="radio"><input type="radio" name="socialslider_ikony" id="socialslider_ikony_standard" value="standard"<?php if(get_option('socialslider_ikony')=="standard" OR !get_option('socialslider_ikony')) {echo " checked";} ?> /> <label for="socialslider_ikony_standard"><?php _e("Standard icon set", 'social-slider') ?>
 						<p style="margin: 8px 0 0 20px;">
 							<img style="width: 32px; height: 32px;" src="<?php echo WP_PLUGIN_URL; ?>/<?php echo $socialslider; ?>/icons/standard/buzz-32.png" alt="" />
 							<img style="width: 32px; height: 32px;" src="<?php echo WP_PLUGIN_URL; ?>/<?php echo $socialslider; ?>/icons/standard/goldenline-32.png" alt="" />
@@ -518,7 +519,7 @@ function SocialSliderUstawienia()
 						</p>
 					</label></p>
 
-					<p class="radio"><input type="radio" name="socialslider_ikony" id="socialslider_ikony_futomaki" value="futomaki"<?php if(get_option('socialslider_ikony')=="futomaki") {echo " checked";} ?> /> <label for="socialslider_ikony_futomaki"><?php _e("Icons created by <a href='http://futomaki.pl' title='Alex Apleczny'>Alex Paleczny</a>", $socialslider) ?>
+					<p class="radio"><input type="radio" name="socialslider_ikony" id="socialslider_ikony_futomaki" value="futomaki"<?php if(get_option('socialslider_ikony')=="futomaki") {echo " checked";} ?> /> <label for="socialslider_ikony_futomaki"><?php _e("Icons created by <a href='http://futomaki.pl' title='Alex Apleczny'>Alex Paleczny</a>", 'social-slider') ?>
 						<p style="margin: 8px 0 0 0;">
 							<img style="width: 32px; height: 32px; margin-left: 20px;" src="<?php echo WP_PLUGIN_URL; ?>/<?php echo $socialslider; ?>/icons/futomaki/buzz-32.png" alt="" />
 							<img style="width: 32px; height: 32px;" src="<?php echo WP_PLUGIN_URL; ?>/<?php echo $socialslider; ?>/icons/futomaki/goldenline-32.png" alt="" />
@@ -532,51 +533,51 @@ function SocialSliderUstawienia()
 						</p>
 					</label></p>
 
-					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", $socialslider) ?>" style="margin: 5px 0 5px 20px;" />
+					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", 'social-slider') ?>" style="margin: 5px 0 5px 20px;" />
 				</div>
 
 				<div class="opcja">
-					<p><?php _e("How fast should the Social Slider expand:", $socialslider) ?></p>
-					<p class="radio"><input type="radio" name="socialslider_szybkosc" id="socialslider_szybkosc_slow" value="slow"<?php if(get_option('socialslider_szybkosc')=="slow") echo " checked"; ?> /> <label for="socialslider_szybkosc_slow"><?php _e("Slowly", $socialslider) ?></label></p>
-					<p class="radio"><input type="radio" name="socialslider_szybkosc" id="socialslider_szybkosc_normal" value="normal"<?php if(get_option('socialslider_szybkosc')=="normal" OR !get_option('socialslider_szybkosc')) {echo " checked";} ?> /> <label for="socialslider_szybkosc_normal"><?php _e("Normal", $socialslider) ?></label></p>
-					<p class="radio"><input type="radio" name="socialslider_szybkosc" id="socialslider_szybkosc_fast" value="fast"<?php if(get_option('socialslider_szybkosc')=="fast") echo " checked"; ?> /> <label for="socialslider_szybkosc_fast"><?php _e("Fast", $socialslider) ?></label></p>
-					<p class="radio"><input type="radio" name="socialslider_szybkosc" id="socialslider_szybkosc_nojs" value="nojs"<?php if(get_option('socialslider_szybkosc')=="nojs") echo " checked"; ?> /> <label for="socialslider_szybkosc_nojs"><?php _e("Without smooth expanding (recommended if smooth expanding doesn't work for any reasons)", $socialslider) ?></label></p>
-					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", $socialslider) ?>" style="margin: 5px 0 5px 20px;" />
+					<p><?php _e("How fast should the Social Slider expand:", 'social-slider') ?></p>
+					<p class="radio"><input type="radio" name="socialslider_szybkosc" id="socialslider_szybkosc_slow" value="slow"<?php if(get_option('socialslider_szybkosc')=="slow") echo " checked"; ?> /> <label for="socialslider_szybkosc_slow"><?php _e("Slowly", 'social-slider') ?></label></p>
+					<p class="radio"><input type="radio" name="socialslider_szybkosc" id="socialslider_szybkosc_normal" value="normal"<?php if(get_option('socialslider_szybkosc')=="normal" OR !get_option('socialslider_szybkosc')) {echo " checked";} ?> /> <label for="socialslider_szybkosc_normal"><?php _e("Normal", 'social-slider') ?></label></p>
+					<p class="radio"><input type="radio" name="socialslider_szybkosc" id="socialslider_szybkosc_fast" value="fast"<?php if(get_option('socialslider_szybkosc')=="fast") echo " checked"; ?> /> <label for="socialslider_szybkosc_fast"><?php _e("Fast", 'social-slider') ?></label></p>
+					<p class="radio"><input type="radio" name="socialslider_szybkosc" id="socialslider_szybkosc_nojs" value="nojs"<?php if(get_option('socialslider_szybkosc')=="nojs") echo " checked"; ?> /> <label for="socialslider_szybkosc_nojs"><?php _e("Without smooth expanding (recommended if smooth expanding doesn't work for any reasons)", 'social-slider') ?></label></p>
+					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", 'social-slider') ?>" style="margin: 5px 0 5px 20px;" />
 				</div>
 
 				<div class="opcja">
-					<p><?php _e("Display the link to Social Slider website:", $socialslider) ?></p>
-					<p class="radio"><input type="radio" class="text" value="tak" name="socialslider_link" id="socialslider_link_tak"<?php if(get_option('socialslider_link')=="tak") {echo " checked";} ?>/> <label for="socialslider_link_tak"><?php _e("Yes", $socialslider) ?></label></p>
-					<p class="radio"><input type="radio" class="text" value="nie" name="socialslider_link" id="socialslider_link_nie"<?php if(get_option('socialslider_link')=="nie" OR !get_option('socialslider_link')) {echo " checked";} ?>/> <label for="socialslider_link_nie"><?php _e("No", $socialslider) ?></label></p>
-					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", $socialslider) ?>" style="margin: 5px 0 5px 20px;" />
+					<p><?php _e("Display the link to Social Slider website:", 'social-slider') ?></p>
+					<p class="radio"><input type="radio" class="text" value="tak" name="socialslider_link" id="socialslider_link_tak"<?php if(get_option('socialslider_link')=="tak") {echo " checked";} ?>/> <label for="socialslider_link_tak"><?php _e("Yes", 'social-slider') ?></label></p>
+					<p class="radio"><input type="radio" class="text" value="nie" name="socialslider_link" id="socialslider_link_nie"<?php if(get_option('socialslider_link')=="nie" OR !get_option('socialslider_link')) {echo " checked";} ?>/> <label for="socialslider_link_nie"><?php _e("No", 'social-slider') ?></label></p>
+					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", 'social-slider') ?>" style="margin: 5px 0 5px 20px;" />
 				</div>
 
 				<div class="opcja">
-					<p><?php _e("Show Social Slider in mobile browsers:", $socialslider) ?></p>
-					<p class="radio"><input type="radio" class="text" value="tak" name="socialslider_mobile" id="socialslider_mobile_tak"<?php if(get_option('socialslider_mobile')=="tak") echo " checked"; ?>/> <label for="socialslider_mobile_tak"><?php _e("Yes", $socialslider) ?></label></p>
-					<p class="radio"><input type="radio" class="text" value="nie" name="socialslider_mobile" id="socialslider_mobile_nie"<?php if(get_option('socialslider_mobile')=="nie" OR !get_option('socialslider_mobile')) {echo " checked";} ?>/> <label for="socialslider_mobile_nie"><?php _e("No", $socialslider) ?></label></p>
-					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", $socialslider) ?>" style="margin: 5px 0 5px 20px;" />
+					<p><?php _e("Show Social Slider in mobile browsers:", 'social-slider') ?></p>
+					<p class="radio"><input type="radio" class="text" value="tak" name="socialslider_mobile" id="socialslider_mobile_tak"<?php if(get_option('socialslider_mobile')=="tak") echo " checked"; ?>/> <label for="socialslider_mobile_tak"><?php _e("Yes", 'social-slider') ?></label></p>
+					<p class="radio"><input type="radio" class="text" value="nie" name="socialslider_mobile" id="socialslider_mobile_nie"<?php if(get_option('socialslider_mobile')=="nie" OR !get_option('socialslider_mobile')) {echo " checked";} ?>/> <label for="socialslider_mobile_nie"><?php _e("No", 'social-slider') ?></label></p>
+					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", 'social-slider') ?>" style="margin: 5px 0 5px 20px;" />
 				</div>
 
 				<div class="opcja">
-					<p><?php _e("Don't show Social Slider when the screen's resolution is lower than:", $socialslider) ?></p>
-					<p class="radio"><input type="text" class="text" style="width: 50px;" value="<?php if(get_option('socialslider_rozdzielczosc')) {echo get_option('socialslider_rozdzielczosc');} else {echo "0px";} ?>" name="socialslider_rozdzielczosc" id="socialslider_rozdzielczosc" <?php if(date("Y-m-d")>base64_decode($socialslider_data)) {echo "readonly ";} ?> /> (<?php _e("default:", $socialslider) ?> 0px) <?php echo $socialslider_only; ?></p>
-					<p class="radio"><?php _e("Leave \"0px\" if you want Social Slider to be displayed in any resolution", $socialslider) ?></p>
-					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", $socialslider) ?>" style="margin: 5px 0 5px 20px;" />
+					<p><?php _e("Don't show Social Slider when the screen's resolution is lower than:", 'social-slider') ?></p>
+					<p class="radio"><input type="text" class="text" style="width: 50px;" value="<?php if(get_option('socialslider_rozdzielczosc')) {echo get_option('socialslider_rozdzielczosc');} else {echo "0px";} ?>" name="socialslider_rozdzielczosc" id="socialslider_rozdzielczosc" <?php if(date("Y-m-d")>base64_decode($socialslider_data)) {echo "readonly ";} ?> /> (<?php _e("default:", 'social-slider') ?> 0px) <?php echo $socialslider_only; ?></p>
+					<p class="radio"><?php _e("Leave \"0px\" if you want Social Slider to be displayed in any resolution", 'social-slider') ?></p>
+					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", 'social-slider') ?>" style="margin: 5px 0 5px 20px;" />
 				</div>
 
 				<div class="opcja">
-					<p><?php _e("After clicking on a site's icon, load it in:", $socialslider) ?></p>
-					<p class="radio"><input type="radio" name="socialslider_target" id="socialslider_target_self" value="self"<?php if(get_option('socialslider_target')=="self" OR !get_option('socialslider_target') OR !empty($socialslider_disable)) {echo " checked";} ?> /> <label for="socialslider_target_self"><?php _e("The current window", $socialslider) ?></label></p>
-					<p class="radio"><input type="radio" name="socialslider_target" id="socialslider_target_blank" value="blank"<?php if(get_option('socialslider_target')=="blank" AND empty($socialslider_disable)) {echo " checked";} echo $socialslider_disable; ?> /> <label for="socialslider_target_blank"><?php _e("A new window", $socialslider) ?></label> <?php echo $socialslider_only; ?></p>
-					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", $socialslider) ?>" style="margin: 5px 0 5px 20px;" />
+					<p><?php _e("After clicking on a site's icon, load it in:", 'social-slider') ?></p>
+					<p class="radio"><input type="radio" name="socialslider_target" id="socialslider_target_self" value="self"<?php if(get_option('socialslider_target')=="self" OR !get_option('socialslider_target') OR !empty($socialslider_disable)) {echo " checked";} ?> /> <label for="socialslider_target_self"><?php _e("The current window", 'social-slider') ?></label></p>
+					<p class="radio"><input type="radio" name="socialslider_target" id="socialslider_target_blank" value="blank"<?php if(get_option('socialslider_target')=="blank" AND empty($socialslider_disable)) {echo " checked";} echo $socialslider_disable; ?> /> <label for="socialslider_target_blank"><?php _e("A new window", 'social-slider') ?></label> <?php echo $socialslider_only; ?></p>
+					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", 'social-slider') ?>" style="margin: 5px 0 5px 20px;" />
 				</div>
 
 				<div class="opcja">
-					<p><?php _e("Add \"nofollow\" attribute to outgoing links:", $socialslider) ?></p>
-					<p class="radio"><input type="radio" name="socialslider_nofollow" id="socialslider_nofollow_tak" value="tak"<?php if(get_option('socialslider_nofollow')=="tak" OR !get_option('socialslider_nofollow')) {echo " checked";} ?> /> <label for="socialslider_nofollow_tak"><?php _e("Yes", $socialslider) ?></label></p>
-					<p class="radio"><input type="radio" name="socialslider_nofollow" id="socialslider_nofollow_nie" value="nie"<?php if(get_option('socialslider_nofollow')=="nie" AND empty($socialslider_disable)) {echo " checked";} echo $socialslider_disable; ?> /> <label for="socialslider_nofollow_nie"><?php _e("No", $socialslider) ?></label></p>
-					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", $socialslider) ?>" style="margin: 5px 0 5px 20px;" />
+					<p><?php _e("Add \"nofollow\" attribute to outgoing links:", 'social-slider') ?></p>
+					<p class="radio"><input type="radio" name="socialslider_nofollow" id="socialslider_nofollow_tak" value="tak"<?php if(get_option('socialslider_nofollow')=="tak" OR !get_option('socialslider_nofollow')) {echo " checked";} ?> /> <label for="socialslider_nofollow_tak"><?php _e("Yes", 'social-slider') ?></label></p>
+					<p class="radio"><input type="radio" name="socialslider_nofollow" id="socialslider_nofollow_nie" value="nie"<?php if(get_option('socialslider_nofollow')=="nie" AND empty($socialslider_disable)) {echo " checked";} echo $socialslider_disable; ?> /> <label for="socialslider_nofollow_nie"><?php _e("No", 'social-slider') ?></label></p>
+					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", 'social-slider') ?>" style="margin: 5px 0 5px 20px;" />
 				</div>
 
 				<div class="opcja">
@@ -599,7 +600,7 @@ function SocialSliderUstawienia()
 					</script>
 					<?php } ?>
 
-					<p><?php _e("Provide the full URLs of your profiles on social networking sites. If you don't use a site, leave the field blank.<br /><br />Note: You can change the order of the fields using drag&drop in the <a href='#pro'>Pro version</a>.", $socialslider) ?></p>
+					<p><?php _e("Provide the full URLs of your profiles on social networking sites. If you don't use a site, leave the field blank.<br /><br />Note: You can change the order of the fields using drag&drop in the <a href='#pro'>Pro version</a>.", 'social-slider') ?></p>
 					<ul id="serwisy" class="serwisy">
 						<?php
 						$serwisy = $wpdb->get_results("SELECT * FROM ".$table_prefix."socialslider ORDER BY ".$socialslider_sort." ASC");
@@ -621,20 +622,20 @@ function SocialSliderUstawienia()
 
 					<ul class="serwisy">
 						<li>
-							<label for 'socialslider_widget'><img src='<?php echo $socialslider_katalog ?>/icons/<?php echo $socialslider_ikony; ?>/widget-20.png' alt='Widget' /> <?php _e("Custom widget:", $socialslider) ?></label>
+							<label for 'socialslider_widget'><img src='<?php echo $socialslider_katalog ?>/icons/<?php echo $socialslider_ikony; ?>/widget-20.png' alt='Widget' /> <?php _e("Custom widget:", 'social-slider') ?></label>
 							<textarea name="socialslider_widget" id="socialslider_widget" style="height: 200px;"><?php echo stripslashes(get_option('socialslider_widget')); ?></textarea><br />
-							<p style="font-size: 10px; color: #777; line-height: 14px; margin-left: 20px;"><?php _e("Do you want to place a Facebook widget here? Check out <a href='http://wordpress.org/extend/plugins/social-slider/faq/'>FAQ</a> to see how to do it :)", $socialslider) ?></p>
+							<p style="font-size: 10px; color: #777; line-height: 14px; margin-left: 20px;"><?php _e("Do you want to place a Facebook widget here? Check out <a href='http://wordpress.org/extend/plugins/social-slider/faq/'>FAQ</a> to see how to do it :)", 'social-slider') ?></p>
 						</li>
 						<br style='clear: both;' />
 					</ul>
 
-					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", $socialslider) ?>" style="margin: 15px 0 5px 20px;" />
+					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", 'social-slider') ?>" style="margin: 15px 0 5px 20px;" />
 				</div>
 			</form>
 
-			<h2><?php _e("Add new site", $socialslider) ?></h2>
+			<h2><?php _e("Add new site", 'social-slider') ?></h2>
 			<div class="pro">
-				<p style="margin-bottom: 25px;"><?php _e("<strong>Social Slider</strong> contains a list of the most popular social networking sites. However, if there's no icon of a site that you use, you can add it to the list manually using this form.", $socialslider) ?></p>
+				<p style="margin-bottom: 25px;"><?php _e("<strong>Social Slider</strong> contains a list of the most popular social networking sites. However, if there's no icon of a site that you use, you can add it to the list manually using this form.", 'social-slider') ?></p>
 
 				<form action="options-general.php?page=<?php echo $socialslider; ?>/<?php echo $socialslider; ?>.php" method="post" id="social-slider-pro" style="margin-left: 20px;">
 
@@ -642,32 +643,32 @@ function SocialSliderUstawienia()
 
 					<ul style="margin-left: 25px; list-style-type: none;">
 						<li>
-							<label for 'socialslider_new'><?php _e("Name of the site:", $socialslider) ?></label>
+							<label for 'socialslider_new'><?php _e("Name of the site:", 'social-slider') ?></label>
 							<input type='text' class='text' value='' name='socialslider_new' id='socialslider_new' /><br style='clear: both;' />
 							<input type='hidden' class='text' name='socialslider_new_images' id='socialslider_new_images' value='_<?php echo $times; ?>' />
 						</li>
 					</ul>
 
-					<p style="margin-top: 25px;"><?php _e("You can add the URL of your profile later - after adding the site to the list. Before you add a new site to the list, make sure you uploaded two icons of the site to <i>/wp-content/".$socialslider."/</i> named:", $socialslider) ?></p>
+					<p style="margin-top: 25px;"><?php _e("You can add the URL of your profile later - after adding the site to the list. Before you add a new site to the list, make sure you uploaded two icons of the site to <i>/wp-content/social-slider/</i> named:", 'social-slider') ?></p>
 
 					<ul style="margin-left: 25px; list-style-type: none;">
-						<li><b>_<?php echo $times; ?>-20.png</b> <i><?php _e("icon of the site, size 20px", $socialslider) ?></i></li>
-						<li><b>_<?php echo $times; ?>-32.png</b> <i><?php _e("icon of the site, size 32px", $socialslider) ?></i></li>
+						<li><b>_<?php echo $times; ?>-20.png</b> <i><?php _e("icon of the site, size 20px", 'social-slider') ?></i></li>
+						<li><b>_<?php echo $times; ?>-32.png</b> <i><?php _e("icon of the site, size 32px", 'social-slider') ?></i></li>
 					</ul>
 
-					<p style="margin-top: 25px;"><?php _e("Set the names of the icon files exactly as given above (including the underscore at the beginning). When both of the files are uploaded,  click the button below:", $socialslider) ?><br /><input type="submit" name="SocialSliderNew" value="<?php _e("Add new site", $socialslider) ?>" style="margin: 20px 0 20px 0;" <?php if(date("Y-m-d")>base64_decode($socialslider_data)) {echo "onclick='this.disabled=true;' ";} ?>/> <?php echo $socialslider_only; ?></p>
+					<p style="margin-top: 25px;"><?php _e("Set the names of the icon files exactly as given above (including the underscore at the beginning). When both of the files are uploaded,  click the button below:", 'social-slider') ?><br /><input type="submit" name="SocialSliderNew" value="<?php _e("Add new site", 'social-slider') ?>" style="margin: 20px 0 20px 0;" <?php if(date("Y-m-d")>base64_decode($socialslider_data)) {echo "onclick='this.disabled=true;' ";} ?>/> <?php echo $socialslider_only; ?></p>
 				</form>
 			</div>
 
-			<h2><?php _e("Dynamic links", $socialslider) ?></h2>
+			<h2><?php _e("Dynamic links", 'social-slider') ?></h2>
 			<div class="pro">
-				<p><?php _e("Users of <a href='#pro'>Pro version</a> can use dynamically generated addresses to social sites. You can use them to create quick links that enable readers of your blog to add the links to the read articles on sites like Digg, Twitter or Facebook, with a single click.", $socialslider) ?></p>
+				<p><?php _e("Users of <a href='#pro'>Pro version</a> can use dynamically generated addresses to social sites. You can use them to create quick links that enable readers of your blog to add the links to the read articles on sites like Digg, Twitter or Facebook, with a single click.", 'social-slider') ?></p>
 
-				<p><?php _e("You can use special tags <strong>[URL]</strong> and <strong>[TITLE]</strong> to create dynamic addresses. An example address created using the tags would look like this:", $socialslider) ?></p>
+				<p><?php _e("You can use special tags <strong>[URL]</strong> and <strong>[TITLE]</strong> to create dynamic addresses. An example address created using the tags would look like this:", 'social-slider') ?></p>
 
 					<p style="margin-left: 25px; text-decoration: underline;">http://del.icio.us/post?url=<strong>[URL]</strong>&title=<strong>[TITLE]</strong></p>
 
-				<p style="margin-top: 25px;"><?php _e("Readers of your blog will see the address as:", $socialslider) ?></p>
+				<p style="margin-top: 25px;"><?php _e("Readers of your blog will see the address as:", 'social-slider') ?></p>
 
 					<?php
 					$w					= $wpdb->get_row("SELECT ID,post_title FROM $wpdb->posts WHERE `post_status` LIKE 'publish' AND `post_type` LIKE 'post' ORDER BY post_date DESC LIMIT 1");
@@ -678,33 +679,33 @@ function SocialSliderUstawienia()
 					<p style="margin-left: 25px;"><a href="http://del.icio.us/post?url=<?php echo $socialslider_url; ?>&title=<?php echo $socialslider_title; ?>" title="Facebook">http://del.icio.us/post?url=<?php echo $socialslider_url; ?>&title=<?php echo $socialslider_title; ?></a></p>
 			</div>
 
-			<h2><?php _e("What to do when Social Slider doesn't work?", $socialslider) ?></h2>
+			<h2><?php _e("What to do when Social Slider doesn't work?", 'social-slider') ?></h2>
 			<div class="pro">
-				<p><?php _e("It may happen that Social Slider won't show on your blog, even if it's activated and configured. First of all, make sure that there's no caching plugin (eg. WP-SuperCache) turned on - Social Slider may be working properly, but the cache is created before <strong>Social Slider</strong> is loaded. If <strong>Social Slider</strong> still doesn't show up on page, try placing the function that starts Social Slider manually in the template file - in the footer or sidebar, the position of the function doesn't matter, it will be displayed in the same way.", $socialslider) ?></p>
-				<p><?php _e("Below you can find the code to put in the template file if you would like to run <strong>Social Slider</strong> manually:", $socialslider) ?></p>
+				<p><?php _e("It may happen that Social Slider won't show on your blog, even if it's activated and configured. First of all, make sure that there's no caching plugin (eg. WP-SuperCache) turned on - Social Slider may be working properly, but the cache is created before <strong>Social Slider</strong> is loaded. If <strong>Social Slider</strong> still doesn't show up on page, try placing the function that starts Social Slider manually in the template file - in the footer or sidebar, the position of the function doesn't matter, it will be displayed in the same way.", 'social-slider') ?></p>
+				<p><?php _e("Below you can find the code to put in the template file if you would like to run <strong>Social Slider</strong> manually:", 'social-slider') ?></p>
 
 				<pre style="margin-left: 20px;"><span style="color: #FF0000;">&lt;?php</span><span style="color: #333333;"> SocialSlider</span><span style="color: #AE00FB;">(); </span><span style="color: #FF0000;">?&gt;</span></pre>
 			</div>
 
-			<h2 id="pro"><?php _e("Buy Social Slider Pro", $socialslider) ?></h2>
+			<h2 id="pro"><?php _e("Buy Social Slider Pro", 'social-slider') ?></h2>
 			<div class="pro">
 
 			<?php
 			if(date("Y-m-d")<=base64_decode($socialslider_data))
 				{
 				if(base64_decode($socialslider_data)!="2099-12-31")	{$socialslider_data_do = base64_decode($socialslider_data);}
-				else												{$socialslider_data_do = __("unlimited", $socialslider);}
+				else												{$socialslider_data_do = __("unlimited", 'social-slider');}
 
-				echo "<p style='margin-left: 20px; font-style: italic;'>".__("License's expiry date", $socialslider).": ".$socialslider_data_do."</p>";
+				echo "<p style='margin-left: 20px; font-style: italic;'>".__("License's expiry date", 'social-slider').": ".$socialslider_data_do."</p>";
 				}
 			else
 				{
 				?>
-				<p style="color: green;"><?php _e("Limited time only! Social Slider Pro is on sale and you can <strong>buy a license for 50% off</strong> - you will pay just 113 PLN (~34 USD). After the sale is over, the price will rise to 226 PLN (~68 USD).", $socialslider) ?></p>
+				<p style="color: green;"><?php _e("Limited time only! Social Slider Pro is on sale and you can <strong>buy a license for 50&#37; off</strong> - you will pay just 113 PLN (~34 USD). After the sale is over, the price will rise to 226 PLN (~68 USD).", 'social-slider') ?></p>
 
-				<p><?php _e("Attention! Before buying Social Slider Pro, check if the basic version of the plugin works correctly on your blog.", $socialslider) ?></p>
+				<p><?php _e("Attention! Before buying Social Slider Pro, check if the basic version of the plugin works correctly on your blog.", 'social-slider') ?></p>
 
-				<p><?php _e("To gain access to all the features of <strong>Social Slider Pro</strong>, simply buy a lifetime license using <a href='http://paypal.com/' title='PayPal'>PayPal</a>.", $socialslider) ?></p>
+				<p><?php _e("To gain access to all the features of <strong>Social Slider Pro</strong>, simply buy a lifetime license using <a href='http://paypal.com/' title='PayPal'>PayPal</a>.", 'social-slider') ?></p>
 
 				<!-- FORMULARZ -->
 
@@ -728,28 +729,28 @@ function SocialSliderUstawienia()
 							<input type="image" style="margin: 0 0 0 40px;" src="http://social-slider.com/img/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online."> 
 				</form> 
 
-				<p><?php _e("Your license will be automatically activated just after the transaction.", $socialslider) ?></p>
-				<p><?php _e("If you would like to purchase licenses for more of your blogs, please send an e-mail to <a href='mailto:slider@wiecek.biz'>slider@wiecek.biz</a>. You can get a discount when purchasing multiple licenses at one time.", $socialslider) ?></p>
+				<p><?php _e("Your license will be automatically activated just after the transaction.", 'social-slider') ?></p>
+				<p><?php _e("If you would like to purchase licenses for more of your blogs, please send an e-mail to <a href='mailto:slider@wiecek.biz'>slider@wiecek.biz</a>. You can get a discount when purchasing multiple licenses at one time.", 'social-slider') ?></p>
 				<?php } ?>
 			</div>
 
-			<h2><?php _e("Restoring default settings", $socialslider) ?></h2>
+			<h2><?php _e("Restoring default settings", 'social-slider') ?></h2>
 			<div class="pro">
 				<form action="options-general.php?page=<?php echo $socialslider; ?>/<?php echo $socialslider; ?>.php" method="post" id="social-slider-reset">
-					<input type="submit" name="SocialSliderResetuj" value="<?php _e("Reset settings", $socialslider) ?>" style="margin: 15px 0 5px 20px;" />
+					<input type="submit" name="SocialSliderResetuj" value="<?php _e("Reset settings", 'social-slider') ?>" style="margin: 15px 0 5px 20px;" />
 				</form>
 			</div>
 
-			<h2><?php _e("Social Slider's / Social Slider Pro's Terms of Use", $socialslider) ?></h2>
+			<h2><?php _e("Social Slider's / Social Slider Pro's Terms of Use", 'social-slider') ?></h2>
 			<div class="pro">
 				<p><ol>
-					<li><?php _e("The author and owner of the source code is <a href='http://mydiy.pl/' title='myDIY - zrób to sam!'>Łukasz Więcek</a>.", $socialslider) ?></li>
-					<li><?php _e("Please send your suggestions, ideas, questions and problem reports to <a href='mailto:slider@wiecek.biz'>slider@wiecek.biz</a>.", $socialslider) ?></li>
-					<li><?php _e("Source code of <strong>Social Slider</strong> plugin is based on the <a href='http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt' alt='GPL v2.0'>GPL v2.0</a> license.", $socialslider) ?></li>
+					<li><?php _e("The author and owner of the source code is <a href='http://mydiy.pl/' title='myDIY - zrób to sam!'>Łukasz Więcek</a>.", 'social-slider') ?></li>
+					<li><?php _e("Please send your suggestions, ideas, questions and problem reports to <a href='mailto:slider@wiecek.biz'>slider@wiecek.biz</a>.", 'social-slider') ?></li>
+					<li><?php _e("Source code of <strong>Social Slider</strong> plugin is based on the <a href='http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt' alt='GPL v2.0'>GPL v2.0</a> license.", 'social-slider') ?></li>
 				</ol></p>
 			</div>
 
-			<p style="margin-top: 30px;"><?php _e("The English translation of <strong>Social Slider</strong> / <strong>Social Slider Pro</strong> was prepared by <a href='http://tomasz.topa.pl' title='Tomasz Topa'>Tomasz Topa</a>.", $socialslider) ?></p>
+			<p style="margin-top: 30px;"><?php _e("The English translation of <strong>Social Slider</strong> / <strong>Social Slider Pro</strong> was prepared by <a href='http://tomasz.topa.pl' title='Tomasz Topa'>Tomasz Topa</a>.", 'social-slider') ?></p>
 			
 		</div>
 		<div id="ajax">&nbsp;</div>
