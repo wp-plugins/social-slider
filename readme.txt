@@ -4,7 +4,7 @@ Donate link: http://goo.gl/2SLt
 Tags: social, widget, icons, links, bookmarking, bookmarks, bookmark, profile, profiles, facebook, google+, google, googleplus, google plus, plus, buzz, twitter, rss, newsletter, delicious, picasa, flickr, youtube, vimeo, goldenline, lastfm, digg, myspace, linkedin, orkut, blip.fm, deviantart, friendconnect, friendfeed, tumblr
 Requires at least: 2.9.0
 Tested up to: 3.3
-Stable tag: 7.0.2
+Stable tag: 7.0.3
 
 This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
 
@@ -90,23 +90,17 @@ Administration panel plugin is available in languages:
 
 = How to Configure Facebook widget? =
 
-* The plug-in settings enable full mode: [screen](http://screen.mydiy.pl/2011-03-02_170726.png "screen")
-* Go to FanPage which you want to create a widget and click "Edit Page": [screen](http://screen.mydiy.pl/2011-03-02_171017.png "screen")
-* Click the "Marketing" and "Add Like a Box to your Website": [screen](http://screen.mydiy.pl/2011-03-02_171346.png "screen")
-* Customize the look to meet your needs (set the width to 200!), and click "Get Code": [screen](http://screen.mydiy.pl/2011-03-02_171618.png "screen")
-* Copy this code: [screen](http://screen.mydiy.pl/2011-03-02_171659.png "screen")
-* Return to the plugin settings and paste the code in the "Custom widget" and then click "Save": [screen](http://screen.mydiy.pl/2011-03-02_171844.png "screen")
-* Done :)
-
-= What if Facebook widget is very small? =
-
-In the code copied from Facebook you need to change the height of the default "62" on a larger (eg 300). This value must be changed in two places marked by arrows on the [screen](http://screen.piszczy.pl/2011-04-21_201023.png "screen")
+See the video tutorial: [http://youtu.be/0Uw6RA5jFEM?hd=1](http://youtu.be/0Uw6RA5jFEM?hd=1 "Social Slider - How to add Facebook Like Box?")
 
 == Installation ==
 
 After you activate the plugin, go to the configuration page and enter the URLs of your profiles on social networking sites. If you don't use a particular site, leave the field blank - the icon will not be displayed.
 
 == Changelog ==
+
+= 7.0.3 =
+
+* Added video tutorial to FAQ
 
 = 7.0.2 =
 
