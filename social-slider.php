@@ -3,13 +3,13 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 7.0.5
+Version: 7.0.6
 Author: Łukasz Więcek
 Author URI: http://mydiy.pl/
 */
 
 $socialslider			= "social-slider";
-$socialslider_wersja	= "7.0.5";
+$socialslider_wersja	= "7.0.6";
 $socialslider_baza		= str_replace("https://", "http://", get_bloginfo('wpurl'));
 $socialslider_katalog	= WP_PLUGIN_URL .'/'.$socialslider;
 
@@ -40,7 +40,7 @@ else
 	add_option('socialslider_opacity',				'1',			' ', 'yes');	// Przezroczystość
 	add_option('socialslider_ikony',				'standard',		' ', 'yes');	// Ikony
 	add_option('socialslider_szybkosc',				'normal',		' ', 'yes');	// Szybkosc
-	add_option('socialslider_link',					'nie',			' ', 'yes');	// Link
+	add_option('socialslider_link',					'text',			' ', 'yes');	// Link
 	add_option('socialslider_position',				'fixed',		' ', 'yes');	// Pozycja
 	add_option('socialslider_target',				'self',			' ', 'yes');	// Target
 	add_option('socialslider_nofollow',				'tak',			' ', 'yes');	// Nofollow
@@ -177,8 +177,8 @@ function SocialSliderUstawienia()
 		if(get_option('socialslider_szybkosc'))			{update_option('socialslider_szybkosc', 'normal');}
 		else											{add_option('socialslider_szybkosc', 'normal', ' ', 'yes');}
 
-		if(get_option('socialslider_link'))				{update_option('socialslider_link', 'tak');}
-		else											{add_option('socialslider_link', 'tak', ' ', 'yes');}
+		if(get_option('socialslider_link'))				{update_option('socialslider_link', 'text');}
+		else											{add_option('socialslider_link', 'text', ' ', 'yes');}
 
 		if(get_option('socialslider_position'))			{update_option('socialslider_position', 'fixed');}
 		else											{add_option('socialslider_position', 'fixed', ' ', 'yes');}
@@ -546,9 +546,10 @@ function SocialSliderUstawienia()
 				</div>
 
 				<div class="opcja">
-					<p><?php _e("Display the link to Social Slider website:", 'social-slider') ?></p>
-					<p class="radio"><input type="radio" class="text" value="tak" name="socialslider_link" id="socialslider_link_tak"<?php if(get_option('socialslider_link')=="tak") {echo " checked";} ?>/> <label for="socialslider_link_tak"><?php _e("Yes", 'social-slider') ?></label></p>
-					<p class="radio"><input type="radio" class="text" value="nie" name="socialslider_link" id="socialslider_link_nie"<?php if(get_option('socialslider_link')=="nie" OR !get_option('socialslider_link')) {echo " checked";} ?>/> <label for="socialslider_link_nie"><?php _e("No", 'social-slider') ?></label></p>
+					<p><?php _e("Display name of the plugin Social Slider:", 'social-slider') ?></p>
+					<p class="radio"><input type="radio" class="text" value="tak" name="socialslider_link" id="socialslider_link_tak"<?php if(get_option('socialslider_link')=="tak") {echo " checked";} ?>/> <label for="socialslider_link_tak"><?php _e("Show link to the Social Slider website", 'social-slider') ?></label></p>
+					<p class="radio"><input type="radio" class="text" value="text" name="socialslider_link" id="socialslider_link_text"<?php if(get_option('socialslider_link')=="text" OR !get_option('socialslider_link')) {echo " checked";} ?>/> <label for="socialslider_link_text"><?php _e("Display only plugin name", 'social-slider') ?></label></p>
+					<p class="radio"><input type="radio" class="text" value="nie" name="socialslider_link" id="socialslider_link_nie"<?php if(get_option('socialslider_link')=="nie"  AND empty($socialslider_disable)) {echo " checked";} echo $socialslider_disable; ?>/> <label for="socialslider_link_nie"><?php _e("Don't show anything", 'social-slider') ?> <?php echo $socialslider_only; ?></label></p>
 					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", 'social-slider') ?>" style="margin: 5px 0 5px 20px;" />
 				</div>
 
@@ -576,7 +577,7 @@ function SocialSliderUstawienia()
 				<div class="opcja">
 					<p><?php _e("Add \"nofollow\" attribute to outgoing links:", 'social-slider') ?></p>
 					<p class="radio"><input type="radio" name="socialslider_nofollow" id="socialslider_nofollow_tak" value="tak"<?php if(get_option('socialslider_nofollow')=="tak" OR !get_option('socialslider_nofollow')) {echo " checked";} ?> /> <label for="socialslider_nofollow_tak"><?php _e("Yes", 'social-slider') ?></label></p>
-					<p class="radio"><input type="radio" name="socialslider_nofollow" id="socialslider_nofollow_nie" value="nie"<?php if(get_option('socialslider_nofollow')=="nie" AND empty($socialslider_disable)) {echo " checked";} echo $socialslider_disable; ?> /> <label for="socialslider_nofollow_nie"><?php _e("No", 'social-slider') ?></label></p>
+					<p class="radio"><input type="radio" name="socialslider_nofollow" id="socialslider_nofollow_nie" value="nie"<?php if(get_option('socialslider_nofollow')=="nie") {echo " checked";} ?> /> <label for="socialslider_nofollow_nie"><?php _e("No", 'social-slider') ?></label></p>
 					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", 'social-slider') ?>" style="margin: 5px 0 5px 20px;" />
 				</div>
 
@@ -768,7 +769,7 @@ function SocialSliderUstawienia()
 
 // *** Wartości domyślne *********************************************************************************************************************************************
 $socialslider_kolor					= "jasny";
-$socialslider_link					= "nie";
+$socialslider_link					= "text";
 $socialslider_miejsce				= "lewa";
 $socialslider_nazwa					= "Social Slider";
 $socialslider_nocustom				= " AND ikona NOT LIKE '\_%'";
@@ -793,6 +794,7 @@ if(get_option('socialslider_position'))				$socialslider_position			= get_option
 if(get_option('socialslider_szybkosc'))				$socialslider_szybkosc			= get_option('socialslider_szybkosc');
 if(get_option('socialslider_top'))					$socialslider_top				= get_option('socialslider_top');
 if(get_option('socialslider_widget'))				$socialslider_widget			= get_option('socialslider_widget');
+if(get_option('socialslider_link'))		   		    $socialslider_link			    = get_option('socialslider_link');
 // *******************************************************************************************************************************************************************
 
 if($socialslider_nofollow!="nie")	{$nofollow = " rel='nofollow'";}
@@ -940,11 +942,30 @@ else					{$li = "http://wordpress.org/extend/plugins/social-slider/";	$ti = "Soc
 
 switch($socialslider_tryb)
 	{
-	case "pelny":				$socialslider_alink = "<a href='".$li."' title='".$ti."' style='color: ".$socialslider_autor_color.";' target='_".$socialslider_target."'>Social Slider</a>";	break;
-	case "uproszczony":			$socialslider_alink = "<a href='".$li."' title='".$ti."' style='color: ".$socialslider_autor_color.";' target='_".$socialslider_target."'>Social Slider</a>";	break;
-	case "kompaktowy":			$socialslider_alink = "<a href='".$li."' title='".$ti."' style='color: ".$socialslider_autor_color.";' target='_".$socialslider_target."'>Social Slider</a>";	break;
-	case "minimalny":			$socialslider_alink = "<a href='".$li."' title='".$ti."' style='color: ".$socialslider_autor_color.";' target='_".$socialslider_target."'>Slider</a>";			break;
-	case "minimalny_duzy":		$socialslider_alink = "<a href='".$li."' title='".$ti."' style='color: ".$socialslider_autor_color.";' target='_".$socialslider_target."'>Social Slider</a>";	break;
+	case "pelny":
+        if($socialslider_link=='tak')   $socialslider_alink = "<a href='".$li."' title='".$ti."' style='color: ".$socialslider_autor_color.";' target='_".$socialslider_target."'>Social Slider</a>";
+        if($socialslider_link=='text')  $socialslider_alink = "<span>Social Slider</span>";
+        break;
+ 
+    case "uproszczony":	
+        if($socialslider_link=='tak')   $socialslider_alink = "<a href='".$li."' title='".$ti."' style='color: ".$socialslider_autor_color.";' target='_".$socialslider_target."'>Social Slider</a>";
+        if($socialslider_link=='text')  $socialslider_alink = "<span>Social Slider</span>";
+        break;
+	
+    case "kompaktowy":
+        if($socialslider_link=='tak')   $socialslider_alink = "<a href='".$li."' title='".$ti."' style='color: ".$socialslider_autor_color.";' target='_".$socialslider_target."'>Social Slider</a>";
+        if($socialslider_link=='text')  $socialslider_alink = "<span>Social Slider</span>";
+        break;
+	
+    case "minimalny":
+        if($socialslider_link=='tak')   $socialslider_alink = "<a href='".$li."' title='".$ti."' style='color: ".$socialslider_autor_color.";' target='_".$socialslider_target."'>Slider</a>";
+        if($socialslider_link=='text')  $socialslider_alink = "<span>Slider</span>";
+        break;
+	
+    case "minimalny_duzy":
+        if($socialslider_link=='tak')   $socialslider_alink = "<a href='".$li."' title='".$ti."' style='color: ".$socialslider_autor_color.";' target='_".$socialslider_target."'>Social Slider</a>";
+        if($socialslider_link=='text')  $socialslider_alink = "<span>Social Slider</span>";
+        break;
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1060,7 +1081,7 @@ function SocialSlider()
 							foreach ($serwisy as $serwis) {echo "<li><a href='".adres($serwis->adres, $socialslider_data)."' title='".$serwis->nazwa."' style='color: ".$socialslider_a_color.";' target='_".$socialslider_target."'".$nofollow.">".$serwis->nazwa."</a></li>";}
 							}
 
-						if($socialslider_tryb!="minimalny" && $socialslider_tryb!="minimalny_duzy" && $socialslider_link=="tak")
+						if($socialslider_tryb!="minimalny" && $socialslider_tryb!="minimalny_duzy" && $socialslider_link!="nie")
 							{
 							echo "<li id='".base64_decode('c29jaWFsc2xpZGVyLWF1dG9y')."'>".$socialslider_alink."</li>";
 							}
@@ -1082,7 +1103,7 @@ function SocialSlider()
 					{
 					foreach ($serwisy as $serwis) {echo "<li><a href='".adres($serwis->adres, $socialslider_data)."' title='".$serwis->nazwa."' target='_".$socialslider_target."'".$nofollow."><img src='".katalog_ikon($serwis->ikona)."/".$serwis->ikona."-".$socialslider_minimalny_rozmiar.".png' alt='".$serwis->nazwa."' /></a></li>";}
 
-					if($socialslider_link=="tak")
+					if($socialslider_link!="nie")
 						{
 						echo "<li id='".base64_decode('c29jaWFsc2xpZGVyLWF1dG9y')."'>".$socialslider_alink."</li>";
 						}
