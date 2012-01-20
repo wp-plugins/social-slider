@@ -106,7 +106,7 @@
 	padding-bottom: 2px !important;
 	}
 
-#socialslider-autor a
+#socialslider-autor a, #socialslider-autor span
 	{
 	font-family: Segoe UI, Tahoma;
 	font-size: 10px;
