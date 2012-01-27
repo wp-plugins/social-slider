@@ -83,7 +83,7 @@ You can see a live example of the plugin working in different modes:
 = My other plugins =
 
 * [Smart DoFollow](http://wordpress.org/extend/plugins/smart-dofollow/ "Smart DoFollow")
-* [Social Fit](http://wordpress.org/extend/plugins/social-fit/ "Social Fit")
+* [Social Fit](http://wordpress.org/extend/plugins/socialfit/ "Social Fit")
 * [Commentify](http://commentify.info/ "Commentify")
 * [Thank You](http://wordpress.org/extend/plugins/thank-you/ "Thank You")
 
