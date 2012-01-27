@@ -4,7 +4,7 @@ Donate link: http://goo.gl/2SLt
 Tags: social, widget, icons, links, bookmarking, bookmarks, bookmark, profile, profiles, facebook, google+, google, googleplus, google plus, plus, buzz, twitter, rss, newsletter, delicious, picasa, flickr, youtube, vimeo, goldenline, lastfm, digg, myspace, linkedin, orkut, blip.fm, deviantart, friendconnect, friendfeed, tumblr
 Requires at least: 2.9.0
 Tested up to: 3.3.1
-Stable tag: 7.0.7
+Stable tag: 7.0.8
 
 This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
 
@@ -79,6 +79,13 @@ You can see a live example of the plugin working in different modes:
 * [Compact (without the widget and large icons)](http://social-slider.com/demo/compact.html "Compact (without the widget and large icons)")
 * [Minimal with small icons (Non-expandable set of small icons)](http://social-slider.com/demo/minimal-small-icons.html "Minimal with small icons (Non-expandable set of small icons)")
 * [Minimal with big icons (Non-expandable set of big icons)](http://social-slider.com/demo/minimal-big-icons.html "Minimal with big icons (Non-expandable set of big icons)")
+
+= My other plugins =
+
+* [Smart DoFollow](http://wordpress.org/extend/plugins/smart-dofollow/ "Smart DoFollow")
+* [Social Fit](http://wordpress.org/extend/plugins/social-fit/ "Social Fit")
+* [Commentify](http://commentify.info/ "Commentify")
+* [Thank You](http://wordpress.org/extend/plugins/thank-you/ "Thank You")
 
 = Translation =
 
