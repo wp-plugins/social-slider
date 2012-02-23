@@ -3,13 +3,13 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 7.0.14
+Version: 7.1.0
 Author: Łukasz Więcek
 Author URI: http://mydiy.pl/
 */
 
 $socialslider			= "social-slider";
-$socialslider_wersja	= "7.0.14";
+$socialslider_wersja	= "7.1.0";
 $socialslider_baza		= str_replace("https://", "http://", get_bloginfo('wpurl'));
 $socialslider_katalog	= WP_PLUGIN_URL .'/'.$socialslider;
 
@@ -129,7 +129,8 @@ function SocialSliderUstawienia()
 			(NULL,	'".$is++."',	'blipfm',			'Blip.fm',			''),
 
 			(NULL,	'".$is++."',	'delicious',		'Delicious',		''),
-			(NULL,	'".$is++."',	'unifyer',			'Unifyer',			'')
+			(NULL,	'".$is++."',	'unifyer',			'Unifyer',			''),
+			(NULL,	'".$is++."',	'pinterest',		'Pinterest',		'')
 			;");
 		}
 
@@ -412,7 +413,7 @@ function SocialSliderUstawienia()
 		$socialslider_sort		= "id";
 		$socialslider_disable	= " disabled";
 		$socialslider_only		= " (".__('This option is available in the <a href=\'#pro\'>Pro version</a>', 'social-slider').")";
-        $socialslider_promo     = '<div class="error fade" style="background-color: #c6ffc7; border-color: #114212;"><p style="line-height: 18px;">'.__("Hey Blogger! I've got some great news! Social Slider Pro plugin is now on sale, so if you decide to buy the license now, <strong>the price will be 50&#37; lower</strong>! Only 113 PLN (~34 USD)!", 'social-slider').' '.__("<a href='#pro'>More info...</a>", 'social-slider').'</p></div>';
+        $socialslider_promo     = '<div class="error fade" style="background-color: #c6ffc7; border-color: #114212;"><p style="line-height: 18px;">'.__("Hey Blogger! I've got some great news! Social Slider Pro plugin is now on sale, so if you decide to buy the license now, <strong>the price will be 50&#37; lower</strong>! Only 113 PLN (~34 USD)!", 'social-slider').' '.__("<a href='#pro'>More info...</a>", 'social-slider').'</p><p style="line-height: 18px;">'.__("A Developer License is on sale! This special type of license lets you use Social Slider on an unlimited number of your blogs without any limitations. The promotional price for this license is only 940 PLN (~299 USD). After the sale is over, the price will rise to 1880 PLN (that is ~599 USD). <strong>Don't wait! Buy the special Social Slider Developer License for only 299 USD now!</strong>", 'social-slider').' '.__("<a href='#devpro'>More info...</a>", 'social-slider').'</p></div>';
 
 		if(date("Y-m-d")<=base64_decode($socialslider_data))
 			{
@@ -733,6 +734,33 @@ function SocialSliderUstawienia()
 				<p><?php _e("Your license will be automatically activated just after the transaction.", 'social-slider') ?></p>
 				<p><?php _e("If you would like to purchase licenses for more of your blogs, please send an e-mail to <a href='mailto:slider@wiecek.biz'>slider@wiecek.biz</a>. You can get a discount when purchasing multiple licenses at one time.", 'social-slider') ?></p>
 				<?php } ?>
+			</div>
+
+			<h2 id="devpro"><?php _e("Buy Social Slider Pro Developer License", 'social-slider') ?></h2>
+			<div class="pro">
+				<p style="color: green;"><?php _e("A Developer License is on sale! This special type of license lets you use Social Slider on an unlimited number of your blogs without any limitations. The promotional price for this license is only 940 PLN (~299 USD). After the sale is over, the price will rise to 1880 PLN (that is ~599 USD). <strong>Don't wait! Buy the special Social Slider Developer License for only 299 USD now!</strong>", 'social-slider') ?></p>
+
+				<!-- FORMULARZ -->
+
+				<?php $custom = base64_encode(get_bloginfo('admin_email').'*'.get_bloginfo("wpurl").'*deweloperska**N*W*'.WPLANG.'*social-slider'); ?>
+
+				<form name="f" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="margin: 0 0 20px 20px;" target="_blank"> 
+					<input type="hidden" name="amount" value="940" />
+					<input type="hidden" name="cmd" value="_xclick" />
+					<input type="hidden" name="no_note" value="1" />
+					<input type="hidden" name="no_shipping" value="1" />
+					<input type="hidden" name="currency_code" value="PLN" />
+					<input type="hidden" name="notify_url" value="http://social-slider.com/ipn_ss.php" />
+					<input type="hidden" name="business" value="paypal@karteczkowo.pl" />
+					<input type="hidden" name="item_name" value="Social Slider - Developer License" />
+					<input type="hidden" name="item_number" value="" />
+					<input type="hidden" name="quantity" value="1" />
+					<input type="hidden" name="lc" value="US" />
+					<input type="hidden" name="custom" value="<?php echo $custom; ?>" />
+					<input type="hidden" name="return" value="http://mydiy.pl" />
+					<input type="hidden" name="cancel_return" value="http://mydiy.pl" />
+					<input type="image" style="margin: 0 0 0 40px;" src="http://social-slider.com/img/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online."> 
+				</form> 
 			</div>
 
 			<h2><?php _e("Restoring default settings", 'social-slider') ?></h2>
