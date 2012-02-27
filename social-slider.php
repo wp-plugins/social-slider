@@ -3,13 +3,13 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 7.1.0
+Version: 7.1.1
 Author: Łukasz Więcek
 Author URI: http://mydiy.pl/
 */
 
 $socialslider			= "social-slider";
-$socialslider_wersja	= "7.1.0";
+$socialslider_wersja	= "7.1.1";
 $socialslider_baza		= str_replace("https://", "http://", get_bloginfo('wpurl'));
 $socialslider_katalog	= WP_PLUGIN_URL .'/'.$socialslider;
 
@@ -89,7 +89,7 @@ function SocialSliderUstawienia()
 		$wpdb->query("INSERT INTO `".$socialtabela."` (`id`,`lp`,`ikona`,`nazwa`,`adres`) VALUES
 			(NULL,	'".$is++."',	'rss',				'RSS',				''),
 			(NULL,	'".$is++."',	'newsletter',		'Newsletter',		''),
-				
+
 			(NULL,	'".$is++."',	'facebook',			'Facebook',			'http://www.facebook.com/SocialSlider'),
 			(NULL,	'".$is++."',	'googleplus',		'Google+',			''),
 			(NULL,	'".$is++."',	'spinacz',			'Spinacz',			''),
@@ -713,23 +713,23 @@ function SocialSliderUstawienia()
 
 				<?php $custom = base64_encode(get_bloginfo('admin_email').'*'.get_bloginfo("wpurl").'*bezterminowa**N*W*'.WPLANG.'*social-slider'); ?>
 
-				<form name="f" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="margin: 0 0 20px 20px;" target="_blank"> 
-							<input type="hidden" name="amount" value="113" /> 
-							<input type="hidden" name="cmd" value="_xclick" /> 
-							<input type="hidden" name="no_note" value="1" /> 
+				<form name="f" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="margin: 0 0 20px 20px;" target="_blank">
+							<input type="hidden" name="amount" value="113" />
+							<input type="hidden" name="cmd" value="_xclick" />
+							<input type="hidden" name="no_note" value="1" />
 							<input type="hidden" name="no_shipping" value="1" />
-							<input type="hidden" name="currency_code" value="PLN" /> 
-							<input type="hidden" name="notify_url" value="http://social-slider.com/ipn_ss.php" /> 
-							<input type="hidden" name="business" value="paypal@karteczkowo.pl" /> 
-							<input type="hidden" name="item_name" value="Social Slider" /> 
-							<input type="hidden" name="item_number" value="" /> 
-							<input type="hidden" name="quantity" value="1" /> 
-							<input type="hidden" name="lc" value="US" /> 
-							<input type="hidden" name="custom" value="<?php echo $custom; ?>" /> 
-							<input type="hidden" name="return" value="http://mydiy.pl" /> 
-							<input type="hidden" name="cancel_return" value="http://mydiy.pl" /> 
-							<input type="image" style="margin: 0 0 0 40px;" src="http://social-slider.com/img/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online."> 
-				</form> 
+							<input type="hidden" name="currency_code" value="PLN" />
+							<input type="hidden" name="notify_url" value="http://social-slider.com/ipn_ss.php" />
+							<input type="hidden" name="business" value="paypal@karteczkowo.pl" />
+							<input type="hidden" name="item_name" value="Social Slider" />
+							<input type="hidden" name="item_number" value="" />
+							<input type="hidden" name="quantity" value="1" />
+							<input type="hidden" name="lc" value="US" />
+							<input type="hidden" name="custom" value="<?php echo $custom; ?>" />
+							<input type="hidden" name="return" value="http://mydiy.pl" />
+							<input type="hidden" name="cancel_return" value="http://mydiy.pl" />
+							<input type="image" style="margin: 0 0 0 40px;" src="http://social-slider.com/img/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online.">
+				</form>
 
 				<p><?php _e("Your license will be automatically activated just after the transaction.", 'social-slider') ?></p>
 				<p><?php _e("If you would like to purchase licenses for more of your blogs, please send an e-mail to <a href='mailto:slider@wiecek.biz'>slider@wiecek.biz</a>. You can get a discount when purchasing multiple licenses at one time.", 'social-slider') ?></p>
@@ -744,7 +744,7 @@ function SocialSliderUstawienia()
 
 				<?php $custom = base64_encode(get_bloginfo('admin_email').'*'.get_bloginfo("wpurl").'*deweloperska**N*W*'.WPLANG.'*social-slider'); ?>
 
-				<form name="f" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="margin: 0 0 20px 20px;" target="_blank"> 
+				<form name="f" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="margin: 0 0 20px 20px;" target="_blank">
 					<input type="hidden" name="amount" value="940" />
 					<input type="hidden" name="cmd" value="_xclick" />
 					<input type="hidden" name="no_note" value="1" />
@@ -759,8 +759,8 @@ function SocialSliderUstawienia()
 					<input type="hidden" name="custom" value="<?php echo $custom; ?>" />
 					<input type="hidden" name="return" value="http://mydiy.pl" />
 					<input type="hidden" name="cancel_return" value="http://mydiy.pl" />
-					<input type="image" style="margin: 0 0 0 40px;" src="http://social-slider.com/img/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online."> 
-				</form> 
+					<input type="image" style="margin: 0 0 0 40px;" src="http://social-slider.com/img/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online.">
+				</form>
 			</div>
 
 			<h2><?php _e("Restoring default settings", 'social-slider') ?></h2>
@@ -780,7 +780,7 @@ function SocialSliderUstawienia()
 			</div>
 
 			<p style="margin-top: 30px;"><?php _e("The English translation of <strong>Social Slider</strong> / <strong>Social Slider Pro</strong> was prepared by <a href='http://tomasz.topa.pl' title='Tomasz Topa'>Tomasz Topa</a>.", 'social-slider') ?></p>
-			
+
 		</div>
 		<div id="ajax">&nbsp;</div>
 	</div>
@@ -827,7 +827,7 @@ if(get_option('socialslider_link'))		   		    $socialslider_link			    = get_opt
 
 if($socialslider_nofollow!="nie")	{$nofollow = " rel='nofollow'";}
 else								{$nofollow = "";}
-	
+
 // *** Pobranie ustawień dla licencji Pro ****************************************************************************************************************************
 if(date("Y-m-d")<=base64_decode($socialslider_data))
 	{
@@ -974,22 +974,22 @@ switch($socialslider_tryb)
         if($socialslider_link=='tak')   $socialslider_alink = "<a href='".$li."' title='".$ti."' style='color: ".$socialslider_autor_color.";' target='_".$socialslider_target."'>Social Slider</a>";
         if($socialslider_link=='text')  $socialslider_alink = "<span>Social Slider</span>";
         break;
- 
-    case "uproszczony":	
+
+    case "uproszczony":
         if($socialslider_link=='tak')   $socialslider_alink = "<a href='".$li."' title='".$ti."' style='color: ".$socialslider_autor_color.";' target='_".$socialslider_target."'>Social Slider</a>";
         if($socialslider_link=='text')  $socialslider_alink = "<span>Social Slider</span>";
         break;
-	
+
     case "kompaktowy":
         if($socialslider_link=='tak')   $socialslider_alink = "<a href='".$li."' title='".$ti."' style='color: ".$socialslider_autor_color.";' target='_".$socialslider_target."'>Social Slider</a>";
         if($socialslider_link=='text')  $socialslider_alink = "<span>Social Slider</span>";
         break;
-	
+
     case "minimalny":
         if($socialslider_link=='tak')   $socialslider_alink = "<a href='".$li."' title='".$ti."' style='color: ".$socialslider_autor_color.";' target='_".$socialslider_target."'>Slider</a>";
         if($socialslider_link=='text')  $socialslider_alink = "<span>Slider</span>";
         break;
-	
+
     case "minimalny_duzy":
         if($socialslider_link=='tak')   $socialslider_alink = "<a href='".$li."' title='".$ti."' style='color: ".$socialslider_autor_color.";' target='_".$socialslider_target."'>Social Slider</a>";
         if($socialslider_link=='text')  $socialslider_alink = "<span>Social Slider</span>";
@@ -1063,7 +1063,7 @@ function SocialSlider()
 
 	<!-- <?php echo $socialslider_nazwa; ?> v.<?php echo $socialslider_wersja; ?> -->
 	<!-- SS#<?php echo base64_encode(get_bloginfo('wpurl')."#".WPLANG."#".$socialslider_promocja."#".$socialslider); ?>## -->
-	
+
 	<div id="socialslider" style="top: <?php echo $socialslider_top; ?>; <?php echo $socialslider_width_css; ?>">
 		<div id="socialslider-contener" class="socialslider-contener">
 
