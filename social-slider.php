@@ -3,13 +3,13 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 7.1.2
+Version: 7.1.3
 Author: Łukasz Więcek
-Author URI: http://mydiy.pl/
+Author URI: http://majsterkowo.pl/
 */
 
 $socialslider			= "social-slider";
-$socialslider_wersja	= "7.1.2";
+$socialslider_wersja	= "7.1.3";
 $socialslider_baza		= str_replace("https://", "http://", get_bloginfo('wpurl'));
 $socialslider_katalog	= WP_PLUGIN_URL .'/'.$socialslider;
 
@@ -726,8 +726,8 @@ function SocialSliderUstawienia()
 							<input type="hidden" name="quantity" value="1" />
 							<input type="hidden" name="lc" value="US" />
 							<input type="hidden" name="custom" value="<?php echo $custom; ?>" />
-							<input type="hidden" name="return" value="http://mydiy.pl" />
-							<input type="hidden" name="cancel_return" value="http://mydiy.pl" />
+							<input type="hidden" name="return" value="http://majsterkowo.pl" />
+							<input type="hidden" name="cancel_return" value="http://majsterkowo.pl" />
 							<input type="image" style="margin: 0 0 0 40px;" src="http://social-slider.com/img/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online.">
 				</form>
 
@@ -757,8 +757,8 @@ function SocialSliderUstawienia()
 					<input type="hidden" name="quantity" value="1" />
 					<input type="hidden" name="lc" value="US" />
 					<input type="hidden" name="custom" value="<?php echo $custom; ?>" />
-					<input type="hidden" name="return" value="http://mydiy.pl" />
-					<input type="hidden" name="cancel_return" value="http://mydiy.pl" />
+					<input type="hidden" name="return" value="http://majsterkowo.pl" />
+					<input type="hidden" name="cancel_return" value="http://majsterkowo.pl" />
 					<input type="image" style="margin: 0 0 0 40px;" src="http://social-slider.com/img/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online.">
 				</form>
 			</div>
@@ -773,7 +773,7 @@ function SocialSliderUstawienia()
 			<h2><?php _e("Social Slider's / Social Slider Pro's Terms of Use", 'social-slider') ?></h2>
 			<div class="pro">
 				<p><ol>
-					<li><?php _e("The author and owner of the source code is <a href='http://mydiy.pl/' title='myDIY - zrób to sam!'>Łukasz Więcek</a>.", 'social-slider') ?></li>
+					<li><?php _e("The author and owner of the source code is <a href='http://majsterkowo.pl/' title='myDIY - zrób to sam!'>Łukasz Więcek</a>.", 'social-slider') ?></li>
 					<li><?php _e("Please send your suggestions, ideas, questions and problem reports to <a href='mailto:slider@wiecek.biz'>slider@wiecek.biz</a>.", 'social-slider') ?></li>
 					<li><?php _e("Source code of <strong>Social Slider</strong> plugin is based on the <a href='http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt' alt='GPL v2.0'>GPL v2.0</a> license.", 'social-slider') ?></li>
 				</ol></p>
@@ -965,7 +965,7 @@ function katalog_ikon($ikona)
 	else					return WP_PLUGIN_URL ."/".$socialslider."/icons/".get_option('socialslider_ikony');
 	}
 
-if(WPLANG=="pl_PL")		{$li = "http://mydiy.pl";										$ti = "myDIY - zrób to sam! Blog dla majsterkowiczów.";}
+if(WPLANG=="pl_PL")		{$li = "http://majsterkowo.pl";									$ti = "DIY - zrób to sam! Blog dla majsterkowiczów.";}
 else					{$li = "http://wordpress.org/extend/plugins/social-slider/";	$ti = "Social Slider";}
 
 switch($socialslider_tryb)
