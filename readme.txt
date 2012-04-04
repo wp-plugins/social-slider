@@ -4,7 +4,7 @@ Donate link: http://goo.gl/2SLt
 Tags: social, widget, icons, links, bookmarking, bookmarks, bookmark, profile, profiles, facebook, google+, google, googleplus, google plus, plus, buzz, twitter, rss, newsletter, delicious, picasa, flickr, youtube, vimeo, goldenline, lastfm, digg, myspace, linkedin, orkut, blip.fm, deviantart, friendconnect, friendfeed, tumblr, pinterest
 Requires at least: 2.9.0
 Tested up to: 3.3.1
-Stable tag: 7.1.4
+Stable tag: 7.1.5
 
 This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
 
