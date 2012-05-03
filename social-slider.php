@@ -3,13 +3,13 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 7.2.0
+Version: 7.2.1
 Author: Łukasz Więcek
 Author URI: http://majsterkowo.pl/
 */
 
 $socialslider			= "social-slider";
-$socialslider_wersja	= "7.2.0";
+$socialslider_wersja	= "7.2.1";
 $socialslider_baza		= str_replace("https://", "http://", get_bloginfo('wpurl'));
 $socialslider_katalog	= WP_PLUGIN_URL .'/'.$socialslider;
 
@@ -178,8 +178,8 @@ function SocialSliderUstawienia()
 		if(get_option('socialslider_szybkosc'))			{update_option('socialslider_szybkosc', 'normal');}
 		else											{add_option('socialslider_szybkosc', 'normal', ' ', 'yes');}
 
-		if(get_option('socialslider_link'))				{update_option('socialslider_link', 'text');}
-		else											{add_option('socialslider_link', 'text', ' ', 'yes');}
+		if(get_option('socialslider_link'))				{update_option('socialslider_link', 'nie');}
+		else											{add_option('socialslider_link', 'nie', ' ', 'yes');}
 
 		if(get_option('socialslider_position'))			{update_option('socialslider_position', 'fixed');}
 		else											{add_option('socialslider_position', 'fixed', ' ', 'yes');}
@@ -549,8 +549,8 @@ function SocialSliderUstawienia()
 				<div class="opcja">
 					<p><?php _e("Display name of the plugin Social Slider:", 'social-slider') ?></p>
 					<p class="radio"><input type="radio" class="text" value="tak" name="socialslider_link" id="socialslider_link_tak"<?php if(get_option('socialslider_link')=="tak") {echo " checked";} ?>/> <label for="socialslider_link_tak"><?php _e("Show link to the Social Slider website", 'social-slider') ?></label></p>
-					<p class="radio"><input type="radio" class="text" value="text" name="socialslider_link" id="socialslider_link_text"<?php if(get_option('socialslider_link')=="text" OR !get_option('socialslider_link')) {echo " checked";} ?>/> <label for="socialslider_link_text"><?php _e("Display only plugin name", 'social-slider') ?></label></p>
-					<p class="radio"><input type="radio" class="text" value="nie" name="socialslider_link" id="socialslider_link_nie"<?php if(get_option('socialslider_link')=="nie") {echo " checked";} ?>/> <label for="socialslider_link_nie"><?php _e("Don't show anything", 'social-slider') ?></label></p>
+					<p class="radio"><input type="radio" class="text" value="text" name="socialslider_link" id="socialslider_link_text"<?php if(get_option('socialslider_link')=="text") {echo " checked";} ?>/> <label for="socialslider_link_text"><?php _e("Display only plugin name", 'social-slider') ?></label></p>
+					<p class="radio"><input type="radio" class="text" value="nie" name="socialslider_link" id="socialslider_link_nie"<?php if(get_option('socialslider_link')=="nie" OR !get_option('socialslider_link')) {echo " checked";} ?>/> <label for="socialslider_link_nie"><?php _e("Don't show anything", 'social-slider') ?></label></p>
 					<input type="submit" name="SocialSliderZapisz" value="<?php _e("Save", 'social-slider') ?>" style="margin: 5px 0 5px 20px;" />
 				</div>
 
