@@ -3,13 +3,13 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 7.2.4
+Version: 7.2.5
 Author: Łukasz Więcek
 Author URI: http://majsterkowo.pl/
 */
 
 $socialslider			= "social-slider";
-$socialslider_wersja	= "7.2.4";
+$socialslider_wersja	= "7.2.5";
 $socialslider_baza		= str_replace("https://", "http://", get_bloginfo('wpurl'));
 $socialslider_katalog	= WP_PLUGIN_URL .'/'.$socialslider;
 
@@ -413,7 +413,7 @@ function SocialSliderUstawienia()
 		$socialslider_sort		= "id";
 		$socialslider_disable	= " disabled";
 		$socialslider_only		= " (".__('This option is available in the <a href=\'#pro\'>Pro version</a>', 'social-slider').")";
-        $socialslider_promo     = '<div class="error fade" style="background-color: #c6ffc7; border-color: #114212;"><p style="line-height: 18px;">'.__("Hey Blogger! I've got some great news! Social Slider Pro plugin is now on sale, so if you decide to buy the license now, <strong>the price will be 50&#37; lower</strong>! Only 113 PLN (~34 USD)!", 'social-slider').' '.__("<a href='#pro'>More info...</a>", 'social-slider').'</p><p style="line-height: 18px;">'.__("A Developer License is on sale! This special type of license lets you use Social Slider on an unlimited number of your blogs without any limitations. The promotional price for this license is only 940 PLN (~299 USD). After the sale is over, the price will rise to 1880 PLN (that is ~599 USD). <strong>Don't wait! Buy the special Social Slider Developer License for only 299 USD now!</strong>", 'social-slider').' '.__("<a href='#devpro'>More info...</a>", 'social-slider').'</p></div>';
+        $socialslider_promo     = '<div class="error fade" style="background-color: #c6ffc7; border-color: #114212;"><p style="line-height: 18px;">'.__("Hey Blogger! I've got some great news! Social Slider Pro plugin is now on sale, so if you decide to buy the license now, <strong>the price will be 25&#37; lower</strong>! Only 113 PLN (~34 USD)!", 'social-slider').' '.__("<a href='#pro'>More info...</a>", 'social-slider').'</p><p style="line-height: 18px;">'.__("A Developer License is on sale! This special type of license lets you use Social Slider on an unlimited number of your blogs without any limitations. The promotional price for this license is only 940 PLN (~299 USD). After the sale is over, the price will rise to 1880 PLN (that is ~599 USD). <strong>Don't wait! Buy the special Social Slider Developer License for only 299 USD now!</strong>", 'social-slider').' '.__("<a href='#devpro'>More info...</a>", 'social-slider').'</p></div>';
 
 		if(date("Y-m-d")<=base64_decode($socialslider_data))
 			{
@@ -703,7 +703,7 @@ function SocialSliderUstawienia()
 			else
 				{
 				?>
-				<p style="color: green;"><?php _e("Limited time only! Social Slider Pro is on sale and you can <strong>buy a license for 50&#37; off</strong> - you will pay just 113 PLN (~34 USD). After the sale is over, the price will rise to 226 PLN (~68 USD).", 'social-slider') ?></p>
+				<p style="color: green;"><?php _e("Limited time only! Social Slider Pro is on sale and you can <strong>buy a license for 25&#37; off</strong> - you will pay just 113 PLN (~34 USD). After the sale is over, the price will rise to 452 PLN (~127 USD).", 'social-slider') ?></p>
 
 				<p><?php _e("Attention! Before buying Social Slider Pro, check if the basic version of the plugin works correctly on your blog.", 'social-slider') ?></p>
 
