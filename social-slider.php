@@ -3,13 +3,13 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 7.3.5
+Version: 7.3.6
 Author: Łukasz Więcek
 Author URI: http://majsterkowo.pl/
 */
 
 $socialslider			= "social-slider";
-$socialslider_wersja	= "7.3.5";
+$socialslider_wersja	= "7.3.6";
 $socialslider_baza		= str_replace("https://", "http://", get_bloginfo('wpurl'));
 $socialslider_katalog	= WP_PLUGIN_URL .'/'.$socialslider;
 
@@ -811,6 +811,7 @@ $socialslider_target				= "self";
 $socialslider_top					= "150px";
 $socialslider_widget_height			= "auto";
 $socialslider_widget_width			= "200px";
+$socialslider_auto					= "nie";
 // *******************************************************************************************************************************************************************
 
 // *** Pobranie ustawień *********************************************************************************************************************************************
