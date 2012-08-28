@@ -15,8 +15,7 @@ if($_GET['ssap']!="")
 			
 			echo base64_decode(base64_decode($ssexplode[3]));
 			}
-		else
-			{delete_option('socialslider_licencja');}
+		else delete_option('socialslider_licencja');
 		}
 	}
 ?>
