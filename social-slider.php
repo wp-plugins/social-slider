@@ -3,13 +3,13 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 7.3.13
+Version: 7.4.0
 Author: Łukasz Więcek
 Author URI: http://majsterkowo.pl/
 */
 
 $socialslider			= "social-slider";
-$socialslider_wersja	= "7.3.13";
+$socialslider_wersja	= "7.4.0";
 $socialslider_baza		= str_replace("https://", "http://", get_bloginfo('wpurl'));
 $socialslider_katalog	= WP_PLUGIN_URL .'/'.$socialslider;
 
@@ -59,7 +59,7 @@ if(file_exists($ssp64))
 	{
 	$ssexplode = explode("*", base64_decode(fread(fopen($ssp64,"r"), filesize($ssp64))));
 
-	if(($ssexplode[0]=="W" && $ssexplode[2] == base64_encode(str_replace("https://", "http://", get_bloginfo('wpurl')))) || ($ssexplode[0]=="E" && $ssexplode[1] == base64_encode(get_bloginfo('admin_email'))) || ($ssexplode[0]=="M" && $ssexplode[1] == base64_encode(get_bloginfo('admin_email')) && $ssexplode[2] == base64_encode(str_replace("https://", "http://", get_bloginfo('wpurl')))))
+	if(($ssexplode[0]=="W" && $ssexplode[2] == base64_encode(str_replace("https://", "http://", get_bloginfo('wpurl')))) || ($ssexplode[0]=="E" && $ssexplode[1] == base64_encode(get_bloginfo('admin_email'))) || ($ssexplode[0]=="M" && $ssexplode[1] == base64_encode(get_bloginfo('admin_email')) && $ssexplode[2] == base64_encode(str_replace("https://", "http://", get_bloginfo('wpurl')))) || $ssexplode[0]=="D")
 		{$socialslider_licencja = base64_decode($ssexplode[3]);}
 	else
 		{$socialslider_licencja = base64_decode(get_option('socialslider_licencja'));}
