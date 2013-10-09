@@ -3,13 +3,13 @@
 Plugin Name: Social Slider
 Plugin URI: http://xn--wicek-k0a.pl/projekty/social-slider
 Description: This plugin adds links to your social networking sites' profiles in a box floating at the left side of the screen.
-Version: 7.5.5
+Version: 7.6.0
 Author: Łukasz Więcek
 Author URI: http://majsterkowo.pl/
 */
 
 $socialslider			= "social-slider";
-$socialslider_wersja	= "7.5.5";
+$socialslider_wersja	= "7.6.0";
 $socialslider_baza		= str_replace("https://", "http://", get_bloginfo('wpurl'));
 $socialslider_katalog	= WP_PLUGIN_URL .'/'.$socialslider;
 
@@ -720,7 +720,7 @@ function SocialSliderUstawienia()
 							<input type="hidden" name="no_shipping" value="1" />
 							<input type="hidden" name="currency_code" value="PLN" />
 							<input type="hidden" name="notify_url" value="http://social-slider.com/ipn_ss.php" />
-							<input type="hidden" name="business" value="paypal@karteczkowo.pl" />
+							<input type="hidden" name="business" value="paypal@majsterkowo.pl" />
 							<input type="hidden" name="item_name" value="Social Slider" />
 							<input type="hidden" name="item_number" value="" />
 							<input type="hidden" name="quantity" value="1" />
@@ -751,7 +751,7 @@ function SocialSliderUstawienia()
 					<input type="hidden" name="no_shipping" value="1" />
 					<input type="hidden" name="currency_code" value="PLN" />
 					<input type="hidden" name="notify_url" value="http://social-slider.com/ipn_ss.php" />
-					<input type="hidden" name="business" value="paypal@karteczkowo.pl" />
+					<input type="hidden" name="business" value="paypal@majsterkowo.pl" />
 					<input type="hidden" name="item_name" value="Social Slider - Developer License" />
 					<input type="hidden" name="item_number" value="" />
 					<input type="hidden" name="quantity" value="1" />
